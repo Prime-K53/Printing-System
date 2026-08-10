@@ -16,6 +16,7 @@ interface ErrorBoundaryState {
 }
 
 class PortalErrorBoundary extends Component<{ children: ReactNode }, ErrorBoundaryState> {
+  props: { children: ReactNode };
   state: ErrorBoundaryState = { hasError: false, error: null };
 
   static getDerivedStateFromError(error: Error): ErrorBoundaryState {
@@ -27,7 +28,7 @@ class PortalErrorBoundary extends Component<{ children: ReactNode }, ErrorBounda
   }
 
   handleRetry = () => {
-    this.setState({ hasError: false, error: null });
+    this.state = { hasError: false, error: null };
   };
 
   render() {

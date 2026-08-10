@@ -3,8 +3,8 @@ import { useLocation } from 'react-router-dom';
 import { useSalesStore } from '../../stores/salesStore';
 import { useFinanceStore } from '../../stores/financeStore';
 import { adminLifecycle, OrderPrefillPayload } from '../../services/adminPortalClient';
+import { useMediaQuery } from '../../hooks/useMediaQuery';
 import SalesOrderForm from './SalesOrderForm';
-import SalesOrderDetail from './SalesOrderDetail';
 
 const teal = {
   50: '#eef7f6', 100: '#d3ece9', 200: '#a6d9d3', 300: '#72c0b7',
@@ -25,10 +25,97 @@ const statusBadgeColors: Record<string, { bg: string; color: string; border: str
   Cancelled: { bg: '#f3f4f6', color: inkSoft, border: hairline },
 };
 
+const statusOptions = ['Draft', 'Confirmed', 'Processing', 'Fulfilled', 'Cancelled'];
+
+interface RowActionsProps {
+  order: any;
+  onEdit: (o: any) => void;
+  onConvert: (o: any) => void;
+  onChangeStatus: (o: any, s: string) => void;
+}
+
+const RowActions: React.FC<RowActionsProps> = ({ order, onEdit, onConvert, onChangeStatus }) => (
+  <div style={{ display: 'flex', alignItems: 'center', gap: 8, width: '100%' }}>
+    <button
+      onClick={() => onEdit(order)}
+      style={{
+        fontFamily: "'Inter', sans-serif",
+        fontSize: 12,
+        fontWeight: 600,
+        padding: '10px 12px',
+        borderRadius: 9,
+        cursor: 'pointer',
+        background: paper,
+        border: `1.4px solid ${hairline}`,
+        color: inkSoft,
+        display: 'inline-flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: 5,
+        flex: 1,
+        minWidth: 0,
+        transition: 'all .15s ease'
+      }}
+      onMouseEnter={e => { e.currentTarget.style.background = teal[50]; e.currentTarget.style.color = teal[800]; e.currentTarget.style.borderColor = teal[200]; }}
+      onMouseLeave={e => { e.currentTarget.style.background = paper; e.currentTarget.style.color = inkSoft; e.currentTarget.style.borderColor = hairline; }}
+    >
+      Edit
+    </button>
+    <button
+      onClick={() => onConvert(order)}
+      style={{
+        fontFamily: "'Inter', sans-serif",
+        fontSize: 12,
+        fontWeight: 600,
+        padding: '10px 12px',
+        borderRadius: 9,
+        cursor: 'pointer',
+        background: `linear-gradient(155deg, ${teal[500]}, ${teal[700]})`,
+        color: '#fff',
+        border: '1.4px solid transparent',
+        display: 'inline-flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: 5,
+        flex: 1,
+        minWidth: 0,
+        transition: 'all .15s ease',
+        boxShadow: '0 4px 10px -4px rgba(15,84,76,.4)'
+      }}
+      onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-1px)'; e.currentTarget.style.boxShadow = '0 6px 14px -4px rgba(15,84,76,.55)'; }}
+      onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 4px 10px -4px rgba(15,84,76,.4)'; }}
+    >
+      Convert
+    </button>
+    <select
+      value={order.status}
+      onChange={(e) => onChangeStatus(order, e.target.value)}
+      style={{
+        fontFamily: "'Inter', sans-serif",
+        fontSize: 12,
+        fontWeight: 500,
+        padding: '9px 10px',
+        borderRadius: 9,
+        cursor: 'pointer',
+        background: paper,
+        border: `1.4px solid ${hairline}`,
+        color: inkSoft,
+        outline: 'none',
+        flex: 1,
+        minWidth: 0,
+        transition: 'border-color .15s ease'
+      }}
+    >
+      {statusOptions.map(s => <option key={s} value={s}>{s}</option>)}
+    </select>
+  </div>
+);
+
 const SalesOrders: React.FC = () => {
   const { salesOrders, isLoading, fetchSalesData, addSalesOrder, updateSalesOrder } = useSalesStore();
   const { addInvoice } = useFinanceStore();
   const location = useLocation();
+  const isMobile = useMediaQuery('(max-width: 767px)');
   const [editing, setEditing] = useState<any | null>(null);
   const [pendingOrderRequest, setPendingOrderRequest] = useState<{ requestId: string; requestNumber: string } | null>(null);
 
@@ -96,6 +183,7 @@ const SalesOrders: React.FC = () => {
 
   const handleConvertToInvoice = async (order: any) => {
     const invoice = {
+      id: '',
       customerId: order.customerId,
       customerName: order.customerName || '',
       date: new Date().toISOString(),
@@ -214,7 +302,57 @@ const SalesOrders: React.FC = () => {
                 <p style={{ fontSize: 13, color: inkSoft, margin: 0 }}>Create your first sales order using the form above.</p>
               </div>
             </div>
+          ) : isMobile ? (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 10, padding: 12 }}>
+              {salesOrders.map((o: any) => {
+                const sc = statusBadgeColors[o.status] || { bg: paper, color: inkSoft, border: hairline };
+                return (
+                  <div
+                    key={o.id}
+                    style={{
+                      background: paper,
+                      borderRadius: 14,
+                      border: `1px solid ${hairline}`,
+                      overflow: 'hidden',
+                      boxShadow: '0 1px 3px rgba(0,0,0,.05)'
+                    }}
+                  >
+                    <div style={{ padding: '12px 14px 0', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 8 }}>
+                      <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11.5, color: inkSoft, fontVariantNumeric: 'tabular-nums', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{o.id}</span>
+                      <span style={{
+                        display: 'inline-block',
+                        padding: '3px 10px',
+                        borderRadius: 20,
+                        fontSize: 11,
+                        fontWeight: 600,
+                        background: sc.bg,
+                        color: sc.color,
+                        border: `1px solid ${sc.border}`,
+                        letterSpacing: 0.02,
+                        flexShrink: 0
+                      }}>
+                        {o.status}
+                      </span>
+                    </div>
+                    <div style={{ padding: '10px 14px 14px', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', gap: 10 }}>
+                      <div style={{ minWidth: 0, flex: 1 }}>
+                        <p style={{ margin: 0, fontSize: 13.5, fontWeight: 600, color: ink, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{o.customerId || 'No customer'}</p>
+                        <p style={{ margin: '3px 0 0', fontSize: 11.5, color: inkSoft }}>{new Date(o.orderDate).toLocaleDateString()}</p>
+                      </div>
+                      <div style={{ textAlign: 'right', flexShrink: 0 }}>
+                        <p style={{ margin: 0, fontSize: 9, fontWeight: 700, color: inkSoft, textTransform: 'uppercase', letterSpacing: 0.08 }}>Total</p>
+                        <p style={{ margin: '2px 0 0', fontFamily: "'JetBrains Mono', monospace", fontSize: 15, fontWeight: 700, color: teal[800], fontVariantNumeric: 'tabular-nums' }}>{o.total}</p>
+                      </div>
+                    </div>
+                    <div style={{ borderTop: `1px solid ${hairline}`, padding: '10px 12px' }}>
+                      <RowActions order={o} onEdit={setEditing} onConvert={handleConvertToInvoice} onChangeStatus={changeStatus} />
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
           ) : (
+            <div style={{ overflowX: 'auto', WebkitOverflowScrolling: 'touch' }}>
             <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13.5 }}>
               <thead>
                 <tr style={{ background: teal[50] }}>
@@ -240,9 +378,9 @@ const SalesOrders: React.FC = () => {
                   const sc = statusBadgeColors[o.status] || { bg: paper, color: inkSoft, border: hairline };
                   return (
                     <tr key={o.id} style={{ borderBottom: `1px solid ${hairline}` }}>
-                      <td style={{ padding: '10px 14px', fontFamily: "'JetBrains Mono', monospace", fontSize: 12.5, color: ink, fontVariantNumeric: 'tabular-nums' }}>{o.id}</td>
+                      <td style={{ padding: '10px 14px', fontFamily: "'JetBrains Mono', monospace", fontSize: 12.5, color: ink, fontVariantNumeric: 'tabular-nums', whiteSpace: 'nowrap' }}>{o.id}</td>
                       <td style={{ padding: '10px 14px', color: ink }} className="hidden md:table-cell">{o.customerId || '-'}</td>
-                      <td style={{ padding: '10px 14px', color: inkSoft, fontSize: 13 }} className="hidden md:table-cell">{new Date(o.orderDate).toLocaleDateString()}</td>
+                      <td style={{ padding: '10px 14px', color: inkSoft, fontSize: 13, whiteSpace: 'nowrap' }} className="hidden md:table-cell">{new Date(o.orderDate).toLocaleDateString()}</td>
                       <td style={{ padding: '10px 14px' }}>
                         <span style={{
                           display: 'inline-block',
@@ -258,86 +396,16 @@ const SalesOrders: React.FC = () => {
                           {o.status}
                         </span>
                       </td>
-                      <td style={{ padding: '10px 14px', fontFamily: "'JetBrains Mono', monospace", fontSize: 12.5, fontWeight: 600, color: ink }}>{o.total}</td>
-                      <td style={{ padding: '10px 14px' }}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                          <button
-                            onClick={() => setEditing(o)}
-                            style={{
-                              fontFamily: "'Inter', sans-serif",
-                              fontSize: 12,
-                              fontWeight: 600,
-                              padding: '7px 14px',
-                              borderRadius: 9,
-                              cursor: 'pointer',
-                              background: paper,
-                              border: `1.4px solid ${hairline}`,
-                              color: inkSoft,
-                              display: 'inline-flex',
-                              alignItems: 'center',
-                              gap: 5,
-                              transition: 'all .15s ease'
-                            }}
-                            onMouseEnter={e => { e.currentTarget.style.background = teal[50]; e.currentTarget.style.color = teal[800]; e.currentTarget.style.borderColor = teal[200]; }}
-                            onMouseLeave={e => { e.currentTarget.style.background = paper; e.currentTarget.style.color = inkSoft; e.currentTarget.style.borderColor = hairline; }}
-                          >
-                            Edit
-                          </button>
-                          <button
-                            onClick={() => handleConvertToInvoice(o)}
-                            style={{
-                              fontFamily: "'Inter', sans-serif",
-                              fontSize: 12,
-                              fontWeight: 600,
-                              padding: '7px 14px',
-                              borderRadius: 9,
-                              cursor: 'pointer',
-                              background: `linear-gradient(155deg, ${teal[500]}, ${teal[700]})`,
-                              color: '#fff',
-                              border: '1.4px solid transparent',
-                              display: 'inline-flex',
-                              alignItems: 'center',
-                              gap: 5,
-                              transition: 'all .15s ease',
-                              boxShadow: '0 4px 10px -4px rgba(15,84,76,.4)'
-                            }}
-                            onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-1px)'; e.currentTarget.style.boxShadow = '0 6px 14px -4px rgba(15,84,76,.55)'; }}
-                            onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 4px 10px -4px rgba(15,84,76,.4)'; }}
-                          >
-                            Convert
-                          </button>
-                          <div style={{ marginLeft: 4 }}>
-                            <select
-                              value={o.status}
-                              onChange={(e) => changeStatus(o, e.target.value)}
-                              style={{
-                                fontFamily: "'Inter', sans-serif",
-                                fontSize: 12,
-                                fontWeight: 500,
-                                padding: '6px 10px',
-                                borderRadius: 9,
-                                cursor: 'pointer',
-                                background: paper,
-                                border: `1.4px solid ${hairline}`,
-                                color: inkSoft,
-                                outline: 'none',
-                                transition: 'border-color .15s ease'
-                              }}
-                            >
-                              <option value="Draft">Draft</option>
-                              <option value="Confirmed">Confirm</option>
-                              <option value="Processing">Processing</option>
-                              <option value="Fulfilled">Fulfilled</option>
-                              <option value="Cancelled">Cancel</option>
-                            </select>
-                          </div>
-                        </div>
+                      <td style={{ padding: '10px 14px', fontFamily: "'JetBrains Mono', monospace", fontSize: 12.5, fontWeight: 600, color: ink, whiteSpace: 'nowrap' }}>{o.total}</td>
+                      <td style={{ padding: '10px 14px', minWidth: 230 }}>
+                        <RowActions order={o} onEdit={setEditing} onConvert={handleConvertToInvoice} onChangeStatus={changeStatus} />
                       </td>
                     </tr>
                   );
                 })}
               </tbody>
             </table>
+            </div>
           )}
         </div>
       </div>
