@@ -72,7 +72,7 @@ const CustomerQuotations: React.FC = () => {
   if (loading && page === 1) return <div style={{ padding: 32, maxWidth: 896, margin: '0 auto' }}><PortalLoadingSkeleton type="table" count={6} /></div>;
 
   return (
-    <div>
+    <div className="px-3 sm:px-4">
       <PortalPageHeader
         title="Quotations"
         subtitle="View your quotations"
@@ -80,7 +80,7 @@ const CustomerQuotations: React.FC = () => {
         action={{ label: 'New Quotation', onClick: () => navigate('/portal/new-request?type=quotation'), icon: Plus }}
       />
 
-      <div style={{ padding: '20px 28px 8px' }}>
+      <div style={{ padding: '16px 0 8px' }} className="sm:px-7">
         {error && (
           <div style={{ background: '#FEF2F2', border: '1px solid #FECACA', color: '#B91C1C', borderRadius: 10, padding: '10px 14px', fontSize: 12.5, marginBottom: 10, lineHeight: 1.4 }}>{error}</div>
         )}
@@ -107,7 +107,7 @@ const CustomerQuotations: React.FC = () => {
         </select>
       </div>
 
-      <div style={{ padding: '16px 28px 28px' }}>
+      <div style={{ padding: '12px 0 28px' }} className="sm:px-7">
         {sorted.length === 0 ? (
           <EmptyState icon={<FileText size={28} />} title="No quotations yet" description="Your quotations will appear here once created." />
         ) : (

@@ -42,32 +42,37 @@ const SalesOrderDetail: React.FC<{ id?: string }> = ({ id }) => {
   };
 
   return (
-    <div className="p-4 border rounded">
-      <h3 className="text-lg font-medium">Order {order.id}</h3>
-      <p>Customer: {order.customerId || '-'}</p>
-      <p>Status: {order.status}</p>
-      <p>Total: {order.total}</p>
-      <div className="mt-2">
-        <h4 className="font-semibold">Items</h4>
-        <ul>
+    <div className="p-3 sm:p-4 border rounded-lg bg-white">
+      <h3 className="text-base sm:text-lg font-medium mb-3">Order {order.id}</h3>
+      <div className="space-y-2 text-sm">
+        <p><span className="font-medium text-gray-500">Customer:</span> {order.customerId || '-'}</p>
+        <p><span className="font-medium text-gray-500">Status:</span> {order.status}</p>
+        <p><span className="font-medium text-gray-500">Total:</span> {order.total}</p>
+      </div>
+      <div className="mt-3">
+        <h4 className="font-semibold text-sm mb-2">Items</h4>
+        <ul className="space-y-1 text-sm">
           {(order.items || []).map((it: any) => (
-            <li key={it.id}>{it.product_name || it.product_name || it.id} — {it.quantity} × {it.unit_price}</li>
+            <li key={it.id} className="flex justify-between">
+              <span className="truncate mr-2">{it.product_name || it.product_name || it.id}</span>
+              <span className="flex-shrink-0">{it.quantity} x {it.unit_price}</span>
+            </li>
           ))}
         </ul>
       </div>
-      <div className="mt-3 flex gap-2">
-        <button onClick={convert} className="px-3 py-1 bg-white border rounded">Convert to Invoice</button>
+      <div className="mt-3 flex flex-wrap gap-2">
+        <button onClick={convert} className="px-3 py-2 text-sm bg-white border rounded-lg">Convert to Invoice</button>
         {order.status === 'Draft' && (
-          <button onClick={() => setStatus('Confirmed')} className="px-3 py-1 bg-blue-600 text-white rounded">Confirm</button>
+          <button onClick={() => setStatus('Confirmed')} className="px-3 py-2 text-sm bg-blue-600 text-white rounded-lg">Confirm</button>
         )}
         {order.status === 'Confirmed' && (
-          <button onClick={() => setStatus('Processing')} className="px-3 py-1 bg-amber-500 text-white rounded">Start Processing</button>
+          <button onClick={() => setStatus('Processing')} className="px-3 py-2 text-sm bg-amber-500 text-white rounded-lg">Start Processing</button>
         )}
         {order.status === 'Processing' && (
-          <button onClick={() => setStatus('Fulfilled')} className="px-3 py-1 bg-emerald-600 text-white rounded">Mark Fulfilled</button>
+          <button onClick={() => setStatus('Fulfilled')} className="px-3 py-2 text-sm bg-emerald-600 text-white rounded-lg">Mark Fulfilled</button>
         )}
         {order.status !== 'Cancelled' && (
-          <button onClick={() => setStatus('Cancelled')} className="px-3 py-1 bg-rose-500 text-white rounded">Cancel</button>
+          <button onClick={() => setStatus('Cancelled')} className="px-3 py-2 text-sm bg-rose-500 text-white rounded-lg">Cancel</button>
         )}
       </div>
     </div>

@@ -208,8 +208,8 @@ const CustomerOrders: React.FC = () => {
         }
       />
 
-      <div style={{ padding: '0 20px' }}>
-        <div style={{ display: 'flex', gap: 6, padding: '6px 0', borderBottom: '1px solid #E9EDF3', marginBottom: 4 }}>
+      <div style={{ padding: '0 12px' }} className="sm:px-5">
+        <div style={{ display: 'flex', gap: 6, padding: '6px 0', borderBottom: '1px solid #E9EDF3', marginBottom: 4 }} className="flex-wrap sm:flex-nowrap">
           {tabs.map((t) => {
             const Icon = t.icon;
             const active = tab === t.key;
@@ -236,7 +236,7 @@ const CustomerOrders: React.FC = () => {
 
       {tab === 'orders' && (
         <>
-          <div style={{ padding: '16px 20px 0', display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 10 }}>
+          <div style={{ padding: '16px 0 0' }} className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-2.5 px-0 sm:px-0">
             <div style={{
               background: 'linear-gradient(135deg, #1f857712, #4ed3c708)',
               borderRadius: 12, border: '1px solid #E9EDF3', padding: '12px 14px',
@@ -265,7 +265,7 @@ const CustomerOrders: React.FC = () => {
             </div>
           </div>
 
-          <div style={{ padding: '16px 20px 8px' }}>
+          <div style={{ padding: '12px 0 8px' }} className="sm:px-0 px-0">
             {error && <ErrorBanner message={error} onDismiss={() => setError(null)} />}
 
             <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
@@ -290,7 +290,7 @@ const CustomerOrders: React.FC = () => {
             </div>
           </div>
 
-          <div style={{ padding: '12px 20px 28px' }}>
+          <div style={{ padding: '12px 0 28px' }} className="sm:px-0">
             {filteredOrders.length === 0 ? (
               <div style={{
                 background: '#fff', borderRadius: 12, border: '1px solid #E9EDF3',
@@ -428,7 +428,7 @@ const CustomerOrders: React.FC = () => {
 
       {tab === 'requests' && (
         <>
-          <div style={{ padding: '20px 28px 8px' }}>
+          <div style={{ padding: '16px 0 8px' }} className="sm:px-7">
             {error && <ErrorBanner message={error} onDismiss={() => setError(null)} />}
             <div style={{ position: 'relative', flex: '1 1 240px' }}>
               <Search size={16} style={{ position: 'absolute', left: 12, top: '50%', transform: 'translateY(-50%)', color: '#8A94A6', pointerEvents: 'none', zIndex: 1 }} />
@@ -436,7 +436,7 @@ const CustomerOrders: React.FC = () => {
             </div>
           </div>
 
-          <div style={{ padding: '16px 28px 28px' }}>
+          <div style={{ padding: '12px 0 28px' }} className="sm:px-7">
             {sortedRequests.length === 0 ? (
               <EmptyState icon={<ClipboardList size={28} />} title="No requests yet" description="Submit a quotation or order request and track it here." />
             ) : (
@@ -491,7 +491,7 @@ const CustomerOrders: React.FC = () => {
 
       {tab === 'quotations' && (
         <>
-          <div style={{ padding: '20px 28px 8px' }}>
+          <div style={{ padding: '16px 0 8px' }} className="sm:px-7">
             {error && <ErrorBanner message={error} onDismiss={() => setError(null)} />}
             <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
               <div style={{ position: 'relative', flex: '1 1 240px' }}>
@@ -521,7 +521,7 @@ const CustomerOrders: React.FC = () => {
             </div>
           </div>
 
-          <div style={{ padding: '16px 28px 28px' }}>
+          <div style={{ padding: '12px 0 28px' }} className="sm:px-7">
             {sortedQuotations.length === 0 ? (
               <EmptyState icon={<FileText size={28} />} title="No quotations yet" description="Your quotations will appear here once created." />
             ) : (

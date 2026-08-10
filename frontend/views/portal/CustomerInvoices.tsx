@@ -96,7 +96,7 @@ const CustomerInvoices: React.FC = () => {
   if (loading && page === 1) return <div style={{ padding: 16, maxWidth: 560, marginInline: 'auto' }}><PortalLoadingSkeleton type="table" count={8} /></div>;
 
   return (
-    <div>
+    <div className="px-3 sm:px-4">
       <PortalPageHeader title="Invoices" subtitle="View and manage your invoices" icon={Eye} />
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>

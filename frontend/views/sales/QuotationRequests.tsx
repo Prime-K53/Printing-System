@@ -332,7 +332,7 @@ const QuotationRequests: React.FC = () => {
   }
 
   return (
-    <div style={{ padding: 28, maxWidth: 1100, margin: '0 auto' }}>
+    <div style={{ padding: '12px 12px 28px', maxWidth: 1100, margin: '0 auto' }} className="md:!px-7 md:!py-7">
       {/* Accent stripe */}
       <div style={{
         position: 'absolute', top: 0, left: 0, right: 0, height: 4,

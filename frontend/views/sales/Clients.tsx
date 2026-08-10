@@ -40,8 +40,10 @@ const pageWrapper: React.CSSProperties = {
   fontSize: 13.5,
   color: ink,
   minHeight: '100vh',
-  padding: '16px 24px 32px'
+  padding: '12px 12px 32px'
 };
+// Mobile-first: sm: 16px 24px, md: 16px 24px
+const pageWrapperResponsive = `${pageWrapper}`; // Base mobile, use Tailwind classes on container
 
 const labelStyle: React.CSSProperties = {
   fontSize: 12,

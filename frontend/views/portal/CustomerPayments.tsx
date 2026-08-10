@@ -99,7 +99,7 @@ const CustomerPayments: React.FC = () => {
     .reduce((sum, p) => sum + Number(p.amount || 0), 0);
 
   return (
-    <div>
+    <div className="px-3 sm:px-4">
       <PortalPageHeader title="Payments" subtitle="Your complete payment history" icon={CreditCard} />
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>

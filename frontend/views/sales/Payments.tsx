@@ -1309,7 +1309,7 @@ const Payments: React.FC = () => {
     };
 
     return (
-        <div className="p-6 max-w-[1600px] mx-auto h-[calc(100vh-4rem)] flex flex-col relative">
+        <div className="p-3 md:p-6 max-w-[1600px] mx-auto h-[calc(100vh-4rem)] flex flex-col relative">
             {renderContextMenu()}
 
             {hoveredId && hoverPos && activeTab === 'Received' && customerPayments.find(payment => payment.id === hoveredId) && (
@@ -1373,7 +1373,7 @@ const Payments: React.FC = () => {
                                     position:'absolute', top:0, left:0, right:0, height:4,
                                     background:'linear-gradient(90deg,#146b60,#3fa294 40%,#d99a3f 100%)'
                                 }} />
-                                <div style={{ display:'flex', alignItems:'center', justifyContent:'space-between', padding:'22px 28px 18px', borderBottom:'1px solid #e4ddd1' }}>
+                                <div style={{ display:'flex', alignItems:'center', justifyContent:'space-between', padding:'16px 18px 14px', borderBottom:'1px solid #e4ddd1' }}>
                                     <div style={{ display:'flex', alignItems:'center', gap:14 }}>
                                         <div style={{
                                             width:40, height:40, borderRadius:10,

@@ -153,29 +153,15 @@ export const InvoiceDetails: React.FC<InvoiceDetailsProps> = ({ invoice: initial
     }), [invoice, totalCustomerOutstanding]);
 
     return (
-        <div style={{
-            position: 'fixed', inset: 0, zIndex: 9999,
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-            background: 'rgba(15, 23, 42, 0.6)',
-            padding: '40px 20px', fontFamily: "'Inter','DM Sans',sans-serif", fontSize: 13.5, color: ink,
-        }}>
-            <div style={{
-                width: 960, maxWidth: '100%', maxHeight: '92vh',
-                background: paper, borderRadius: 14,
-                boxShadow: '0 30px 70px -20px rgba(0,0,0,.55), 0 8px 24px -8px rgba(0,0,0,.35), 0 0 0 1px rgba(255,255,255,.04)',
-                display: 'flex', flexDirection: 'column', overflow: 'hidden', position: 'relative'
-            }}>
+        <div className="sales-detail-backdrop" style={{ fontFamily: "'Inter','DM Sans',sans-serif", fontSize: 13.5, color: ink }}>
+            <div className="sales-detail-panel">
                 <div style={{
                     position: 'absolute', top: 0, left: 0, right: 0, height: 4,
                     background: `linear-gradient(90deg, ${teal[600]}, ${teal[400]} 40%, ${amber[500]} 100%)`
                 }} />
 
-                <div style={{
-                    display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-                    padding: '22px 28px 18px',
-                    borderBottom: `1px solid ${hairline}`, background: paper
-                }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+                <div className="sales-detail-header">
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 14, minWidth: 0, flex: 1 }}>
                         <div style={{
                             width: 40, height: 40, borderRadius: 10,
                             background: `linear-gradient(155deg, ${teal[500]}, ${teal[700]})`,
@@ -184,17 +170,14 @@ export const InvoiceDetails: React.FC<InvoiceDetailsProps> = ({ invoice: initial
                         }}>
                             <FileText size={19} color="#fff" />
                         </div>
-                        <div>
-                            <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                                <h1 style={{
-                                    fontFamily: "'DM Serif Display', 'Georgia', serif", fontWeight: 400,
-                                    fontSize: 22, margin: 0, color: teal[800], letterSpacing: 0.2
-                                }}>
+                        <div style={{ minWidth: 0 }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
+                                <h1 className="sales-detail-title">
                                     {docTitle} #{invoice.id}
                                 </h1>
                                 <span style={{
                                     padding: '2px 10px', borderRadius: 6, fontSize: 11.5, fontWeight: 600,
-                                    display: 'flex', alignItems: 'center', gap: 6,
+                                    display: 'flex', alignItems: 'center', gap: 6, flexShrink: 0,
                                     background: invoice.status === 'Paid' ? '#ecfdf5' : amber[100],
                                     color: invoice.status === 'Paid' ? '#059669' : '#d97706'
                                 }}>
@@ -202,7 +185,7 @@ export const InvoiceDetails: React.FC<InvoiceDetailsProps> = ({ invoice: initial
                                     {invoice.status}
                                 </span>
                             </div>
-                            <p style={{ margin: '2px 0 0', fontSize: 11.5, color: inkSoft, letterSpacing: 0.02, display: 'flex', alignItems: 'center', gap: 8 }}>
+                            <p style={{ margin: '2px 0 0', fontSize: 11.5, color: inkSoft, letterSpacing: 0.02, display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
                                 <button onClick={() => navigate('/sales-flow/customers', { state: { customerId: invoice.customerId } })}
                                     style={{ background: 'none', border: 'none', cursor: 'pointer', color: teal[600], fontWeight: 600, fontSize: 11.5, padding: 0, display: 'flex', alignItems: 'center', gap: 4 }}>
                                     {invoice.customerName}
@@ -213,11 +196,12 @@ export const InvoiceDetails: React.FC<InvoiceDetailsProps> = ({ invoice: initial
                             </p>
                         </div>
                     </div>
-                    <div style={{ display: 'flex', gap: 6, alignItems: 'center' }}>
+                    <div style={{ display: 'flex', gap: 6, alignItems: 'center', flexShrink: 0 }}>
                         {!hasDeliveryNote && (
                             <button onClick={() => onAction(invoice, 'generate_dn')}
-                                style={{ padding: '6px 12px', borderRadius: 8, border: 'none', cursor: 'pointer', background: teal[500], color: '#fff', fontSize: 11, fontWeight: 600, display: 'flex', alignItems: 'center', gap: 6 }}>
-                                <Truck size={14} /> Generate delivery note
+                                className="hidden sm:flex"
+                                style={{ padding: '6px 12px', borderRadius: 8, border: 'none', cursor: 'pointer', background: teal[500], color: '#fff', fontSize: 11, fontWeight: 600, alignItems: 'center', gap: 6 }}>
+                                <Truck size={14} /> <span className="hidden md:inline">Generate delivery note</span>
                             </button>
                         )}
                         <button onClick={() => { onClose(); handlePreview(isSubscription ? 'SUBSCRIPTION' : (isExaminationInvoice ? 'EXAMINATION_INVOICE' : 'INVOICE'), enrichedInvoice); }}
@@ -229,6 +213,7 @@ export const InvoiceDetails: React.FC<InvoiceDetailsProps> = ({ invoice: initial
                             <Download size={16} />
                         </button>
                         <button onClick={() => window.print()}
+                            className="hidden sm:flex"
                             style={{ padding: 6, borderRadius: 8, border: `1.4px solid ${hairline}`, background: paper, color: inkSoft, cursor: 'pointer', display: 'flex' }}>
                             <Printer size={16} />
                         </button>
@@ -244,39 +229,33 @@ export const InvoiceDetails: React.FC<InvoiceDetailsProps> = ({ invoice: initial
                     </div>
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', borderBottom: `1px solid ${hairline}`, background: paper, flexShrink: 0 }}>
-                    <div style={{ padding: 14, textAlign: 'center', borderRight: `1px solid ${hairline}` }}>
+                <div className="sales-stats-row">
+                    <div className="sales-stat-item">
                         <p style={{ margin: 0, fontSize: 11, color: inkSoft, fontWeight: 500 }}>Gross billing</p>
                         <p style={{ margin: '2px 0 0', fontSize: 18, fontWeight: 700, color: ink, fontFamily: "'JetBrains Mono', monospace" }}>{currency}{totalAmountDisplay.toLocaleString()}</p>
                     </div>
-                    <div style={{ padding: 14, textAlign: 'center', borderRight: `1px solid ${hairline}` }}>
+                    <div className="sales-stat-item">
                         <p style={{ margin: 0, fontSize: 11, color: inkSoft, fontWeight: 500 }}>Discount</p>
                         <p style={{ margin: '2px 0 0', fontSize: 18, fontWeight: 700, color: '#dc2626', fontFamily: "'JetBrains Mono', monospace" }}>
                             {invoice.discount ? `${invoice.discountType === 'percentage' ? invoice.discount + '%' : currency + (invoice.discount || 0).toLocaleString()}` : '-'}
                         </p>
                     </div>
-                    <div style={{ padding: 14, textAlign: 'center' }}>
+                    <div className="sales-stat-item" style={{ borderRight: 'none' }}>
                         <p style={{ margin: 0, fontSize: 11, color: inkSoft, fontWeight: 500 }}>Net balance</p>
                         <p style={{ margin: '2px 0 0', fontSize: 18, fontWeight: 700, color: (balanceDue || 0) > 0.001 ? danger : hairline, fontFamily: "'JetBrains Mono', monospace" }}>{currency}{(balanceDue || 0).toLocaleString()}</p>
                     </div>
                 </div>
 
-                <div style={{ display: 'flex', borderBottom: `1px solid ${hairline}`, padding: '0 28px', background: paper, flexShrink: 0 }}>
+                <div className="sales-tabs">
                     {['Overview', 'Financials', 'Payments', 'Activity'].map(tab => (
                         <button key={tab} onClick={() => setActiveTab(tab as 'Overview' | 'Financials' | 'Payments' | 'Activity')}
-                            style={{
-                                padding: '14px 16px 12px', fontSize: 12, fontWeight: 700, letterSpacing: 0.08, textTransform: 'uppercase',
-                                background: 'transparent', border: 'none', cursor: 'pointer',
-                                color: activeTab === tab ? teal[600] : inkSoft,
-                                borderBottom: `2px solid ${activeTab === tab ? teal[500] : 'transparent'}`,
-                                transition: 'all .15s ease'
-                            }}>
+                            className={`sales-tab ${activeTab === tab ? 'active' : ''}`}>
                             {tab}
                         </button>
                     ))}
                 </div>
 
-                <div style={{ flex: 1, overflowY: 'auto', padding: '24px 28px 8px', background: teal[50] }}>
+                <div className="sales-detail-content" style={{ background: teal[50] }}>
                     {activeTab === 'Overview' && (
                         <div className="space-y-6 animate-in fade-in duration-300">
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

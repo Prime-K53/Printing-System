@@ -46,10 +46,12 @@ export function mergeRecords(localRecord: any, remoteRecord: any): any {
  * This prevents silent data loss when two devices edit different fields of the same record.
  */
 export function fieldLevelMerge(localRecord: any, remoteRecord: any): any {
-  // Prefer server authoritative timestamps
-  const localTime = new Date(
-    localRecord.serverUpdatedAt || localRecord.updated_at || localRecord._updatedAt || 0
+  const localServerTime = new Date(
+    localRecord.serverUpdatedAt || localRecord.updated_at || 0
   ).getTime();
+  const localEditTime = new Date(localRecord._updatedAt || 0).getTime();
+  const localTime = Math.max(localServerTime, localEditTime);
+
   const remoteTime = new Date(
     remoteRecord.updated_at || remoteRecord._updatedAt || 0
   ).getTime();

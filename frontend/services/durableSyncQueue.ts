@@ -549,6 +549,19 @@ export const durableSyncQueue = {
     return all[0];
   },
 
+  async hasPendingMutation(table: string, recordId: string): Promise<boolean> {
+    const db = await getDb();
+    const activeLayers = await Promise.all(
+      (['pending', 'syncing', 'failed'] as QueueStatus[]).map((status) =>
+        db.getAllFromIndex('operations', 'by-status', IDBKeyRange.only(status))
+      )
+    );
+    const allActive = ([] as QueuedOperation[]).concat(...activeLayers);
+    return allActive.some(
+      (op) => op.table === table && op.recordId === recordId
+    );
+  },
+
   async retryFailed(): Promise<number> {
     const db = await getDb();
     const failed = await db.getAllFromIndex('operations', 'by-status', IDBKeyRange.only('failed'));

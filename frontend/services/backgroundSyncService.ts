@@ -405,6 +405,18 @@ async function syncOnce(force: boolean = false): Promise<BatchResult | null> {
   // Cheap short-circuit: when nothing is pending there is nothing to do, so we
   // avoid the heavy getMetrics()/dequeue() scans that fired on every page
   // navigation and every background interval tick.
+  //
+  // CRITICAL: retry failed operations first. When the device goes offline
+  // mid-sync, the transport failure catch marks pending ops as `failed`.
+  // On reconnect, `countPending()` returns 0 because the items are `failed`,
+  // so `syncOnce()` would skip forever. Retrying them restores them to
+  // `pending` so the normal dequeue path picks them up.
+  try {
+    await durableSyncQueue.retryFailed();
+  } catch {
+    // non-fatal
+  }
+
   let pendingCount = 0;
   try {
     pendingCount = await durableSyncQueue.countPending();

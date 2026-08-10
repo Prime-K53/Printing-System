@@ -325,6 +325,11 @@ export async function pullRemoteChanges(
               }
               const existing = await dbService.get(storeName, cloudRecord.id);
               if (existing) {
+                const pendingMutation = await durableSyncQueue.hasPendingMutation(table, cloudRecord.id);
+                if (pendingMutation) {
+                  console.log(`[SYNC-FORENSIC] PULL-SKIP-MERGE ${table}/${cloudRecord.id} — has pending local mutation`);
+                  continue;
+                }
                 const merged = fieldLevelMerge(existing, cloudRecord);
                 if (cloudRecord.serverUpdatedAt) {
                   merged.serverUpdatedAt = cloudRecord.serverUpdatedAt;
@@ -483,6 +488,11 @@ async function subscribeToRemoteChanges() {
 
                 const local = await dbService.get(storeName, payload.new.id);
                 if (local) {
+                  const pendingMutation = await durableSyncQueue.hasPendingMutation(table, payload.new.id);
+                  if (pendingMutation) {
+                    console.log(`[SYNC-FORENSIC] REALTIME-SKIP-MERGE ${table}/${payload.new.id} — has pending local mutation`);
+                    return;
+                  }
                   const merged = fieldLevelMerge(local, cloudRecord);
                   if (cloudRecord.serverUpdatedAt) {
                     merged.serverUpdatedAt = cloudRecord.serverUpdatedAt;

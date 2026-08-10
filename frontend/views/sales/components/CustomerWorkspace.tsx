@@ -712,12 +712,12 @@ export const CustomerWorkspace: React.FC<CustomerWorkspaceProps> = ({ customer, 
 
         {/* Content Area */}
         <div style={{ flex: 1, overflowY: 'auto', background: 'linear-gradient(180deg, #F7F6F2 0%, #F2F1EB 100%)' }}>
-          <div style={{ maxWidth: '920px', padding: '28px 36px' }}>
+          <div style={{ maxWidth: '920px' }} className="p-4 md:p-6 lg:p-7">
           {activeTab === 'Overview' && (
             <div style={{ display: 'flex', gap: 24 }}>
               <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 24 }}>
                 <div style={sectionLabelStyle}><span style={{fontSize: 13, fontWeight: 700, color: teal[800]}}>Financial Overview</span></div>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16 }}>
+                <div style={{ display: 'grid', gap: 16 }} className="grid-cols-2 lg:grid-cols-4">
                   {[
                     { icon: DollarSign, label: 'Total Balance', value: kpis.balance, color: teal[500], accent: teal[500], sub: 'Good Standing' },
                     { icon: AlertTriangle, label: 'Overdue Balance', value: kpis.overdueBalance, color: danger, accent: danger, sub: `${customerInvoices.filter(i => i.status === 'Overdue').length} invoices` },
@@ -741,7 +741,7 @@ export const CustomerWorkspace: React.FC<CustomerWorkspaceProps> = ({ customer, 
                 </div>
 
                 <div style={sectionLabelStyle}><span style={{fontSize: 13, fontWeight: 700, color: teal[800]}}>Contact Information</span></div>
-                <div className="white-card" style={{ padding: '24px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
+                <div className="white-card grid grid-cols-1 md:grid-cols-2" style={{ padding: '24px', gap: 24 }}>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
                     {[
                       { icon: Mail, label: 'Email Address', value: customer.email || 'N/A' },

@@ -124,14 +124,14 @@ const SalesOrders: React.FC = () => {
   };
 
   return (
-    <div style={{ background: '#f0ede8', minHeight: '100vh', padding: 24, fontFamily: "'Inter','DM Sans',sans-serif", color: ink }}>
+    <div style={{ background: '#f0ede8', minHeight: '100vh', padding: '12px 12px 24px', fontFamily: "'Inter','DM Sans',sans-serif", color: ink }}>
       <div style={{ maxWidth: 1100, margin: '0 auto' }}>
         <h1 style={{
           fontFamily: "'DM Serif Display', 'Georgia', serif",
           fontWeight: 400,
-          fontSize: 22,
+          fontSize: 20,
           color: teal[800],
-          margin: '0 0 20px',
+          margin: '0 0 16px',
           letterSpacing: 0.2
         }}>
           Sales Orders
@@ -229,7 +229,7 @@ const SalesOrders: React.FC = () => {
                       letterSpacing: 0.06,
                       borderBottom: `1px solid ${teal[100]}`,
                       fontFamily: "'Inter', sans-serif"
-                    }}>
+                    }} className={h === 'Customer' || h === 'Order Date' ? 'hidden md:table-cell' : ''}>
                       {h}
                     </th>
                   ))}
@@ -241,8 +241,8 @@ const SalesOrders: React.FC = () => {
                   return (
                     <tr key={o.id} style={{ borderBottom: `1px solid ${hairline}` }}>
                       <td style={{ padding: '10px 14px', fontFamily: "'JetBrains Mono', monospace", fontSize: 12.5, color: ink, fontVariantNumeric: 'tabular-nums' }}>{o.id}</td>
-                      <td style={{ padding: '10px 14px', color: ink }}>{o.customerId || '-'}</td>
-                      <td style={{ padding: '10px 14px', color: inkSoft, fontSize: 13 }}>{new Date(o.orderDate).toLocaleDateString()}</td>
+                      <td style={{ padding: '10px 14px', color: ink }} className="hidden md:table-cell">{o.customerId || '-'}</td>
+                      <td style={{ padding: '10px 14px', color: inkSoft, fontSize: 13 }} className="hidden md:table-cell">{new Date(o.orderDate).toLocaleDateString()}</td>
                       <td style={{ padding: '10px 14px' }}>
                         <span style={{
                           display: 'inline-block',
