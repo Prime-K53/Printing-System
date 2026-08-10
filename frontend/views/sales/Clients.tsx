@@ -426,7 +426,7 @@ export const Clients: React.FC = () => {
       </div>
 
       {/* Money Bar */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 14, marginBottom: 18 }}>
+      <div className="customers-money-bar" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 14, marginBottom: 18 }}>
         <div onClick={() => setSelectedMetric(selectedMetric === 'Overdue' ? 'All' : 'Overdue')}
           style={{
             cursor: 'pointer', padding: '14px 16px', borderRadius: 14,
@@ -504,7 +504,7 @@ export const Clients: React.FC = () => {
       {/* Main Content Card */}
       <div style={{ background: paper, borderRadius: 14, border: `1.4px solid ${hairline}`, overflow: 'visible', display: 'flex', flexDirection: 'column', boxShadow: '0 10px 30px -14px rgba(0,0,0,.14), 0 1px 3px rgba(0,0,0,.04)' }}>
         {/* Filters & Search */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '14px 18px', borderBottom: `1px solid ${hairline}`, background: paper, flexWrap: 'wrap', gap: 12 }}>
+        <div className="customers-filter-bar" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '14px 18px', borderBottom: `1px solid ${hairline}`, background: paper, flexWrap: 'wrap', gap: 12 }}>
           <div style={{ display: 'flex', flex: 1, alignItems: 'center', gap: 14, minWidth: 0, flexWrap: 'wrap' }}>
             <div style={{ position: 'relative', flex: '1 1 260px', maxWidth: 480 }}>
               <Search size={16} style={{ position: 'absolute', left: 12, top: '50%', transform: 'translateY(-50%)', color: inkSoft }} />
@@ -608,7 +608,7 @@ export const Clients: React.FC = () => {
         </div>
 
         {/* Table */}
-        <div style={{ overflow: 'auto', maxHeight: 'calc(100vh - 340px)' }}>
+        <div className="clients-table-wrap" style={{ overflow: 'auto', maxHeight: 'calc(100vh - 340px)' }}>
           <style>{`
             .clients-table { border-collapse: separate; border-spacing: 0; }
             .clients-table tbody tr { transition: background .12s ease; }
@@ -647,13 +647,13 @@ export const Clients: React.FC = () => {
                     <React.Fragment key={customer.id}>
                       <tr className={isChecked ? 'selected-row' : ''} onClick={(e) => { e.stopPropagation(); setSelectedCardCustomer(customer); }}
                         style={{ cursor: 'pointer', background: isChecked ? teal[50] : 'transparent' }}>
-                        <td style={{ padding: '13px 14px', textAlign: 'center', borderBottom: `1px solid ${hairline}` }} onClick={(e) => e.stopPropagation()}>
+                        <td data-label="" style={{ padding: '13px 14px', textAlign: 'center', borderBottom: `1px solid ${hairline}` }} onClick={(e) => e.stopPropagation()}>
                           <input type="checkbox"
                             style={{ width: 15, height: 15, borderRadius: 6, accentColor: teal[600], cursor: 'pointer', border: `1px solid ${teal[200]}` }}
                             checked={isChecked}
                             onChange={() => toggleSelect(customer.id)} />
                         </td>
-                        <td style={{ padding: '13px 14px', borderBottom: `1px solid ${hairline}` }}>
+                        <td data-label="Customer" style={{ padding: '13px 14px', borderBottom: `1px solid ${hairline}` }}>
                           <div style={{ display: 'flex', alignItems: 'flex-start', gap: 11 }}>
                             <button onClick={(e) => { e.stopPropagation(); setExpandedClientId(expandedClientId === customer.id ? null : customer.id); }}
                               style={{ padding: 4, marginTop: 4, color: inkSoft, background: 'transparent', border: 'none', cursor: 'pointer', display: 'inline-flex', transition: 'color .15s' }}>
@@ -686,7 +686,7 @@ export const Clients: React.FC = () => {
                               </div>
                           </div>
                         </td>
-                        <td style={{ padding: '13px 14px', borderBottom: `1px solid ${hairline}` }}>
+                        <td data-label="Contact" style={{ padding: '13px 14px', borderBottom: `1px solid ${hairline}` }}>
                           {customer.phone || customer.portalEmail || customer.email ? (
                             <div style={{ display: 'flex', flexDirection: 'column', gap: 3, alignItems: 'flex-start' }}>
                               {customer.phone && (
@@ -704,7 +704,7 @@ export const Clients: React.FC = () => {
                             <span style={{ color: inkSoft, fontSize: 12 }}>—</span>
                           )}
                         </td>
-                        <td style={{ padding: '13px 14px', borderBottom: `1px solid ${hairline}`, whiteSpace: 'nowrap' }}>
+                        <td data-label="Last Transaction" style={{ padding: '13px 14px', borderBottom: `1px solid ${hairline}`, whiteSpace: 'nowrap' }}>
                           {lastTx ? (
                             <>
                               <div style={{ color: ink, fontWeight: 600, whiteSpace: 'nowrap' }} title={format(parseISO(lastTx.date), 'MMM dd, yyyy hh:mm a')}>
@@ -718,16 +718,16 @@ export const Clients: React.FC = () => {
                             <span style={{ color: inkSoft, fontSize: 12 }}>—&nbsp;No transactions</span>
                           )}
                         </td>
-                        <td style={{ padding: '13px 14px', borderBottom: `1px solid ${hairline}`, textAlign: 'right', color: '#111827', fontWeight: 600, fontFamily: "'Inter', sans-serif", fontVariantNumeric: 'tabular-nums', whiteSpace: 'nowrap' }}>
+                        <td data-label="Wallet" style={{ padding: '13px 14px', borderBottom: `1px solid ${hairline}`, textAlign: 'right', color: '#111827', fontWeight: 600, fontFamily: "'Inter', sans-serif", fontVariantNumeric: 'tabular-nums', whiteSpace: 'nowrap' }}>
                           {fmtMoney(customer.walletBalance)}
                         </td>
-                        <td style={{ padding: '13px 14px', borderBottom: `1px solid ${hairline}`, textAlign: 'right', whiteSpace: 'nowrap' }}>
+                        <td data-label="Balance" style={{ padding: '13px 14px', borderBottom: `1px solid ${hairline}`, textAlign: 'right', whiteSpace: 'nowrap' }}>
                           <span style={{ display: 'inline-flex', alignItems: 'center', gap: 7, fontFamily: "'Inter', sans-serif", fontWeight: 600, fontVariantNumeric: 'tabular-nums', color: owing ? danger : '#15803d' }}>
                             <span style={{ width: 8, height: 8, borderRadius: '50%', background: owing ? danger : '#22c55e', flexShrink: 0 }} />
                             {owing ? fmtMoney(customer.balance) : 'Paid'}
                           </span>
                         </td>
-                        <td style={{ padding: '13px 14px', borderBottom: `1px solid ${hairline}`, textAlign: 'center' }} onClick={(e) => e.stopPropagation()}>
+                        <td data-label="Actions" style={{ padding: '13px 14px', borderBottom: `1px solid ${hairline}`, textAlign: 'center' }} onClick={(e) => e.stopPropagation()}>
                           <div style={{ position: 'relative', display: 'inline-block' }}>
                             <button onClick={(e) => handleRowMenuClick(e, customer.id)}
                               style={{ padding: '7px 9px', borderRadius: 9, border: `1.4px solid ${hairline}`, background: paper, color: inkSoft, cursor: 'pointer', display: 'inline-flex', transition: 'all .15s ease', boxShadow: '0 1px 2px rgba(0,0,0,.05)' }}

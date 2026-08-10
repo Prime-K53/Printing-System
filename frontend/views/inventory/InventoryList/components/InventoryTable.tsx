@@ -96,12 +96,12 @@ const ActionRow: React.FC<ActionRowProps> = ({ item, ...p }) => {
   const low = (item.stock || 0) <= (item.reorderPoint || 0) && (item.reorderPoint || 0) > 0;
   return (
     <tr className={`transition-colors cursor-pointer ${low ? 'ref-inv-row-warn' : ''}`} onClick={() => p.onView(item)}>
-      <td className="table-body-cell w-10 px-1 text-center" onClick={e => e.stopPropagation()}>
+      <td className="table-body-cell w-10 px-1 text-center" data-label="" onClick={e => e.stopPropagation()}>
         <input type="checkbox" checked={p.selectedIds.has(item.id)} onChange={() => p.onToggleSelect(item.id)}
           className="rounded border-slate-300 text-blue-600 focus:ring-blue-500" />
       </td>
       {p.columns.map(col => (
-        <td key={col} className="table-body-cell whitespace-nowrap">
+        <td key={col} className="table-body-cell whitespace-nowrap" data-label={col}>
           {col === 'Name' ? (
             <div className="flex items-center gap-2">
               <span className="text-slate-500 shrink-0">{TYPE_ICONS[item.type || ''] || <Package size={16} />}</span>
@@ -111,7 +111,7 @@ const ActionRow: React.FC<ActionRowProps> = ({ item, ...p }) => {
           ) : renderCell(item, col)}
         </td>
       ))}
-      <td className="table-body-cell w-16 text-right" onClick={e => e.stopPropagation()}>
+      <td className="table-body-cell w-16 text-right" data-label="Actions" onClick={e => e.stopPropagation()}>
         <div className="relative inline-flex" ref={menuRef}>
           <button onClick={() => setMenuOpen(v => !v)}
             className="p-1.5 rounded-md text-slate-400 hover:text-slate-600 hover:bg-slate-100 transition-all">
