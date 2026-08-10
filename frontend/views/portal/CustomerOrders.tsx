@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { ShoppingCart, Plus, Loader2, Search, ClipboardList, FileText, ChevronRight } from 'lucide-react';
+import { ShoppingCart, Plus, Loader2, Search, ClipboardList, FileText, ChevronRight, RotateCcw } from 'lucide-react';
 import { portalLifecycle } from '../../services/portalApiClient';
 import { useCustomerAuth } from '../../context/CustomerAuthContext';
 import { useToast } from './components/Toast';
@@ -358,9 +358,24 @@ const CustomerOrders: React.FC = () => {
                             Order
                           </div>
                         </div>
-                        <div style={{ marginLeft: 'auto', padding: '4px 10px', borderRadius: 6, background: '#ECFDF5', fontSize: 10, fontWeight: 600, color: '#0f544c', display: 'flex', alignItems: 'center', gap: 3, flexShrink: 0, border: '1px solid #d3ece9' }}>
-                          View
-                          <ChevronRight size={10} />
+                        <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 6, flexShrink: 0 }}>
+                          {order.status !== 'Draft' && order.status !== 'Cancelled' && (
+                            <button
+                              onClick={(e) => { e.stopPropagation(); handleReorderClick(order); }}
+                              style={{
+                                padding: '4px 10px', borderRadius: 6, border: '1px solid #E9EDF3', background: '#fff',
+                                fontSize: 10, fontWeight: 600, color: '#4A5568', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 3,
+                                transition: 'all .15s ease',
+                              }}
+                              onMouseEnter={e => { e.currentTarget.style.background = '#ECFDF5'; e.currentTarget.style.borderColor = '#a6d9d3'; }}
+                              onMouseLeave={e => { e.currentTarget.style.background = '#fff'; e.currentTarget.style.borderColor = '#E9EDF3'; }}
+                            >
+                              <RotateCcw size={10} /> Reorder
+                            </button>
+                          )}
+                          <div style={{ padding: '4px 10px', borderRadius: 6, background: '#ECFDF5', fontSize: 10, fontWeight: 600, color: '#0f544c', display: 'flex', alignItems: 'center', gap: 3, border: '1px solid #d3ece9' }}>
+                            View <ChevronRight size={10} />
+                          </div>
                         </div>
                       </div>
                     );

@@ -38,6 +38,7 @@ const CustomerStatements: React.FC = () => {
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
   const [downloading, setDownloading] = useState(false);
+  const [showExportDialog, setShowExportDialog] = useState(false);
   const { companyConfig } = useAuth();
 
   const fetchStatement = useCallback(async (start?: string, end?: string) => {
@@ -239,8 +240,7 @@ const CustomerStatements: React.FC = () => {
             {data && data.transactions.length > 0 && (
               <button
                 type="button"
-                onClick={handleDownloadPdf}
-                disabled={downloading}
+                onClick={() => setShowExportDialog(true)}
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
@@ -252,19 +252,14 @@ const CustomerStatements: React.FC = () => {
                   color: '#fff',
                   background: 'linear-gradient(135deg, #146b60 0%, #0f544c 100%)',
                   border: 'none',
-                  cursor: downloading ? 'not-allowed' : 'pointer',
-                  opacity: downloading ? 0.5 : 1,
+                  cursor: 'pointer',
                   boxShadow: '0 4px 6px rgba(15,84,76,.25)',
                   fontFamily: F,
                   lineHeight: 1.4,
                 }}
               >
-                {downloading ? (
-                  <Loader2 size={14} style={{ animation: 'spin 0.8s linear infinite' }} />
-                ) : (
-                  <Download size={14} />
-                )}
-                {downloading ? 'Generating\u2026' : 'Download PDF'}
+                <Download size={14} />
+                Export Statement
               </button>
             )}
           </div>
@@ -338,6 +333,38 @@ const CustomerStatements: React.FC = () => {
           </div>
         )}
       </div>
+
+      {showExportDialog && (
+        <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.4)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000 }} onMouseDown={(e) => { if (e.target === e.currentTarget) setShowExportDialog(false); }}>
+          <div style={{ background: '#fff', borderRadius: 12, border: '1px solid #E9EDF3', boxShadow: '0 20px 60px rgba(0,0,0,.2)', maxWidth: 420, width: '90%' }} role="dialog" aria-modal="true" aria-labelledby="export-title">
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '18px 22px', borderBottom: '1px solid #F3F4F6' }}>
+              <h2 id="export-title" style={{ fontSize: 16, fontWeight: 700, color: '#1A202C', margin: 0, fontFamily: F }}>Export Statement</h2>
+              <button onClick={() => setShowExportDialog(false)} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 4, borderRadius: 8, color: '#8A94A6', display: 'flex', alignItems: 'center', justifyContent: 'center', width: 28, height: 28 }} aria-label="Close dialog">
+                <span style={{ fontSize: 18, lineHeight: 1 }}>{'\u00D7'}</span>
+              </button>
+            </div>
+            <div style={{ padding: '18px 22px' }}>
+              <p style={{ fontSize: 13, color: '#4A5568', margin: '0 0 16px', lineHeight: 1.5 }}>
+                Download your account statement for <strong>{startDate}</strong> to <strong>{endDate}</strong>.
+              </p>
+              <button
+                onClick={async () => { setShowExportDialog(false); await handleDownloadPdf(); }}
+                disabled={downloading}
+                style={{
+                  width: '100%', padding: '12px', borderRadius: 10, border: 'none',
+                  background: 'linear-gradient(135deg, #146b60 0%, #0f544c 100%)',
+                  color: '#fff', fontSize: 13, fontWeight: 600, cursor: downloading ? 'not-allowed' : 'pointer',
+                  opacity: downloading ? 0.6 : 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
+                  boxShadow: '0 4px 6px rgba(15,84,76,.25)',
+                }}
+              >
+                {downloading ? <Loader2 size={14} style={{ animation: 'spin 0.8s linear infinite' }} /> : <Download size={14} />}
+                {downloading ? 'Generating\u2026' : 'Download PDF'}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

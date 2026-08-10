@@ -177,36 +177,88 @@ const CustomerShipmentDetail: React.FC = () => {
       </div>
 
       <div style={{ ...card, padding: 16, marginBottom: 16 }}>
-        <h3 style={{ ...label, marginBottom: 16 }}>Tracking Timeline</h3>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        <h3 style={{ ...label, marginBottom: 20 }}>Tracking Timeline</h3>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 0 }}>
           {stageDefinitions.map((stage, idx) => {
             const isCompleted = idx < currentStage;
             const isCurrent = idx === currentStage - 1 && currentStage > 0;
+            const isLast = idx === stageDefinitions.length - 1;
             return (
-              <div key={stage.key} style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative' }}>
-                {idx > 0 && (
+              <div key={stage.key} style={{ display: 'flex', gap: 14, position: 'relative' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flexShrink: 0 }}>
                   <div style={{
-                    position: 'absolute', top: 12, left: 0, width: '100%', height: 2,
-                    background: isCompleted ? '#14b8a6' : '#E9EDF3',
-                    left: '-50%',
-                    width: '100%',
-                    zIndex: 0,
-                  }} />
-                )}
-                <div style={{
-                  width: 28, height: 28, borderRadius: 14, display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 10,
-                  background: isCurrent || isCompleted ? '#146b60' : '#fff',
-                  border: `2px solid ${isCompleted || isCurrent ? '#146b60' : '#E9EDF3'}`,
-                  color: isCompleted || isCurrent ? '#fff' : '#8A94A6',
-                }}>
-                  {isCompleted ? <Package size={12} /> : <span style={{ fontSize: 10, fontWeight: 700 }}>{idx + 1}</span>}
+                    width: 32, height: 32, borderRadius: 16,
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    background: isCompleted ? '#059669' : isCurrent ? '#F59E0B' : '#E2E8F0',
+                    color: isCompleted || isCurrent ? '#fff' : '#8A94A6',
+                    border: isCompleted ? '2px solid #059669' : isCurrent ? '2px solid #F59E0B' : '2px solid #E2E8F0',
+                    zIndex: 10,
+                  }}>
+                    {isCompleted ? <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg> : <span style={{ fontSize: 11, fontWeight: 700 }}>{idx + 1}</span>}
+                  </div>
+                  {!isLast && (
+                    <div style={{
+                      width: 2, flex: 1, minHeight: 32,
+                      background: isCompleted ? '#059669' : '#E2E8F0',
+                    }} />
+                  )}
                 </div>
-                <span style={{ fontSize: 10.5, fontWeight: 600, marginTop: 4, textAlign: 'center', color: isCurrent ? '#0f544c' : '#8A94A6' }}>{stage.label}</span>
+                <div style={{ paddingBottom: isLast ? 0 : 20, flex: 1 }}>
+                  <div style={{ fontSize: 13, fontWeight: 600, color: isCurrent ? '#1A202C' : isCompleted ? '#059669' : '#8A94A6' }}>{stage.label}</div>
+                  <div style={{ fontSize: 11, color: '#8A94A6', marginTop: 2 }}>{stage.description}</div>
+                  {isCurrent && (
+                    <div style={{ marginTop: 6, padding: '4px 10px', borderRadius: 6, background: '#FFFBEB', border: '1px solid #FDE68A', display: 'inline-flex', alignItems: 'center', gap: 4 }}>
+                      <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#F59E0B', animation: 'pulse 2s infinite' }} />
+                      <span style={{ fontSize: 10, fontWeight: 600, color: '#92400e' }}>In Progress</span>
+                    </div>
+                  )}
+                </div>
               </div>
             );
           })}
         </div>
       </div>
+
+      {(shipment.driver_name || shipment.vehicle_no || shipment.carrier) && (
+        <div style={{ ...card, padding: 16, marginBottom: 16 }}>
+          <h3 style={{ ...label, marginBottom: 12 }}>Driver & Vehicle</h3>
+          <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
+            {shipment.driver_name && (
+              <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                <div style={{ width: 36, height: 36, borderRadius: 10, background: '#ECFDF5', color: '#059669', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <User size={16} />
+                </div>
+                <div>
+                  <div style={{ fontSize: 10, color: '#8A94A6', textTransform: 'uppercase', letterSpacing: 0.05 }}>Driver</div>
+                  <div style={{ fontSize: 13, fontWeight: 600, color: '#1A202C' }}>{shipment.driver_name}</div>
+                </div>
+              </div>
+            )}
+            {shipment.vehicle_no && (
+              <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                <div style={{ width: 36, height: 36, borderRadius: 10, background: '#EFF6FF', color: '#2563EB', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <Car size={16} />
+                </div>
+                <div>
+                  <div style={{ fontSize: 10, color: '#8A94A6', textTransform: 'uppercase', letterSpacing: 0.05 }}>Vehicle</div>
+                  <div style={{ fontSize: 13, fontWeight: 600, color: '#1A202C', fontFamily: "'JetBrains Mono', monospace" }}>{shipment.vehicle_no}</div>
+                </div>
+              </div>
+            )}
+            {shipment.carrier && (
+              <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                <div style={{ width: 36, height: 36, borderRadius: 10, background: '#FEF3C7', color: '#D97706', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <Package size={16} />
+                </div>
+                <div>
+                  <div style={{ fontSize: 10, color: '#8A94A6', textTransform: 'uppercase', letterSpacing: 0.05 }}>Carrier</div>
+                  <div style={{ fontSize: 13, fontWeight: 600, color: '#1A202C' }}>{shipment.carrier}</div>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
 
       {shipment.items && shipment.items.length > 0 && (
         <div style={{ ...card, padding: 16 }}>

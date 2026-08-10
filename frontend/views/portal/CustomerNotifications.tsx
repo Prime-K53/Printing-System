@@ -98,27 +98,35 @@ const CustomerNotifications: React.FC = () => {
       <PortalPageHeader title="Notifications" subtitle={unread > 0 ? `You have ${unread} unread notification${unread > 1 ? 's' : ''}` : 'You\'re all caught up'} icon={Bell} />
 
       <div style={{ padding: '20px 28px 8px' }}>
-        <div style={{ display: 'flex', gap: 8, marginBottom: 14, alignItems: 'center' }}>
-          <select
-            value={typeFilter}
-            onChange={(e) => setTypeFilter(e.target.value)}
-            style={{
-              fontFamily: F, fontSize: 13, fontWeight: 500,
-              color: '#1A202C', background: '#fff',
-              border: '1px solid #E9EDF3', borderRadius: 10,
-              padding: '8px 32px 8px 12px', outline: 'none', cursor: 'pointer',
-              minWidth: 130
-            }}
-          >
-            <option value="all">All Types</option>
-            <option value="info">Info</option>
-            <option value="alert">Alerts</option>
-            <option value="success">Success</option>
-            <option value="payment">Payments</option>
-            <option value="order">Orders</option>
-            <option value="invoice">Invoices</option>
-            <option value="message">Messages</option>
-          </select>
+        <div style={{ display: 'flex', gap: 6, marginBottom: 14, flexWrap: 'wrap' }}>
+          {[
+            { key: 'all', label: 'All' },
+            { key: 'info', label: 'Info' },
+            { key: 'alert', label: 'Alerts' },
+            { key: 'success', label: 'Success' },
+            { key: 'payment', label: 'Payments' },
+            { key: 'order', label: 'Orders' },
+            { key: 'invoice', label: 'Invoices' },
+            { key: 'message', label: 'Messages' },
+          ].map((chip) => {
+            const active = typeFilter === chip.key;
+            return (
+              <button
+                key={chip.key}
+                onClick={() => setTypeFilter(chip.key)}
+                style={{
+                  fontFamily: F, fontSize: 12, fontWeight: 600,
+                  padding: '7px 14px', borderRadius: 9, border: active ? '1px solid transparent' : '1px solid #E9EDF3',
+                  background: active ? '#008A4C' : '#fff',
+                  color: active ? '#fff' : '#718096', cursor: 'pointer',
+                  transition: 'all .15s ease', lineHeight: 1.4,
+                  boxShadow: active ? '0 2px 8px rgba(0,138,76,0.25)' : 'none',
+                }}
+              >
+                {chip.label}
+              </button>
+            );
+          })}
         </div>
       </div>
 

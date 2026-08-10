@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import {
   LayoutDashboard, ShoppingCart, FileText, Receipt, CreditCard,
   FileBarChart, Wallet, MessageSquare, ChevronLeft, ChevronRight,
-  User, LogOut, Globe, X, Users, Truck, Bell
+  User, LogOut, Globe, X, Users, Truck, Bell, Package
 } from 'lucide-react';
 import { useCustomerAuth } from '../../../context/CustomerAuthContext';
 
@@ -28,6 +28,7 @@ const navSections: NavSection[] = [
   {
     title: 'Commerce',
     items: [
+      { label: 'Catalog', path: '/portal/catalog', icon: Package },
       { label: 'Orders', path: '/portal/orders', icon: ShoppingCart },
       { label: 'Referrals', path: '/portal/referrals', icon: Users },
     ],

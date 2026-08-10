@@ -66,6 +66,7 @@ class PortalErrorBoundary extends Component<{ children: ReactNode }, ErrorBounda
 
 const pageTitles: Record<string, string> = {
   '/portal/dashboard': 'Dashboard',
+  '/portal/catalog': 'Product Catalog',
   '/portal/requests': 'Requests',
   '/portal/orders': 'Orders',
   '/portal/quotations': 'Quotations',
@@ -75,6 +76,7 @@ const pageTitles: Record<string, string> = {
   '/portal/statements': 'Statements',
   '/portal/referrals': 'Referrals',
   '/portal/wallet': 'Wallet',
+  '/portal/shipments': 'Shipments',
   '/portal/support': 'Support',
   '/portal/profile': 'Profile',
 };

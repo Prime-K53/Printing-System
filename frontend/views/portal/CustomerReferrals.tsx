@@ -307,6 +307,40 @@ const CustomerReferrals: React.FC = () => {
         </div>
       )}
 
+      {/* Referral Link */}
+      {settings?.enabled && (
+        <div style={{ padding: '16px 28px 0' }}>
+          <div style={{
+            display: 'flex', alignItems: 'center', gap: 10, padding: '12px 16px',
+            background: '#fff', borderRadius: 12, border: '1.4px solid #e4ddd1',
+            boxShadow: '0 1px 3px rgba(0,0,0,.04)',
+          }}>
+            <ExternalLink size={16} style={{ color: '#8A94A6', flexShrink: 0 }} />
+            <input
+              type="text"
+              readOnly
+              value={`${window.location.origin}/#/portal/referrals?ref=${user?.id || ''}`}
+              style={{
+                flex: 1, fontFamily: "'JetBrains Mono', monospace", fontSize: 12,
+                padding: '6px 10px', border: '1px solid #E9EDF3', borderRadius: 8,
+                background: '#f8fafc', color: '#4A5568', outline: 'none',
+              }}
+            />
+            <button
+              onClick={handleCopyReferralLink}
+              style={{
+                padding: '6px 14px', borderRadius: 8, border: '1.4px solid transparent',
+                background: '#0D5047', color: '#fff', fontSize: 12, fontWeight: 600,
+                cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 5,
+                flexShrink: 0,
+              }}
+            >
+              <Copy size={13} /> Copy
+            </button>
+          </div>
+        </div>
+      )}
+
       {/* Tabs */}
       <div style={{ display: 'flex', gap: 8, padding: '16px 28px 0' }}>
         {([
