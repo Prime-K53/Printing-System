@@ -36,19 +36,19 @@ class PortalErrorBoundary extends Component<{ children: ReactNode }, ErrorBounda
       return (
         <div style={{ padding: 12 }}>
           <div style={{ background: '#fff', border: '1px solid #E9EDF3', borderRadius: 12, padding: 20, textAlign: 'center' }}>
-            <div style={{ width: 48, height: 48, margin: '0 auto 10px', borderRadius: '50%', background: '#FEF2F2', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <AlertTriangle size={24} style={{ color: '#E53E3E' }} />
+            <div style={{ width: 48, height: 48, margin: '0 auto 10px', borderRadius: '50%', background: '#FEE2E2', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <AlertTriangle size={24} style={{ color: '#DC2626' }} />
             </div>
             <h2 style={{ fontSize: 15, fontWeight: 600, color: '#1A202C', margin: '0 0 6px' }}>Something went wrong</h2>
             <p style={{ fontSize: 12.5, color: '#4A5568', margin: '0 0 16px', lineHeight: 1.4 }}>An unexpected error occurred.</p>
-            <button onClick={this.handleRetry} style={{ display: 'inline-flex', alignItems: 'center', gap: 6, padding: '6px 14px', borderRadius: 8, fontSize: 12, fontWeight: 600, color: '#fff', background: '#008A4C', border: 'none', cursor: 'pointer' }}>
+            <button onClick={this.handleRetry} style={{ display: 'inline-flex', alignItems: 'center', gap: 6, padding: '6px 14px', borderRadius: 8, fontSize: 12, fontWeight: 600, color: '#fff', background: '#0F2C59', border: 'none', cursor: 'pointer' }}>
               <RefreshCw size={12} /> Try Again
             </button>
             {this.state.error && (
               <details style={{ marginTop: 20, textAlign: 'left' }}>
                 <summary style={{ fontSize: 11, color: '#8A94A6', cursor: 'pointer' }}>Error details</summary>
                 <pre style={{
-                  marginTop: 8, padding: 12, background: '#FAFBFD', borderRadius: 10,
+                  marginTop: 8, padding: 12, background: '#F8FAFC', borderRadius: 10,
                   fontSize: 11, color: '#8A94A6', overflow: 'auto', maxHeight: 180,
                 }}>
                   {this.state.error.message}
@@ -120,8 +120,8 @@ const CustomerLayout: React.FC = () => {
 
   if (loading) {
     return (
-      <div style={{ minHeight: '100vh', background: '#FAFBFD', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <div style={{ width: 28, height: 28, border: '2.5px solid #E9EDF3', borderTopColor: '#008A4C', borderRadius: '50%', animation: 'spin 0.8s linear infinite' }} />
+      <div style={{ minHeight: '100vh',         background: '#F8FAFC', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <div style={{ width: 28, height: 28, border: '2.5px solid #E2E8F0', borderTopColor: '#0F2C59', borderRadius: '50%', animation: 'spin 0.8s linear infinite' }} />
       </div>
     );
   }
@@ -134,7 +134,7 @@ const CustomerLayout: React.FC = () => {
     <ThemeProvider>
       <ToastProvider>
         <div style={{
-          minHeight: '100vh', background: '#FAFBFD',
+          minHeight: '100vh', background: '#F8FAFC',
           fontFamily: SF, color: '#101B3D',
           position: 'relative', overflow: 'hidden',
         }}>

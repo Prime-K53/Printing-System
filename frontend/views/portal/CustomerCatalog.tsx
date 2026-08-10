@@ -67,7 +67,7 @@ const ProductCatalogInner: React.FC = () => {
 
       <div style={{ padding: '0 28px' }}>
         {error && (
-          <div style={{ background: '#FEF2F2', border: '1px solid #FECACA', color: '#B91C1C', borderRadius: 12, padding: '12px 16px', fontSize: 13, marginBottom: 16 }}>{error}</div>
+          <div style={{ background: '#FEE2E2', border: '1px solid #FECACA', color: '#B91C1C', borderRadius: 12, padding: '12px 16px', fontSize: 13, marginBottom: 16 }}>{error}</div>
         )}
 
         <div style={{ display: 'flex', gap: 8, marginBottom: 16, flexWrap: 'wrap' }}>
@@ -95,7 +95,7 @@ const ProductCatalogInner: React.FC = () => {
                 style={{
                   fontFamily: F, fontSize: 12, fontWeight: 600,
                   padding: '7px 14px', borderRadius: 9, border: active ? '1px solid transparent' : '1px solid #E9EDF3',
-                  background: active ? '#008A4C' : '#fff',
+                  background: active ? '#059669' : '#fff',
                   color: active ? '#fff' : '#718096', cursor: 'pointer',
                   transition: 'all .15s ease', lineHeight: 1.4,
                 }}
@@ -116,17 +116,17 @@ const ProductCatalogInner: React.FC = () => {
                 <div
                   key={product.id}
                   style={{
-                    background: '#fff', borderRadius: 12, border: inCart ? '2px solid #008A4C' : '1px solid #E9EDF3',
+                    background: '#fff', borderRadius: 12, border: inCart ? '2px solid #059669' : '1px solid #E9EDF3',
                     padding: '16px', transition: 'all .15s ease',
                     boxShadow: inCart ? '0 4px 12px rgba(0,138,76,0.12)' : '0 1px 3px rgba(0,0,0,.04)',
                   }}
                 >
                   <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: 10 }}>
-                    <div style={{ width: 40, height: 40, borderRadius: 10, background: '#ECFDF5', color: '#008A4C', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                    <div style={{ width: 40, height: 40, borderRadius: 10, background: '#D1FAE5', color: '#059669', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                       <Package size={18} />
                     </div>
                     {product.category && (
-                      <span style={{ fontSize: 10, fontWeight: 600, color: '#0f544c', background: '#ECFDF5', border: '1px solid #d3ece9', padding: '2px 8px', borderRadius: 6 }}>
+                      <span style={{ fontSize: 10, fontWeight: 600, color: '#0F2C59', background: '#D1FAE5', border: '1px solid #E2E8F0', padding: '2px 8px', borderRadius: 6 }}>
                         {product.category}
                       </span>
                     )}
@@ -157,7 +157,7 @@ const ProductCatalogInner: React.FC = () => {
                         </button>
                         <button
                           onClick={() => removeItem(product.id)}
-                          style={{ width: 28, height: 28, borderRadius: 7, border: '1px solid #FECACA', background: '#FEF2F2', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#DC2626', marginLeft: 2 }}
+                          style={{ width: 28, height: 28, borderRadius: 7, border: '1px solid #FECACA', background: '#FEE2E2', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#DC2626', marginLeft: 2 }}
                         >
                           <Trash2 size={12} />
                         </button>
@@ -166,7 +166,7 @@ const ProductCatalogInner: React.FC = () => {
                       <button
                         onClick={() => handleAddToOrder(product)}
                         style={{
-                          padding: '6px 14px', borderRadius: 8, border: '1px solid #008A4C', background: '#008A4C',
+                          padding: '6px 14px', borderRadius: 8, border: '1px solid #059669', background: '#059669',
                           color: '#fff', fontSize: 12, fontWeight: 600, cursor: 'pointer',
                           display: 'flex', alignItems: 'center', gap: 5, transition: 'all .15s ease',
                         }}
@@ -191,7 +191,7 @@ const ProductCatalogInner: React.FC = () => {
         }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-              <div style={{ width: 36, height: 36, borderRadius: 10, background: '#008A4C', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
+              <div style={{ width: 36, height: 36, borderRadius: 10, background: '#059669', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
                 <ShoppingCart size={16} />
                 <span style={{ position: 'absolute', top: -4, right: -4, minWidth: 16, height: 16, borderRadius: 8, background: '#E53E3E', color: '#fff', fontSize: 9, fontWeight: 700, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '0 4px', border: '1.5px solid #fff' }}>
                   {itemCount}
@@ -215,7 +215,7 @@ const ProductCatalogInner: React.FC = () => {
               <button
                 onClick={() => navigate('/portal/new-request?type=order')}
                 style={{
-                  padding: '8px 18px', borderRadius: 8, border: 'none', background: '#008A4C',
+                  padding: '8px 18px', borderRadius: 8, border: 'none', background: '#059669',
                   color: '#fff', fontSize: 12, fontWeight: 600, cursor: 'pointer',
                   display: 'flex', alignItems: 'center', gap: 6,
                 }}

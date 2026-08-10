@@ -225,7 +225,7 @@ const CustomerShipmentDetail: React.FC = () => {
           <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
             {shipment.driver_name && (
               <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                <div style={{ width: 36, height: 36, borderRadius: 10, background: '#ECFDF5', color: '#059669', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <div style={{ width: 36, height: 36, borderRadius: 10, background: '#D1FAE5', color: '#059669', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                   <User size={16} />
                 </div>
                 <div>

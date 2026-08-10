@@ -145,3 +145,26 @@ export const formatK = (value: number | string | undefined | null, decimals = 2)
   const formattedInt = Number(intPart).toLocaleString('en-US');
   return `K ${formattedInt}.${decPart}`;
 };
+
+export const theme = {
+  primary: '#0F2C59',
+  onPrimary: '#FFFFFF',
+  primaryContainer: '#E2E8F0',
+  onPrimaryContainer: '#0F2C59',
+  secondary: '#334155',
+  secondaryContainer: '#F1F5F9',
+  onSecondaryContainer: '#0F172A',
+  tertiary: '#059669',
+  tertiaryContainer: '#D1FAE5',
+  onTertiaryContainer: '#065F46',
+  error: '#DC2626',
+  errorContainer: '#FEE2E2',
+  onErrorContainer: '#991B1B',
+  background: '#F8FAFC',
+  surface: '#FFFFFF',
+  surfaceVariant: '#F1F5F9',
+  onSurface: '#0F172A',
+  onSurfaceVariant: '#475569',
+  outline: '#94A3B8',
+  outlineVariant: '#E2E8F0',
+};

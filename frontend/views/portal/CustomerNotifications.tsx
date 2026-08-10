@@ -117,7 +117,7 @@ const CustomerNotifications: React.FC = () => {
                 style={{
                   fontFamily: F, fontSize: 12, fontWeight: 600,
                   padding: '7px 14px', borderRadius: 9, border: active ? '1px solid transparent' : '1px solid #E9EDF3',
-                  background: active ? '#008A4C' : '#fff',
+                  background: active ? '#059669' : '#fff',
                   color: active ? '#fff' : '#718096', cursor: 'pointer',
                   transition: 'all .15s ease', lineHeight: 1.4,
                   boxShadow: active ? '0 2px 8px rgba(0,138,76,0.25)' : 'none',
@@ -152,12 +152,12 @@ const CustomerNotifications: React.FC = () => {
                     cursor: 'pointer', transition: 'all .15s ease',
                     opacity: n.is_read ? 0.7 : 1
                   }}
-                  onMouseEnter={e => { e.currentTarget.style.background = '#ECFDF5'; e.currentTarget.style.borderColor = '#A7F3D0'; }}
+                  onMouseEnter={e => { e.currentTarget.style.background = '#D1FAE5'; e.currentTarget.style.borderColor = '#A7F3D0'; }}
                   onMouseLeave={e => { e.currentTarget.style.background = '#fff'; e.currentTarget.style.borderColor = '#E9EDF3'; }}
                 >
                   <div style={{
                     width: 34, height: 34, borderRadius: 10,
-                    background: '#ECFDF5', color: '#0D5047',
+                    background: '#D1FAE5', color: '#0F2C59',
                     display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0
                   }}>
                     {icon}
@@ -165,7 +165,7 @@ const CustomerNotifications: React.FC = () => {
                   <div style={{ flex: 1, minWidth: 0 }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 2 }}>
                       <p style={{ fontSize: 13, fontWeight: 500, color: n.is_read ? '#4A5568' : '#1A202C' }}>{n.title}</p>
-                      {!n.is_read && <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#008A4C', flexShrink: 0 }} />}
+                      {!n.is_read && <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#059669', flexShrink: 0 }} />}
                     </div>
                     {n.body && <p style={{ fontSize: 11, color: '#4A5568', marginTop: 1, lineHeight: 1.4 }}>{n.body}</p>}
                     <p style={{ fontSize: 10.5, color: '#8A94A6', marginTop: 2 }}>

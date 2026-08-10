@@ -25,8 +25,8 @@ const ActivityTimeline: React.FC<ActivityTimelineProps> = ({ events, title }) =>
         {events.map((event, index) => {
           const isLast = index === events.length - 1;
           const Icon = event.status === 'completed' ? CheckCircle2 : event.status === 'current' ? Clock : Circle;
-          const iconColor = event.status === 'completed' ? '#059669' : event.status === 'current' ? '#1f8577' : '#94a3b8';
-          const bgColor = event.status === 'completed' ? '#ecfdf5' : event.status === 'current' ? '#eef7f6' : '#f8fafc';
+          const iconColor = event.status === 'completed' ? '#059669' : event.status === 'current' ? '#0F2C59' : '#94a3b8';
+          const bgColor = event.status === 'completed' ? '#D1FAE5' : event.status === 'current' ? '#E2E8F0' : '#f8fafc';
 
           return (
             <div key={event.id} className="flex gap-4 relative">
@@ -54,7 +54,7 @@ const ActivityTimeline: React.FC<ActivityTimelineProps> = ({ events, title }) =>
                     {event.user && (
                       <div className="flex items-center gap-2 mt-2">
                         <div className="w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold text-white"
-                          style={{ background: 'linear-gradient(135deg, #1f8577, #0f544c)' }}>
+                          style={{ background: 'linear-gradient(135deg, #0F2C59, #1E4078)' }}>
                           {event.user.name.charAt(0).toUpperCase()}
                         </div>
                         <span className="text-xs text-slate-600 font-medium">{event.user.name}</span>

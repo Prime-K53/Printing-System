@@ -221,8 +221,8 @@ const CustomerOrders: React.FC = () => {
                   display: 'inline-flex', alignItems: 'center', gap: 6,
                   padding: '8px 14px', borderRadius: 10, border: 'none', cursor: 'pointer',
                   fontFamily: F, fontSize: 13, fontWeight: 600,
-                  background: active ? '#ECFDF5' : 'transparent',
-                  color: active ? '#0D5047' : '#718096',
+                  background: active ? '#D1FAE5' : 'transparent',
+                  color: active ? '#0F2C59' : '#718096',
                   transition: 'all .15s ease', lineHeight: 1.4
                 }}
               >
@@ -238,19 +238,19 @@ const CustomerOrders: React.FC = () => {
         <>
           <div style={{ padding: '16px 0 0' }} className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-2.5 px-0 sm:px-0">
             <div style={{
-              background: 'linear-gradient(135deg, #1f857712, #4ed3c708)',
+              background: 'linear-gradient(135deg, #0F2C5912, #05966908)',
               borderRadius: 12, border: '1px solid #E9EDF3', padding: '12px 14px',
               boxShadow: '0 1px 3px rgba(0,0,0,.04)'
             }}>
-              <p style={{ margin: 0, fontSize: 10, fontWeight: 700, color: '#0f544c', textTransform: 'uppercase', letterSpacing: 0.08, lineHeight: 1.4, fontFamily: F }}>Total Orders</p>
+              <p style={{ margin: 0, fontSize: 10, fontWeight: 700, color: '#0F2C59', textTransform: 'uppercase', letterSpacing: 0.08, lineHeight: 1.4, fontFamily: F }}>Total Orders</p>
               <p style={{ margin: '4px 0 0', fontSize: 20, fontWeight: 700, color: '#1A202C', fontFamily: "'JetBrains Mono', monospace", fontVariantNumeric: 'tabular-nums', lineHeight: 1.2 }}>{total}</p>
             </div>
             <div style={{
-              background: 'linear-gradient(135deg, #d99a3f12, #d99a3f08)',
+              background: 'linear-gradient(135deg, rgba(217,119,6,0.07), rgba(217,119,6,0.03))',
               borderRadius: 12, border: '1px solid #E9EDF3', padding: '12px 14px',
               boxShadow: '0 1px 3px rgba(0,0,0,.04)'
             }}>
-              <p style={{ margin: 0, fontSize: 10, fontWeight: 700, color: '#b97e2b', textTransform: 'uppercase', letterSpacing: 0.08, lineHeight: 1.4, fontFamily: F }}>Total Value</p>
+              <p style={{ margin: 0, fontSize: 10, fontWeight: 700, color: '#B45309', textTransform: 'uppercase', letterSpacing: 0.08, lineHeight: 1.4, fontFamily: F }}>Total Value</p>
               <p style={{ margin: '4px 0 0', fontSize: 20, fontWeight: 700, color: '#1A202C', fontFamily: "'JetBrains Mono', monospace", fontVariantNumeric: 'tabular-nums', lineHeight: 1.2 }}>{formatK(ordersTotalValue)}</p>
             </div>
             <div style={{
@@ -279,10 +279,10 @@ const CustomerOrders: React.FC = () => {
                 aria-label="Filter by status"
                 style={{
                   fontFamily: F, fontSize: 13, padding: '8px 32px 8px 12px',
-                  border: filter !== 'All' ? '1px solid #a6d9d3' : '1px solid #E9EDF3', borderRadius: 10, background: '#fff', color: '#1A202C',
+                  border: filter !== 'All' ? '1px solid #94A3B8' : '1px solid #E9EDF3', borderRadius: 10, background: '#fff', color: '#1A202C',
                   appearance: 'none', backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%235c6567'/%3E%3C/svg%3E")`,
                   backgroundRepeat: 'no-repeat', backgroundPosition: 'right 14px center', cursor: 'pointer',
-                  boxShadow: filter !== 'All' ? '0 0 0 3px #ECFDF5' : 'none', outline: 'none', transition: 'all .15s ease', lineHeight: 1.4
+                  boxShadow: filter !== 'All' ? '0 0 0 3px #D1FAE5' : 'none', outline: 'none', transition: 'all .15s ease', lineHeight: 1.4
                 }}
               >
                 {availableOrderStatuses.map((s) => <option key={s} value={s}>{s === 'All' ? 'All Statuses' : s}</option>)}
@@ -297,10 +297,10 @@ const CustomerOrders: React.FC = () => {
                 padding: '40px 20px', textAlign: 'center', boxShadow: '0 1px 3px rgba(0,0,0,.04)'
               }}>
                 <div style={{
-                  width: 48, height: 48, borderRadius: 12, background: '#ECFDF5',
+                  width: 48, height: 48, borderRadius: 12, background: '#D1FAE5',
                   display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 12px'
                 }}>
-                  <ShoppingCart size={24} color="#008A4C" />
+                  <ShoppingCart size={24} color="#059669" />
                 </div>
                 <p style={{ margin: 0, fontSize: 14, fontWeight: 600, color: '#1A202C', lineHeight: 1.4 }}>No orders found</p>
                 <p style={{ margin: '6px 0 0', fontSize: 13, fontWeight: 500, color: '#4A5568', lineHeight: 1.5 }}>
@@ -315,7 +315,7 @@ const CustomerOrders: React.FC = () => {
                   </div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                     {filter !== 'All' && (
-                      <span style={{ fontSize: 10, fontWeight: 600, color: '#0f544c', background: '#ECFDF5', border: '1px solid #d3ece9', padding: '3px 8px', borderRadius: 6, lineHeight: 1.3 }}>
+                      <span style={{ fontSize: 10, fontWeight: 600, color: '#0F2C59', background: '#D1FAE5', border: '1px solid #E2E8F0', padding: '3px 8px', borderRadius: 6, lineHeight: 1.3 }}>
                         {filter}
                       </span>
                     )}
@@ -331,17 +331,17 @@ const CustomerOrders: React.FC = () => {
                     const orderNumber = order.orderNumber || order.id.slice(0, 8);
                     const date = order.orderDate ? new Date(order.orderDate) : null;
                     const total = formatK(order.totalAmount);
-                    const statusColor = statusMeta.color || '#1f8577';
-                    const statusBg = statusMeta.bg || '#ECFDF5';
+                    const statusColor = statusMeta.color || '#0F2C59';
+                    const statusBg = statusMeta.bg || '#D1FAE5';
                     const itemsCount = (order as any).items_count ?? (order as any).items?.length ?? 0;
                     return (
                       <div
                         key={order.id}
                         onClick={() => navigate(`/portal/orders/${order.id}`)}
-                        style={{ background: '#fff', borderRadius: 12, padding: '12px 14px', border: '1px solid #E9EDF3', borderLeft: '4px solid #1f8577', display: 'flex', alignItems: 'center', gap: 12, cursor: 'pointer', boxShadow: '0 1px 3px rgba(0,0,0,.04)', transition: 'all .15s ease' }}
+                        style={{ background: '#fff', borderRadius: 12, padding: '12px 14px', border: '1px solid #E9EDF3', borderLeft: '4px solid #0F2C59', display: 'flex', alignItems: 'center', gap: 12, cursor: 'pointer', boxShadow: '0 1px 3px rgba(0,0,0,.04)', transition: 'all .15s ease' }}
                       >
-                        <div style={{ width: 34, height: 34, borderRadius: 10, display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#ECFDF5', flexShrink: 0 }}>
-                          <ShoppingCart size={16} color="#1f8577" />
+                        <div style={{ width: 34, height: 34, borderRadius: 10, display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#D1FAE5', flexShrink: 0 }}>
+                          <ShoppingCart size={16} color="#0F2C59" />
                         </div>
                         <div style={{ flex: 1, minWidth: 0 }}>
                           <div style={{ fontSize: 13, fontWeight: 600, color: '#1A202C' }}>#{orderNumber}</div>
@@ -367,13 +367,13 @@ const CustomerOrders: React.FC = () => {
                                 fontSize: 10, fontWeight: 600, color: '#4A5568', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 3,
                                 transition: 'all .15s ease',
                               }}
-                              onMouseEnter={e => { e.currentTarget.style.background = '#ECFDF5'; e.currentTarget.style.borderColor = '#a6d9d3'; }}
+                              onMouseEnter={e => { e.currentTarget.style.background = '#D1FAE5'; e.currentTarget.style.borderColor = '#94A3B8'; }}
                               onMouseLeave={e => { e.currentTarget.style.background = '#fff'; e.currentTarget.style.borderColor = '#E9EDF3'; }}
                             >
                               <RotateCcw size={10} /> Reorder
                             </button>
                           )}
-                          <div style={{ padding: '4px 10px', borderRadius: 6, background: '#ECFDF5', fontSize: 10, fontWeight: 600, color: '#0f544c', display: 'flex', alignItems: 'center', gap: 3, border: '1px solid #d3ece9' }}>
+                          <div style={{ padding: '4px 10px', borderRadius: 6, background: '#D1FAE5', fontSize: 10, fontWeight: 600, color: '#0F2C59', display: 'flex', alignItems: 'center', gap: 3, border: '1px solid #E2E8F0' }}>
                             View <ChevronRight size={10} />
                           </div>
                         </div>
@@ -409,7 +409,7 @@ const CustomerOrders: React.FC = () => {
                             style={{
                               width: 32, height: 32, borderRadius: 8,
                               border: page === pageNum ? 'none' : '1px solid #E9EDF3',
-                              background: page === pageNum ? '#008A4C' : '#fff',
+                              background: page === pageNum ? '#059669' : '#fff',
                               color: page === pageNum ? '#fff' : '#4A5568',
                               fontSize: 12, fontWeight: 600, cursor: 'pointer', lineHeight: 1.4,
                               fontFamily: F,
@@ -470,10 +470,10 @@ const CustomerOrders: React.FC = () => {
                       <div
                         key={r.id}
                         onClick={() => navigate(`/portal/requests/${r.id}`)}
-                        style={{ background: '#fff', borderRadius: 12, padding: '12px 14px', border: '1px solid #E9EDF3', borderLeft: '4px solid #d99a3f', display: 'flex', alignItems: 'center', gap: 12, cursor: 'pointer', boxShadow: '0 1px 3px rgba(0,0,0,.04)', transition: 'all .15s ease' }}
+                        style={{ background: '#fff', borderRadius: 12, padding: '12px 14px', border: '1px solid #E9EDF3', borderLeft: '4px solid #D97706', display: 'flex', alignItems: 'center', gap: 12, cursor: 'pointer', boxShadow: '0 1px 3px rgba(0,0,0,.04)', transition: 'all .15s ease' }}
                       >
                         <div style={{ width: 34, height: 34, borderRadius: 10, display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#FFFAF0', flexShrink: 0 }}>
-                          <ClipboardList size={16} color="#b97e2b" />
+                          <ClipboardList size={16} color="#B45309" />
                         </div>
                         <div style={{ flex: 1, minWidth: 0 }}>
                           <div style={{ fontSize: 13, fontWeight: 600, color: '#1A202C' }}>{requestNumber}</div>
@@ -481,7 +481,7 @@ const CustomerOrders: React.FC = () => {
                             {date} \u2022 {itemCount} item{itemCount === 1 ? '' : 's'} \u2022 K {Number(r.subtotal || 0).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                           </div>
                         </div>
-                        <div style={{ marginLeft: 'auto', padding: '4px 10px', borderRadius: 6, background: '#ECFDF5', fontSize: 10, fontWeight: 600, color: '#0f544c', display: 'flex', alignItems: 'center', gap: 3, flexShrink: 0, border: '1px solid #d3ece9' }}>
+                        <div style={{ marginLeft: 'auto', padding: '4px 10px', borderRadius: 6, background: '#D1FAE5', fontSize: 10, fontWeight: 600, color: '#0F2C59', display: 'flex', alignItems: 'center', gap: 3, flexShrink: 0, border: '1px solid #E2E8F0' }}>
                           View
                           <ChevronRight size={10} />
                         </div>
@@ -556,10 +556,10 @@ const CustomerOrders: React.FC = () => {
                       <div
                         key={q.id}
                         onClick={() => navigate(`/portal/quotations/${q.id}`)}
-                        style={{ background: '#fff', borderRadius: 12, padding: '12px 14px', border: '1px solid #E9EDF3', borderLeft: '4px solid #4ed3c7', display: 'flex', alignItems: 'center', gap: 12, cursor: 'pointer', boxShadow: '0 1px 3px rgba(0,0,0,.04)', transition: 'all .15s ease' }}
+                        style={{ background: '#fff', borderRadius: 12, padding: '12px 14px', border: '1px solid #E9EDF3', borderLeft: '4px solid #059669', display: 'flex', alignItems: 'center', gap: 12, cursor: 'pointer', boxShadow: '0 1px 3px rgba(0,0,0,.04)', transition: 'all .15s ease' }}
                       >
-                        <div style={{ width: 34, height: 34, borderRadius: 10, display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#ECFDF5', flexShrink: 0 }}>
-                          <FileText size={16} color="#1f8577" />
+                        <div style={{ width: 34, height: 34, borderRadius: 10, display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#D1FAE5', flexShrink: 0 }}>
+                          <FileText size={16} color="#0F2C59" />
                         </div>
                         <div style={{ flex: 1, minWidth: 0 }}>
                           <div style={{ fontSize: 13, fontWeight: 600, color: '#1A202C' }}>{quotationNumber}</div>
@@ -577,7 +577,7 @@ const CustomerOrders: React.FC = () => {
                             Total
                           </div>
                         </div>
-                        <div style={{ marginLeft: 'auto', padding: '4px 10px', borderRadius: 6, background: '#ECFDF5', fontSize: 10, fontWeight: 600, color: '#0f544c', display: 'flex', alignItems: 'center', gap: 3, flexShrink: 0, border: '1px solid #d3ece9' }}>
+                        <div style={{ marginLeft: 'auto', padding: '4px 10px', borderRadius: 6, background: '#D1FAE5', fontSize: 10, fontWeight: 600, color: '#0F2C59', display: 'flex', alignItems: 'center', gap: 3, flexShrink: 0, border: '1px solid #E2E8F0' }}>
                           View
                           <ChevronRight size={10} />
                         </div>
@@ -614,7 +614,7 @@ const CustomerOrders: React.FC = () => {
             </div>
             <div style={{ display: 'flex', gap: 8, justifyContent: 'flex-end', padding: '14px 22px', borderTop: '1px solid #F3F4F6' }}>
               <button onClick={() => setConfirmReorder({ open: false, order: null })} style={{ padding: '6px 14px', borderRadius: 8, cursor: 'pointer', border: '1px solid #E9EDF3', background: '#fff', color: '#4A5568', fontSize: 12, fontWeight: 600, fontFamily: F, lineHeight: 1.4 }}>Cancel</button>
-              <button onClick={handleReorderConfirm} style={{ padding: '6px 14px', borderRadius: 8, cursor: 'pointer', border: '1px solid #008A4C', background: '#008A4C', color: '#fff', fontSize: 12, fontWeight: 600, fontFamily: F, lineHeight: 1.4 }}>Create Reorder</button>
+              <button onClick={handleReorderConfirm} style={{ padding: '6px 14px', borderRadius: 8, cursor: 'pointer', border: '1px solid #059669', background: '#059669', color: '#fff', fontSize: 12, fontWeight: 600, fontFamily: F, lineHeight: 1.4 }}>Create Reorder</button>
             </div>
           </div>
         </div>

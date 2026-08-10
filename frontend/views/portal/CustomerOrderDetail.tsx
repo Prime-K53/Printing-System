@@ -278,7 +278,7 @@ const CustomerOrderDetail: React.FC = () => {
                 {deliveryCountdown && (
                   <span style={{
                     fontSize: 10, fontWeight: 600, borderRadius: 6, padding: '3px 8px',
-                    background: deliveryCountdown === 'Delivered or overdue' ? '#FEF2F2' : '#ECFDF5',
+                    background: deliveryCountdown === 'Delivered or overdue' ? '#FEE2E2' : '#D1FAE5',
                     color: deliveryCountdown === 'Delivered or overdue' ? '#B91C1C' : '#059669',
                   }}>
                     {deliveryCountdown}

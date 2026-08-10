@@ -49,7 +49,7 @@ const CustomerActivate: React.FC = () => {
 
         <div className="w-full max-w-[440px] relative z-10 bg-white/95 backdrop-blur-2xl border border-white/20 rounded-3xl p-8 md:p-10 shadow-2xl shadow-slate-950/50">
           <div className="flex items-center gap-3.5 mb-8">
-            <div className="w-12 h-12 rounded-2xl flex items-center justify-center text-white shadow-lg shadow-amber-900/20" style={{ background: 'linear-gradient(135deg, #f59e0b, #d99a3f)' }}>
+            <div className="w-12 h-12 rounded-2xl flex items-center justify-center text-white shadow-lg shadow-amber-900/20" style={{ background: 'linear-gradient(135deg, #f59e0b, #D97706)' }}>
               <KeyRound size={22} />
             </div>
             <div>
@@ -128,7 +128,7 @@ const CustomerActivate: React.FC = () => {
               type="submit"
               disabled={submitting || !customerId.trim() || !inviteCode.trim() || !newPassword || !confirmPassword}
               className="w-full h-11 text-white text-xs font-bold rounded-xl transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed btn-press"
-              style={{ background: 'linear-gradient(135deg, #f59e0b 0%, #d99a3f 100%)', boxShadow: '0 6px 20px rgba(245, 158, 11, 0.35)' }}
+              style={{ background: 'linear-gradient(135deg, #f59e0b 0%, #D97706 100%)', boxShadow: '0 6px 20px rgba(245, 158, 11, 0.35)' }}
             >
               {submitting ? (
                 <Loader2 size={16} className="animate-spin" />

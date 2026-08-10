@@ -12,13 +12,13 @@ interface Props {
 }
 
 const colorConfig: Record<string, { border: string; bg: string; iconBg: string; iconColor: string }> = {
-  emerald: { border: '#1f8577', bg: '#FEFDFB', iconBg: '#eef7f6', iconColor: '#1f8577' },
-  blue: { border: '#3b82f6', bg: '#FEFDFB', iconBg: '#eff6ff', iconColor: '#3b82f6' },
-  amber: { border: '#d99a3f', bg: '#FEFDFB', iconBg: '#fbead0', iconColor: '#d99a3f' },
-  rose: { border: '#b5493f', bg: '#FEFDFB', iconBg: '#fef2f2', iconColor: '#b5493f' },
-  violet: { border: '#6366F1', bg: '#FEFDFB', iconBg: '#eef2ff', iconColor: '#6366F1' },
-  teal: { border: '#0f766e', bg: '#FEFDFB', iconBg: '#f0fdfa', iconColor: '#0f766e' },
-  slate: { border: '#475569', bg: '#FEFDFB', iconBg: '#f1f5f9', iconColor: '#475569' },
+  emerald: { border: '#059669', bg: '#F0FDF4', iconBg: '#D1FAE5', iconColor: '#065F46' },
+  blue: { border: '#0F2C59', bg: '#EFF6FF', iconBg: '#DBEAFE', iconColor: '#1E40AF' },
+  amber: { border: '#D97706', bg: '#FFFBEB', iconBg: '#FEF3C7', iconColor: '#92400E' },
+  rose: { border: '#DC2626', bg: '#FEE2E2', iconBg: '#FEE2E2', iconColor: '#991B1B' },
+  violet: { border: '#7C3AED', bg: '#F5F3FF', iconBg: '#EDE9FE', iconColor: '#6D28D9' },
+  teal: { border: '#059669', bg: '#F0FDF4', iconBg: '#D1FAE5', iconColor: '#065F46' },
+  slate: { border: '#475569', bg: '#F8FAFC', iconBg: '#F1F5F9', iconColor: '#475569' },
 };
 
 const PortalKPICard: React.FC<Props> = ({ label, value, icon: Icon, trend, color = 'emerald', selected = false, onClick }) => {

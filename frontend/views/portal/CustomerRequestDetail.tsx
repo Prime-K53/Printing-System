@@ -151,7 +151,7 @@ const CustomerRequestDetail: React.FC = () => {
             aria-label="Back to requests"
             style={{
               width: 40, height: 40, borderRadius: 12, border: 'none', cursor: 'pointer',
-              background: '#ECFDF5', color: '#0f544c', flexShrink: 0,
+              background: '#D1FAE5', color: '#0F2C59', flexShrink: 0,
               display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all .15s ease'
             }}
           >
@@ -220,7 +220,7 @@ const CustomerRequestDetail: React.FC = () => {
                     <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6 }}>
                       <div style={{
                         width: 36, height: 36, borderRadius: 10, display: 'flex', alignItems: 'center', justifyContent: 'center',
-                        background: done ? '#146b60' : active ? '#FEF3C7' : '#fff',
+                        background: done ? '#0F2C59' : active ? '#FEF3C7' : '#fff',
                         color: done ? '#fff' : active ? '#D97706' : '#8A94A6',
                         border: done ? 'none' : active ? '2px solid #FBBF24' : '2px solid #E9EDF3',
                         boxShadow: done ? '0 4px 12px -4px rgba(15,84,76,.5)' : active ? '0 2px 8px -4px rgba(245,158,11,.3)' : 'none',
@@ -236,7 +236,7 @@ const CustomerRequestDetail: React.FC = () => {
                       <div style={{
                         position: 'absolute', top: 18, left: `calc(${(i + 0.5) * (100 / stageDefinitions.length)}% + 8px)`,
                         right: `calc(${(stageDefinitions.length - i - 0.5) * (100 / stageDefinitions.length)}% - 8px)`,
-                        height: 2, background: done ? '#4ed3c7' : '#E9EDF3',
+                        height: 2, background: done ? '#059669' : '#E9EDF3',
                         borderRadius: 1, zIndex: 1, transition: 'all .3s ease'
                       }} />
                     )}
@@ -247,7 +247,7 @@ const CustomerRequestDetail: React.FC = () => {
           </div>
         ) : (
           <div style={{
-            background: '#FEF2F2',
+            background: '#FEE2E2',
             border: '1px solid #FECACA', borderRadius: 12, padding: '16px 18px',
             display: 'flex', alignItems: 'flex-start', gap: 14
           }}>
@@ -269,7 +269,7 @@ const CustomerRequestDetail: React.FC = () => {
             onClick={() => navigate(`/portal/quotations/${request.quotation_id}`)}
             style={{
               width: '100%', padding: '16px 18px', borderRadius: 12, border: 'none', cursor: 'pointer',
-              background: '#146b60',
+              background: '#0F2C59',
               color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'space-between',
               boxShadow: '0 6px 16px -6px rgba(15,84,76,.5)', transition: 'all .15s ease'
             }}
@@ -356,7 +356,7 @@ const CustomerRequestDetail: React.FC = () => {
             </div>
           )}
           {request.notes && (
-            <div style={{ background: '#ECFDF5', borderRadius: 10, padding: '10px 14px', border: '1px solid #D1FAE5' }}>
+            <div style={{ background: '#D1FAE5', borderRadius: 10, padding: '10px 14px', border: '1px solid #D1FAE5' }}>
               <p style={{ fontSize: 10.5, fontWeight: 600, color: '#059669', textTransform: 'uppercase', letterSpacing: '0.03em', margin: '0 0 6px' }}>Notes</p>
               <p style={{ fontSize: 13, fontWeight: 500, color: '#1A202C', margin: 0, lineHeight: 1.6 }}>{request.notes}</p>
             </div>
@@ -375,7 +375,7 @@ const CustomerRequestDetail: React.FC = () => {
                   rel="noopener noreferrer"
                   style={{
                     display: 'flex', alignItems: 'center', gap: 10, padding: '10px 14px', borderRadius: 10,
-                    background: '#ECFDF5', border: '1px solid #D1FAE5',
+                    background: '#D1FAE5', border: '1px solid #D1FAE5',
                     color: '#059669', textDecoration: 'none', fontSize: 13, fontWeight: 600,
                     transition: 'all .15s ease'
                   }}
@@ -397,14 +397,14 @@ const CustomerRequestDetail: React.FC = () => {
             <p style={{ fontSize: 13, fontWeight: 500, color: '#8A94A6', textAlign: 'center', padding: '20px 0' }}>No activity yet.</p>
           ) : (
             <div style={{ position: 'relative', paddingLeft: 20 }}>
-              <div style={{ position: 'absolute', left: 5, top: 8, bottom: 8, width: 2, background: '#a6d9d3', borderRadius: 1 }} />
+              <div style={{ position: 'absolute', left: 5, top: 8, bottom: 8, width: 2, background: '#94A3B8', borderRadius: 1 }} />
               <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
                 {timeline.map((event) => (
                   <div key={event.id} style={{ position: 'relative', paddingLeft: 16 }}>
                     <div style={{
                       position: 'absolute', left: -15, top: 4, width: 10, height: 10, borderRadius: '50%',
-                      background: '#146b60',
-                      border: '2px solid #fff', boxShadow: '0 0 0 2px #72c0b7'
+                      background: '#0F2C59',
+                      border: '2px solid #fff', boxShadow: '0 0 0 2px #059669'
                     }} />
                     <p style={{ fontSize: 13, fontWeight: 600, color: '#1A202C', margin: 0, lineHeight: 1.4 }}>{event.title}</p>
                     {event.description && <p style={{ fontSize: 13, fontWeight: 500, color: '#4A5568', marginTop: 3, lineHeight: 1.5 }}>{event.description}</p>}

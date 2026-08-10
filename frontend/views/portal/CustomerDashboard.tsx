@@ -90,97 +90,162 @@ const CustomerDashboard: React.FC = () => {
   );
 
   return (
-    <div style={{ fontFamily: F, fontSize: 13, lineHeight: 1.4, color: '#2D3748' }}>
+    <div style={{ fontFamily: F, background: '#F8FAFC', minHeight: '100%', paddingBottom: 16 }}>
 
-      {/* Welcome */}
-      <div style={{ background: '#fff', borderRadius: 12, padding: '12px 14px', marginBottom: 10, display: 'flex', alignItems: 'center', justifyContent: 'space-between', border: '1px solid #E9EDF3' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <div style={{ width: 42, height: 42, borderRadius: 12, background: 'linear-gradient(135deg,#0D5047,#08352F)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 22, flexShrink: 0 }}>👋</div>
-          <div>
-            <div style={{ fontSize: 16, fontWeight: 600, color: '#1A202C', lineHeight: 1.3 }}>{getGreeting()},<br />{user?.full_name || 'Guest'}</div>
-            <div style={{ fontSize: 11.5, color: '#8A94A6', marginTop: 1, lineHeight: 1.35 }}>{dateStr}</div>
+      {/* Welcome Header Card */}
+      <div style={{
+        background: '#FFFFFF', borderRadius: 20, padding: 16,
+        marginBottom: 12, boxShadow: '0 1px 3px rgba(0,0,0,0.04)',
+      }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 4, marginBottom: 6 }}>
+          <span style={{
+            display: 'inline-flex', alignItems: 'center', gap: 4,
+            background: '#E2E8F0', borderRadius: 20,
+            padding: '3px 10px', fontSize: 10, fontWeight: 700, color: '#0F2C59',
+          }}>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            Customer Portal
+          </span>
+        </div>
+        <div style={{ fontSize: 20, fontWeight: 700, color: '#0F172A', lineHeight: 1.3 }}>
+          {user?.company_name || user?.full_name || 'Customer'}
+        </div>
+        <div style={{ fontSize: 12, color: '#475569', marginTop: 2 }}>
+          Account ID: {user?.customer_code || user?.email || ''}
+        </div>
+
+        {/* Banner */}
+        <div style={{
+          marginTop: 14, borderRadius: 16, height: 110, overflow: 'hidden',
+          background: 'linear-gradient(135deg, #0F2C59 0%, #1E4078 40%, #059669 100%)',
+          position: 'relative',
+        }}>
+          <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.3)' }} />
+          <div style={{ position: 'absolute', bottom: 14, left: 16 }}>
+            <div style={{ fontSize: 15, fontWeight: 700, color: '#FFFFFF' }}>Enterprise B2B Portal</div>
+            <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.85)', marginTop: 1 }}>Real-time tracking, quotes, statements &amp; payments</div>
           </div>
         </div>
-        <button onClick={() => navigate('/portal/new-request')} aria-label="New request" style={{ width: 44, height: 44, borderRadius: '50%', background: '#008A4C', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 3px 10px rgba(0,138,76,0.25)', flexShrink: 0 }}>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.5" strokeLinecap="round"><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>
-        </button>
       </div>
 
-      {/* KPI Grid */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8, marginBottom: 10 }}>
-        {([
-          { l: 'OUTSTANDING BALANCE', v: formatK(data.outstandingBalance || 0), s: 'No change from last month', c: '#E53E3E', bg: '#FFF5F5', ic: '<line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>', to: '/portal/statements' },
-          { l: 'UNPAID INVOICES', v: String(data.unpaidInvoiceCount ?? 0), s: 'No unpaid invoices', c: '#DD6B20', bg: '#FFFAF0', ic: '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>', to: '/portal/invoices?status=Unpaid' },
-          { l: 'TOTAL ORDERS', v: String(data.totalOrders ?? 0), s: 'No orders this month', c: '#805AD5', bg: '#FAF5FF', ic: '<circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>', to: '/portal/orders' },
-          { l: 'WALLET BALANCE', v: formatK(data.walletBalance || 0), s: 'No change from last month', c: '#3182CE', bg: '#EBF8FF', ic: '<rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 10h20"/>', to: '/portal/wallet' },
-        ] as const).map((k, i) => (
-          <div key={i} onClick={() => navigate(k.to)} style={{ background: '#fff', borderRadius: 10, padding: '10px 10px 8px', border: '1px solid #E9EDF3', cursor: 'pointer', display: 'flex', flexDirection: 'column' as const }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 8 }}>
-              <div style={{ width: 26, height: 26, borderRadius: 7, background: k.bg, color: k.c, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>{icon(k.ic, 13)}</div>
-              <span style={{ fontSize: 9.5, fontWeight: 600, color: '#8A94A6', textTransform: 'uppercase' as const, letterSpacing: '0.03em', lineHeight: 1.2 }}>{k.l}</span>
+      {/* Account Summary KPI Cards - horizontal scroll */}
+      <div style={{ padding: '0 16px', marginBottom: 16 }}>
+        <div style={{ fontSize: 15, fontWeight: 700, color: '#0F172A', marginBottom: 10 }}>Account Summary</div>
+        <div style={{ display: 'flex', gap: 12, overflowX: 'auto', paddingBottom: 4 }}>
+          {[
+            {
+              title: 'Unpaid Invoices',
+              value: `$${(data.outstandingBalance || 0).toFixed(2)}`,
+              subtitle: `${data.unpaidInvoiceCount || 0} Overdue`,
+              icon: '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/>',
+              bg: '#FEE2E2', color: '#991B1B', to: '/portal/invoices',
+            },
+            {
+              title: 'Active Deliveries',
+              value: `${data.totalOrders || 0} Shipments`,
+              subtitle: 'Real-time Tracking',
+              icon: '<rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>',
+              bg: '#E2E8F0', color: '#0F2C59', to: '/portal/shipments',
+            },
+            {
+              title: 'Wallet Balance',
+              value: `$${(data.walletBalance || 0).toFixed(2)}`,
+              subtitle: 'Available Funds',
+              icon: '<rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 10h20"/>',
+              bg: '#D1FAE5', color: '#065F46', to: '/portal/wallet',
+            },
+          ].map((kpi, i) => (
+            <div
+              key={i}
+              onClick={() => navigate(kpi.to)}
+              style={{
+                minWidth: 160, background: kpi.bg, borderRadius: 16, padding: 16,
+                cursor: 'pointer', flexShrink: 0,
+              }}
+            >
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke={kpi.color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" dangerouslySetInnerHTML={{ __html: kpi.icon }} />
+              <div style={{ fontSize: 11, color: kpi.color, marginTop: 10, opacity: 0.8 }}>{kpi.title}</div>
+              <div style={{ fontSize: 16, fontWeight: 700, color: kpi.color, marginTop: 2 }}>{kpi.value}</div>
+              <div style={{ fontSize: 10, color: kpi.color, marginTop: 2, opacity: 0.7 }}>{kpi.subtitle}</div>
             </div>
-            <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between' }}>
+          ))}
+        </div>
+      </div>
+
+      {/* Quick Actions Grid */}
+      <div style={{ padding: '0 16px', marginBottom: 16 }}>
+        <div style={{ fontSize: 15, fontWeight: 700, color: '#0F172A', marginBottom: 10 }}>Quick Actions</div>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 12 }}>
+          {[
+            { title: 'Pay Invoices', icon: '<path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>', to: '/portal/invoices' },
+            { title: 'New Order', icon: '<circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>', to: '/portal/orders' },
+            { title: 'Get Quote', icon: '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/>', to: '/portal/quotations' },
+            { title: 'Track Shipments', icon: '<rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>', to: '/portal/shipments' },
+            { title: 'Refer Business', icon: '<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>', to: '/portal/referrals' },
+            { title: 'Statements', icon: '<path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/><path d="M18 12a2 2 0 0 0 0 4h4v-4z"/>', to: '/portal/statements' },
+          ].map((action, i) => (
+            <div
+              key={i}
+              onClick={() => navigate(action.to)}
+              style={{
+                background: '#FFFFFF', borderRadius: 12, padding: '14px 8px',
+                display: 'flex', flexDirection: 'column' as const, alignItems: 'center',
+                gap: 6, cursor: 'pointer', border: '1px solid #E2E8F0',
+              }}
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0F2C59" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" dangerouslySetInnerHTML={{ __html: action.icon }} />
+              <span style={{ fontSize: 11, fontWeight: 600, color: '#0F172A', textAlign: 'center' }}>{action.title}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Unpaid Invoices Section */}
+      <div style={{ padding: '0 16px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 10 }}>
+          <div style={{ fontSize: 15, fontWeight: 700, color: '#0F172A' }}>Unpaid Invoices</div>
+          <button onClick={() => navigate('/portal/invoices')} style={{ background: 'none', border: 'none', fontSize: 12, fontWeight: 600, color: '#059669', cursor: 'pointer' }}>
+            View All
+          </button>
+        </div>
+        {!data.unpaidInvoiceCount || data.unpaidInvoiceCount === 0 ? (
+          <div style={{
+            background: '#FFFFFF', borderRadius: 12, padding: 16,
+            display: 'flex', alignItems: 'center', gap: 10, border: '1px solid #E2E8F0',
+          }}>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#059669" strokeWidth="2" strokeLinecap="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span style={{ fontSize: 13, color: '#475569' }}>All invoices are fully paid! Your account is in great standing.</span>
+          </div>
+        ) : (
+          <div style={{
+            background: '#FFFFFF', borderRadius: 12, padding: 16,
+            border: '1px solid #E2E8F0',
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8 }}>
               <div>
-                <div style={{ fontSize: 20, fontWeight: 600, color: '#1A202C', lineHeight: 1.1, fontVariantNumeric: 'tabular-nums' }}>{k.v}</div>
-                <div style={{ fontSize: 10.5, color: '#8A94A6', marginTop: 3 }}>{k.s}</div>
+                <div style={{ fontSize: 14, fontWeight: 700, color: '#0F172A' }}>Outstanding Balance</div>
+                <div style={{ fontSize: 22, fontWeight: 700, color: '#DC2626', marginTop: 2 }}>
+                  ${(data.outstandingBalance || 0).toFixed(2)}
+                </div>
               </div>
-              <div style={{ opacity: 0.5, flexShrink: 0 }}><Sparkline v={rT()} c={k.c} /></div>
+              <div style={{ padding: '3px 8px', borderRadius: 8, background: '#FEE2E2', fontSize: 11, fontWeight: 700, color: '#991B1B' }}>
+                {data.unpaidInvoiceCount} Unpaid
+              </div>
             </div>
+            <button
+              onClick={() => navigate('/portal/invoices?status=Unpaid')}
+              style={{
+                width: '100%', padding: '10px 16px', borderRadius: 10,
+                background: '#0F2C59', color: '#FFFFFF', fontSize: 13, fontWeight: 600,
+                border: 'none', cursor: 'pointer', marginTop: 8,
+              }}
+            >
+              Pay Now
+            </button>
           </div>
-        ))}
+        )}
       </div>
 
-      {/* Transaction Overview */}
-      <div style={{ background: '#fff', borderRadius: 12, marginBottom: 10, border: '1px solid #E9EDF3', overflow: 'hidden' }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '10px 14px 6px' }}>
-          <h2 style={{ fontSize: 14, fontWeight: 600, margin: 0, color: '#1A202C' }}>Transaction Overview</h2>
-          <button onClick={() => navigate('/portal/payments')} style={{ display: 'flex', alignItems: 'center', gap: 2, background: 'none', border: 'none', cursor: 'pointer', fontSize: 12, fontWeight: 600, color: '#008A4C', padding: '4px 0' }}>
-            View all <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6" /></svg>
-          </button>
-        </div>
-        {([
-          { ic: '<polyline points="7 17 17 7"/><polyline points="7 7 17 7 17 17"/>', bg: '#ECFDF5', c: '#008A4C', l: 'Total Transactions', v: String(txns.length) },
-          { ic: '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>', bg: '#FFFAF0', c: '#DD6B20', l: 'Last Transaction', v: '—' },
-          { ic: '<rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>', bg: '#EBF8FF', c: '#3182CE', l: 'Last Transaction Date', v: '—' },
-        ] as const).map((r, i) => (
-          <div key={i} style={{ display: 'flex', alignItems: 'center', padding: '8px 14px', borderTop: '1px solid #F3F4F6' }}>
-            <div style={{ width: 28, height: 28, borderRadius: 7, background: r.bg, color: r.c, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginRight: 10 }}>{icon(r.ic, 13)}</div>
-            <span style={{ flex: 1, fontSize: 13, fontWeight: 500, color: '#4A5568' }}>{r.l}</span>
-            <span style={{ fontSize: 13, fontWeight: 600, color: '#718096', marginRight: 6, fontVariantNumeric: 'tabular-nums', textAlign: 'right' as const }}>{r.v}</span>
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#CBD5E0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6" /></svg>
-          </div>
-        ))}
-      </div>
-
-      {/* Recent Activity */}
-      <div style={{ background: '#fff', borderRadius: 12, border: '1px solid #E9EDF3', overflow: 'hidden' }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '10px 14px 6px' }}>
-          <h2 style={{ fontSize: 14, fontWeight: 600, margin: 0, color: '#1A202C' }}>Recent Activity</h2>
-          <button onClick={() => navigate('/portal/payments')} style={{ display: 'flex', alignItems: 'center', gap: 2, background: 'none', border: 'none', cursor: 'pointer', fontSize: 12, fontWeight: 600, color: '#008A4C', padding: '4px 0' }}>
-            View all <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6" /></svg>
-          </button>
-        </div>
-        {(txns.length > 0
-          ? txns.map((t) => ({ icon: '<polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>', title: t.description || 'Activity', sub: undefined as string | undefined, date: new Date(t.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }), onClick: t.docId && t.docType ? () => navigate(`/portal/${t.docType}s/${t.docId}`) : undefined }))
-          : [
-              { icon: '<polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>', title: 'Welcome to PrimePORTAL', sub: 'Your account has been created successfully.', date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }), onClick: undefined },
-              { icon: '<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>', title: 'Profile Updated', sub: 'Your profile information was updated.', date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }), onClick: () => navigate('/portal/profile') },
-              { icon: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/>', title: 'Account Activated', sub: 'Your account is now active.', date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }), onClick: undefined },
-            ]
-        ).map((item, i) => (
-          <div key={i} onClick={item.onClick} style={{ display: 'flex', alignItems: 'center', padding: '8px 14px', borderTop: '1px solid #F3F4F6', cursor: item.onClick ? 'pointer' : 'default' }}>
-            <div style={{ width: 34, height: 34, borderRadius: '50%', background: '#ECFDF5', color: '#008A4C', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginRight: 10 }}>{icon(item.icon, 14)}</div>
-            <div style={{ flex: 1, minWidth: 0 }}>
-              <div style={{ fontSize: 13, fontWeight: 600, color: '#1A202C', lineHeight: 1.3 }}>{item.title}</div>
-              {item.sub && <div style={{ fontSize: 11.5, color: '#8A94A6', marginTop: 1 }}>{item.sub}</div>}
-            </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 4, flexShrink: 0, marginLeft: 6 }}>
-              <span style={{ fontSize: 11, color: '#8A94A6', whiteSpace: 'nowrap' as const }}>{item.date}</span>
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#CBD5E0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6" /></svg>
-            </div>
-          </div>
-        ))}
-      </div>
     </div>
   );
 };

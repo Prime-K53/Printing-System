@@ -26,7 +26,7 @@ const DocumentPreviewModal: React.FC<Props> = ({ open, onClose, title, children,
               width: 32, height: 32, borderRadius: 8,
               background: `linear-gradient(155deg, ${portalTheme.teal[500]}, ${portalTheme.teal[700]})`,
               display: 'flex', alignItems: 'center', justifyContent: 'center',
-              boxShadow: '0 4px 10px -3px rgba(15,84,76,.6)',
+              boxShadow: '0 4px 10px -3px rgba(15,44,89,.35)',
             }}>
               <FileText size={16} color="#fff" />
             </div>

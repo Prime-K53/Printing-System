@@ -258,7 +258,7 @@ const CustomerQuotationDetail: React.FC = () => {
         )}
 
         {status === 'accepted' && quotation.accepted_by && (
-          <div style={{ marginBottom: 16, background: '#ECFDF5', border: '1px solid #A7F3D0', borderRadius: 10, padding: 14, display: 'flex', alignItems: 'flex-start', gap: 12 }}>
+          <div style={{ marginBottom: 16, background: '#D1FAE5', border: '1px solid #A7F3D0', borderRadius: 10, padding: 14, display: 'flex', alignItems: 'flex-start', gap: 12 }}>
             <BadgeCheck size={16} style={{ color: '#059669', marginTop: 2, flexShrink: 0 }} />
             <div>
               <p style={{ fontSize: 13, fontWeight: 600, color: '#059669', margin: 0 }}>Accepted and digitally recorded</p>
@@ -317,7 +317,7 @@ const CustomerQuotationDetail: React.FC = () => {
             <button
               onClick={() => runAction('reject')}
               disabled={action !== null}
-              style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '8px 14px', borderRadius: 8, border: '1px solid #FECACA', background: '#FEF2F2', color: '#B91C1C', fontSize: 12, fontWeight: 600, cursor: action !== null ? 'not-allowed' : 'pointer', opacity: action !== null ? 0.5 : 1, fontFamily: F }}
+              style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '8px 14px', borderRadius: 8, border: '1px solid #FECACA', background: '#FEE2E2', color: '#B91C1C', fontSize: 12, fontWeight: 600, cursor: action !== null ? 'not-allowed' : 'pointer', opacity: action !== null ? 0.5 : 1, fontFamily: F }}
             >
               {action === 'reject' ? <Loader2 size={14} style={{ animation: 'spin 1s linear infinite' }} /> : <XCircle size={15} />} Reject
             </button>
@@ -358,13 +358,13 @@ const CustomerQuotationDetail: React.FC = () => {
       )}
 
       {status === 'rejected' && quotation.rejection_reason && (
-        <div style={{ marginBottom: 16, background: '#FEF2F2', border: '1px solid #FECACA', borderRadius: 10, padding: 14 }}>
+        <div style={{ marginBottom: 16, background: '#FEE2E2', border: '1px solid #FECACA', borderRadius: 10, padding: 14 }}>
           <p style={{ ...label, marginBottom: 4, color: '#B91C1C' }}>Rejected</p>
           <p style={{ fontSize: 13, fontWeight: 500, color: '#B91C1C' }}>{quotation.rejection_reason}</p>
         </div>
       )}
       {status === 'converted' && (
-        <div style={{ marginBottom: 16, background: '#ECFDF5', border: '1px solid #A7F3D0', borderRadius: 10, padding: 14, display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12 }}>
+        <div style={{ marginBottom: 16, background: '#D1FAE5', border: '1px solid #A7F3D0', borderRadius: 10, padding: 14, display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12 }}>
           <p style={{ fontSize: 13, fontWeight: 500, color: '#059669' }}>This quotation was accepted and converted into an order.</p>
           <button
             onClick={() => quotation.order_id && navigate(`/portal/orders/${quotation.order_id}`)}
@@ -462,7 +462,7 @@ const CustomerQuotationDetail: React.FC = () => {
                   <span style={{
                     display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
                     padding: '3px 8px', borderRadius: 6, fontSize: 10, fontWeight: 600, border: '1px solid',
-                    background: sig.decision === 'accepted' ? '#ECFDF5' : sig.decision === 'rejected' ? '#FEF2F2' : '#F5F3FF',
+                    background: sig.decision === 'accepted' ? '#D1FAE5' : sig.decision === 'rejected' ? '#FEE2E2' : '#F5F3FF',
                     color: sig.decision === 'accepted' ? '#059669' : sig.decision === 'rejected' ? '#B91C1C' : '#7C3AED',
                     borderColor: sig.decision === 'accepted' ? '#A7F3D0' : sig.decision === 'rejected' ? '#FECACA' : '#DDD6FE',
                     whiteSpace: 'nowrap'

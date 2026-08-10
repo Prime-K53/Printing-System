@@ -82,7 +82,7 @@ const CustomerQuotations: React.FC = () => {
 
       <div style={{ padding: '16px 0 8px' }} className="sm:px-7">
         {error && (
-          <div style={{ background: '#FEF2F2', border: '1px solid #FECACA', color: '#B91C1C', borderRadius: 10, padding: '10px 14px', fontSize: 12.5, marginBottom: 10, lineHeight: 1.4 }}>{error}</div>
+          <div style={{ background: '#FEE2E2', border: '1px solid #FECACA', color: '#B91C1C', borderRadius: 10, padding: '10px 14px', fontSize: 12.5, marginBottom: 10, lineHeight: 1.4 }}>{error}</div>
         )}
         <div style={{ position: 'relative', flex: '1 1 240px' }}>
           <Search size={16} style={{ position: 'absolute', left: 10, top: '50%', transform: 'translateY(-50%)', color: '#6b7280' }} />
@@ -132,7 +132,7 @@ const CustomerQuotations: React.FC = () => {
                       display: 'flex', alignItems: 'center', gap: 12,
                       padding: '14px 16px', background: '#FFFFFF',
                       borderRadius: 14, border: '1px solid rgba(16,24,40,0.05)',
-                      borderLeft: '4px solid #4ed3c7', cursor: 'pointer',
+                      borderLeft: '4px solid #059669', cursor: 'pointer',
                       boxShadow: '0 1px 2px rgba(16,24,40,0.04)',
                       transition: 'all .15s ease',
                     }}
@@ -145,11 +145,11 @@ const CustomerQuotations: React.FC = () => {
                       e.currentTarget.style.boxShadow = '0 1px 2px rgba(16,24,40,0.04)';
                     }}
                   >
-                    <div style={{ width: 34, height: 34, borderRadius: 10, display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#eef7f6', flexShrink: 0 }}>
-                      <FileText size={16} color="#1f8577" />
+                    <div style={{ width: 34, height: 34, borderRadius: 10, display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#E2E8F0', flexShrink: 0 }}>
+                      <FileText size={16} color="#0F2C59" />
                     </div>
                     <div style={{ flex: 1, minWidth: 0 }}>
-                      <div style={{ fontSize: 13, fontWeight: 600, color: '#0b3e39' }}>{quotationNumber}</div>
+                      <div style={{ fontSize: 13, fontWeight: 600, color: '#0F2C59' }}>{quotationNumber}</div>
                       <div style={{ fontSize: 10.5, color: '#8A94A6', marginTop: 1, lineHeight: 1.3 }}>
                           {date} • {friendlyStatus}
                           {isExpired && ' • Expired'}
@@ -157,14 +157,14 @@ const CustomerQuotations: React.FC = () => {
                         </div>
                       </div>
                       <div style={{ textAlign: 'right', minWidth: 80 }}>
-                        <div style={{ fontSize: 14, fontWeight: 600, color: '#0b3e39', fontFamily: "'JetBrains Mono', monospace", fontVariantNumeric: 'tabular-nums', lineHeight: 1.35 }}>
+                        <div style={{ fontSize: 14, fontWeight: 600, color: '#0F2C59', fontFamily: "'JetBrains Mono', monospace", fontVariantNumeric: 'tabular-nums', lineHeight: 1.35 }}>
                           K {total}
                         </div>
                         <div style={{ fontSize: 10, color: '#5c6567', textTransform: 'uppercase', marginTop: 1, lineHeight: 1.3 }}>
                           Total
                         </div>
                       </div>
-                      <div style={{ marginLeft: 'auto', padding: '3px 8px', borderRadius: 6, background: '#ECFDF5', fontSize: 10, fontWeight: 600, color: '#0f544c', display: 'flex', alignItems: 'center', gap: 3, flexShrink: 0, border: '1px solid #d3ece9' }}>
+                      <div style={{ marginLeft: 'auto', padding: '3px 8px', borderRadius: 6, background: '#D1FAE5', fontSize: 10, fontWeight: 600, color: '#0F2C59', display: 'flex', alignItems: 'center', gap: 3, flexShrink: 0, border: '1px solid #E2E8F0' }}>
                         View
                         <ChevronRight size={10} />
                       </div>

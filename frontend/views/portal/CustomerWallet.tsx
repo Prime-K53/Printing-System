@@ -78,7 +78,7 @@ const CustomerWallet: React.FC = () => {
 
         {data && (
           <div style={{ background: '#fff', borderRadius: 12, border: '1px solid #E9EDF3', padding: '20px 24px', marginBottom: 18, display: 'flex', alignItems: 'center', gap: 14 }}>
-            <div style={{ width: 44, height: 44, borderRadius: 12, background: '#ECFDF5', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#0D5047', flexShrink: 0 }}>
+            <div style={{ width: 44, height: 44, borderRadius: 12, background: '#D1FAE5', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#0F2C59', flexShrink: 0 }}>
               <Wallet size={22} />
             </div>
             <div style={{ minWidth: 0 }}>
@@ -127,7 +127,7 @@ const CustomerWallet: React.FC = () => {
                   <div key={`${t.date}-${t.reference}-${i}`} style={{ background: '#fff', borderRadius: 12, padding: '14px 18px', border: '1px solid #E9EDF3', marginBottom: 0 }}>
                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12, flexWrap: 'wrap' }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                        <div style={{ width: 34, height: 34, borderRadius: 10, background: isCredit ? '#ecfdf5' : '#fef2f2', display: 'flex', alignItems: 'center', justifyContent: 'center', color: isCredit ? '#059669' : '#dc2626', flexShrink: 0 }}>
+                        <div style={{ width: 34, height: 34, borderRadius: 10, background: isCredit ? '#D1FAE5' : '#FEE2E2', display: 'flex', alignItems: 'center', justifyContent: 'center', color: isCredit ? '#059669' : '#dc2626', flexShrink: 0 }}>
                           {isCredit ? <TrendingUp size={16} /> : <TrendingDown size={16} />}
                         </div>
                         <div>

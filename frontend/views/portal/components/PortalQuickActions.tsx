@@ -10,10 +10,10 @@ interface QuickAction {
 }
 
 const QUICK_ACTIONS: QuickAction[] = [
-  { label: 'New Order', icon: ShoppingCart, path: '/portal/new-request?type=order', color: '#1f8577' },
+  { label: 'New Order', icon: ShoppingCart, path: '/portal/new-request?type=order', color: '#0F2C59' },
   { label: 'New Quotation', icon: FileText, path: '/portal/new-request?type=quotation', color: '#7c3aed' },
   { label: 'New Request', icon: Receipt, path: '/portal/new-request?type=request', color: '#2563eb' },
-  { label: 'Refer to Someone', icon: Users, path: '/portal/referrals', color: '#d99a3f' },
+  { label: 'Refer to Someone', icon: Users, path: '/portal/referrals', color: '#D97706' },
   { label: 'Prime Copilot', icon: MessageSquare, path: '/portal/support', color: '#059669' },
 ];
 
@@ -62,7 +62,7 @@ const PortalQuickActions: React.FC = () => {
         onClick={() => setOpen((v) => !v)}
         className={`w-12 h-12 rounded-full flex items-center justify-center text-white shadow-lg transition-all hover:shadow-xl ${open ? 'rotate-45' : 'hover:scale-105'}`}
         style={{
-          background: open ? 'linear-gradient(135deg, #dc2626, #b91c1c)' : 'linear-gradient(135deg, #1f8577, #0f544c)',
+          background: open ? 'linear-gradient(135deg, #dc2626, #b91c1c)' : 'linear-gradient(135deg, #0F2C59, #1E4078)',
           boxShadow: open ? '0 10px 25px -8px rgba(185,28,28,.5)' : '0 10px 25px -8px rgba(15,84,76,.5)',
         }}
         aria-label={open ? 'Close quick actions' : 'Open quick actions'}

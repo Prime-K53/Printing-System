@@ -217,7 +217,7 @@ const CustomerInvoiceDetail: React.FC = () => {
               <div style={{
                 width: 28, height: 28, borderRadius: 7,
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
-                background: '#ECFDF5', color: '#059669',
+                background: '#D1FAE5', color: '#059669',
               }}>
                 <Banknote size={16} />
               </div>

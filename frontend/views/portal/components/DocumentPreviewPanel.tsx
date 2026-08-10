@@ -90,7 +90,7 @@ const DocumentPreviewPanel: React.FC<DocumentPreviewPanelProps> = ({
                 <div className="text-xs text-slate-500 mt-1">Status: {status}</div>
               </div>
               <div className="w-16 h-16 rounded-2xl flex items-center justify-center"
-                style={{ background: 'linear-gradient(135deg, #1f8577, #0f544c)', boxShadow: '0 4px 14px -4px rgba(15,84,76,.4)' }}>
+                style={{ background: 'linear-gradient(135deg, #0F2C59, #1E4078)', boxShadow: '0 4px 14px -4px rgba(15,44,89,.25)' }}>
                 <FileText size={24} color="white" />
               </div>
             </div>

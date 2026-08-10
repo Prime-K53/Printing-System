@@ -25,7 +25,7 @@ interface PortalChartProps {
 }
 
 const PortalChart: React.FC<PortalChartProps> = ({
-  data, type = 'area', title, dataKey = 'value', color = '#1f8577',
+  data, type = 'area', title, dataKey = 'value', color = '#0F2C59',
   gradient = true, comparePrevious = true, onExportPng, onExportPdf, loading = false
 }) => {
   const [hovered, setHovered] = useState<string | null>(null);

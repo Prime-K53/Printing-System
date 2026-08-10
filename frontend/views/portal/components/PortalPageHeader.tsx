@@ -20,7 +20,7 @@ const PortalPageHeader: React.FC<Props> = ({
   title,
   subtitle,
   icon: Icon,
-  iconBg = 'linear-gradient(135deg, #146b60 0%, #0f544c 100%)',
+  iconBg = 'linear-gradient(135deg, #0F2C59 0%, #1E4078 100%)',
   iconColor = '#fff',
   action,
   children,
@@ -58,7 +58,7 @@ const PortalPageHeader: React.FC<Props> = ({
             onClick={action.onClick}
             disabled={action.disabled}
             className="btn-press px-4 py-2.5 rounded-xl text-xs font-bold text-white inline-flex items-center gap-2 transition-all shadow-md shadow-teal-900/25 disabled:opacity-50 disabled:cursor-not-allowed"
-            style={{ background: 'linear-gradient(135deg, #146b60 0%, #0f544c 100%)' }}
+            style={{ background: 'linear-gradient(135deg, #0F2C59 0%, #1E4078 100%)' }}
           >
             {action.icon && <action.icon size={16} />}
             <span>{action.label}</span>

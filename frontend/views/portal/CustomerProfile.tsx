@@ -9,9 +9,9 @@ import { useToast } from './components/Toast';
 import ConfirmDialog from './components/ConfirmDialog';
 
 const teal = {
-  50: '#eef7f6', 100: '#d3ece9', 200: '#a6d9d3', 300: '#72c0b7',
-  400: '#3fa294', 500: '#1f8577', 600: '#146b60', 700: '#0f544c',
-  800: '#0b3e39', 900: '#082e2a'
+  50: '#E2E8F0', 100: '#E2E8F0', 200: '#94A3B8', 300: '#059669',
+  400: '#0F2C59', 500: '#0F2C59', 600: '#0F2C59', 700: '#0F2C59',
+  800: '#0F2C59', 900: '#082040'
 };
 const danger = '#c0495f';
 const ink = '#23282A';
@@ -46,7 +46,7 @@ const qboStyles = `
     }
     .settings-input:focus {
         outline: none;
-        border-color: #1f8577 !important;
+        border-color: #0F2C59 !important;
         box-shadow: 0 0 0 3px rgba(31,133,119,0.18);
     }
     .toggle-input {
@@ -54,7 +54,7 @@ const qboStyles = `
         overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border-width: 0;
     }
     .toggle-track {
-        width: 44px; height: 24px; background: #d3ece9; border-radius: 9999px;
+        width: 44px; height: 24px; background: #E2E8F0; border-radius: 9999px;
         position: relative; transition: background 0.2s ease; cursor: pointer; flex-shrink: 0;
     }
     .toggle-track::after {
@@ -62,12 +62,12 @@ const qboStyles = `
         background: #ffffff; border-radius: 50%; border: 1px solid #D4D7DC;
         transition: transform 0.2s ease; box-shadow: 0 1px 2px rgba(0,0,0,0.05);
     }
-    .toggle-input:checked + .toggle-track { background: #1f8577; }
+    .toggle-input:checked + .toggle-track { background: #0F2C59; }
     .toggle-input:checked + .toggle-track::after { transform: translateX(20px); }
     .premium-settings input:not([type=checkbox]):not([type=radio]):not([type=range]):focus,
     .premium-settings textarea:focus,
     .premium-settings select:focus {
-        outline: none; border-color: #1f8577 !important;
+        outline: none; border-color: #0F2C59 !important;
         box-shadow: 0 0 0 3px rgba(31,133,119,0.18) !important;
     }
 `;
@@ -344,7 +344,7 @@ const CustomerProfile: React.FC = () => {
       <div className="md:hidden" style={{
         position: 'sticky', top: 0, zIndex: 30,
         padding: '14px 16px',
-        background: 'linear-gradient(120deg, #0b3e39 0%, #146b60 52%, #1f8577 100%)',
+        background: 'linear-gradient(120deg, #0F2C59 0%, #1E4078 52%, #059669 100%)',
         boxShadow: '0 4px 16px -6px rgba(11,62,57,0.5)',
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
@@ -416,7 +416,7 @@ const CustomerProfile: React.FC = () => {
         alignItems: 'center', justifyContent: 'space-between',
         padding: '15px 28px',
         borderBottom: '1px solid rgba(11,62,57,0.4)',
-        background: 'linear-gradient(120deg, #0b3e39 0%, #146b60 52%, #1f8577 100%)',
+        background: 'linear-gradient(120deg, #0F2C59 0%, #1E4078 52%, #059669 100%)',
         boxShadow: '0 6px 20px -10px rgba(11,62,57,0.6)',
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
@@ -485,7 +485,7 @@ const CustomerProfile: React.FC = () => {
                     >
                       <div style={{
                         width: 34, height: 34, borderRadius: 9,
-                        background: isActive ? 'rgba(255,255,255,0.18)' : '#eef7f6',
+                        background: isActive ? 'rgba(255,255,255,0.18)' : '#E2E8F0',
                         color: isActive ? '#fff' : teal[600],
                         display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
                       }}>
@@ -510,7 +510,7 @@ const CustomerProfile: React.FC = () => {
             {saveMsg && (
               <div style={{
                 marginBottom: 16, padding: '10px 14px', borderRadius: 10, fontSize: 13, fontWeight: 600,
-                border: `1px solid ${saveMsg.includes('successfully') ? '#a6d9d3' : '#f0c4cd'}`,
+                border: `1px solid ${saveMsg.includes('successfully') ? '#94A3B8' : '#f0c4cd'}`,
                 background: saveMsg.includes('successfully') ? '#e9f7f4' : '#fdeef0',
                 color: saveMsg.includes('successfully') ? teal[700] : danger,
               }}>
@@ -565,7 +565,7 @@ const CustomerProfile: React.FC = () => {
                       padding: '9px 18px', borderRadius: 10, cursor: saving ? 'default' : 'pointer', border: 'none',
                       background: `linear-gradient(155deg, ${teal[500]}, ${teal[700]})`,
                       color: '#fff', display: 'flex', alignItems: 'center', gap: 7, opacity: saving ? 0.7 : 1,
-                      boxShadow: `0 8px 20px -8px rgba(15,84,76,.6)`,
+                      boxShadow: `0 8px 20px -8px rgba(15,44,89,.35)`,
                     }}>
                       {saving ? <Loader2 size={15} className="animate-spin" /> : <Save size={15} />}
                       {saving ? 'Saving...' : 'Save Changes'}
@@ -617,7 +617,7 @@ const CustomerProfile: React.FC = () => {
                   {passwordMsg && (
                     <div style={{
                       marginBottom: 14, padding: '10px 14px', borderRadius: 10, fontSize: 13, fontWeight: 600,
-                      border: '1px solid #A6D9D3', background: '#e9f7f4', color: teal[700],
+                      border: '1px solid #94A3B8', background: '#e9f7f4', color: teal[700],
                     }}>{passwordMsg}</div>
                   )}
                   {passwordError && <ErrorBanner message={passwordError} onDismiss={() => setPasswordError(null)} />}
@@ -644,7 +644,7 @@ const CustomerProfile: React.FC = () => {
                         padding: '9px 18px', borderRadius: 10, cursor: changingPassword ? 'default' : 'pointer', border: 'none',
                         background: `linear-gradient(155deg, ${teal[500]}, ${teal[700]})`,
                         color: '#fff', display: 'flex', alignItems: 'center', gap: 7,
-                        boxShadow: `0 8px 20px -8px rgba(15,84,76,.6)`, opacity: changingPassword ? 0.7 : 1,
+                        boxShadow: `0 8px 20px -8px rgba(15,44,89,.35)`, opacity: changingPassword ? 0.7 : 1,
                       }}
                       disabled={changingPassword || !passwordForm.currentPassword || !passwordForm.newPassword || !passwordForm.confirmPassword}
                     >
@@ -711,7 +711,7 @@ const CustomerProfile: React.FC = () => {
                             padding: '9px 18px', borderRadius: 10, cursor: twoFactorLoading ? 'default' : 'pointer', border: 'none',
                             background: `linear-gradient(155deg, ${teal[500]}, ${teal[700]})`,
                             color: '#fff', display: 'flex', alignItems: 'center', gap: 7, justifyContent: 'center',
-                            boxShadow: `0 8px 20px -8px rgba(15,84,76,.6)`, opacity: twoFactorLoading || twoFactorCode.length < 6 ? 0.7 : 1,
+                            boxShadow: `0 8px 20px -8px rgba(15,44,89,.35)`, opacity: twoFactorLoading || twoFactorCode.length < 6 ? 0.7 : 1,
                           }}>
                             {twoFactorLoading ? <Loader2 size={15} className="animate-spin" /> : <Save size={15} />}
                             {twoFactorLoading ? 'Enabling...' : 'Enable 2FA'}
@@ -732,7 +732,7 @@ const CustomerProfile: React.FC = () => {
                         padding: '9px 18px', borderRadius: 10, cursor: twoFactorLoading ? 'default' : 'pointer', border: 'none',
                         background: `linear-gradient(155deg, ${teal[500]}, ${teal[700]})`,
                         color: '#fff', display: 'flex', alignItems: 'center', gap: 7, justifyContent: 'center',
-                        boxShadow: `0 8px 20px -8px rgba(15,84,76,.6)`, opacity: twoFactorLoading ? 0.7 : 1,
+                        boxShadow: `0 8px 20px -8px rgba(15,44,89,.35)`, opacity: twoFactorLoading ? 0.7 : 1,
                       }}>
                         {twoFactorLoading ? <Loader2 size={15} className="animate-spin" /> : <Shield size={15} />}
                         {twoFactorLoading ? 'Setting up...' : 'Set Up 2FA'}
@@ -768,7 +768,7 @@ const CustomerProfile: React.FC = () => {
                             border: `1px solid ${hairline}`, flexWrap: 'wrap',
                           }}>
                             <div style={{ display: 'flex', alignItems: 'center', gap: 10, minWidth: 0, flex: 1 }}>
-                              <div style={{ width: 34, height: 34, borderRadius: 10, background: '#eef7f6', color: teal[600], display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                              <div style={{ width: 34, height: 34, borderRadius: 10, background: '#E2E8F0', color: teal[600], display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                                 <Smartphone size={15} />
                               </div>
                               <div style={{ minWidth: 0 }}>

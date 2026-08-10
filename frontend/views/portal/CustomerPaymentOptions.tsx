@@ -80,12 +80,12 @@ const typeConfig: Record<string, { icon: React.ReactNode; color: string; bg: str
   mobile: {
     icon: <Smartphone size={18} />,
     color: '#059669',
-    bg: '#ecfdf5',
+    bg: '#D1FAE5',
     label: 'Mobile Money',
   },
   cash: {
     icon: <Banknote size={18} />,
-    color: '#d99a3f',
+    color: '#D97706',
     bg: '#fffbeb',
     label: 'Cash',
   },
@@ -149,7 +149,7 @@ const CustomerPaymentOptions: React.FC = () => {
                             {config.icon}
                           </div>
                           <div>
-                            <div style={{ fontSize: 14, fontWeight: 600, color: '#0b3e39' }}>{method.name}</div>
+                            <div style={{ fontSize: 14, fontWeight: 600, color: '#0F2C59' }}>{method.name}</div>
                           </div>
                         </div>
 
@@ -170,7 +170,7 @@ const CustomerPaymentOptions: React.FC = () => {
                                   {detail.label}
                                 </span>
                                 <span style={{
-                                  fontSize: 13, fontWeight: 700, color: '#0b3e39',
+                                  fontSize: 13, fontWeight: 700, color: '#0F2C59',
                                   fontFamily: "'JetBrains Mono', monospace",
                                 }}>
                                   {detail.value}
@@ -207,10 +207,10 @@ const CustomerPaymentOptions: React.FC = () => {
           marginTop: 24,
           padding: '14px 18px',
           borderRadius: 12,
-          background: '#eef7f6',
-          border: '1px solid #d3ece9',
+          background: '#E2E8F0',
+          border: '1px solid #E2E8F0',
         }}>
-          <p style={{ fontSize: 12, fontWeight: 600, color: '#0f544c', margin: 0, lineHeight: 1.5 }}>
+          <p style={{ fontSize: 12, fontWeight: 600, color: '#0F2C59', margin: 0, lineHeight: 1.5 }}>
             After making a payment, please send the proof (screenshot or receipt) via WhatsApp or email to ensure timely allocation to your account.
           </p>
         </div>

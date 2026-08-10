@@ -146,7 +146,7 @@ const CustomerInvoices: React.FC = () => {
                     style={{ background: '#fff', borderRadius: 12, padding: '12px 14px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16, border: '1px solid #E9EDF3', cursor: 'pointer' }}
                   >
                     <div style={{ display: 'flex', alignItems: 'center', gap: 14, minWidth: 0 }}>
-                      <div style={{ width: 34, height: 34, borderRadius: 10, background: '#ECFDF5', color: '#0D5047', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, border: '1px solid rgba(16,185,129,0.15)', boxShadow: '0 1px 3px rgba(0,0,0,.04)' }}>
+                      <div style={{ width: 34, height: 34, borderRadius: 10, background: '#D1FAE5', color: '#0F2C59', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, border: '1px solid rgba(16,185,129,0.15)', boxShadow: '0 1px 3px rgba(0,0,0,.04)' }}>
                         <FileText size={18} />
                       </div>
                       <div style={{ minWidth: 0 }}>
@@ -165,7 +165,7 @@ const CustomerInvoices: React.FC = () => {
                         </div>
                         <div style={{ fontSize: 10, color: '#8A94A6', textTransform: 'uppercase', fontWeight: 700, letterSpacing: 0.05 }}>Total</div>
                       </div>
-                      <div style={{ padding: 6, borderRadius: 8, background: '#ECFDF5', color: '#0D5047', cursor: 'pointer' }}>
+                      <div style={{ padding: 6, borderRadius: 8, background: '#D1FAE5', color: '#0F2C59', cursor: 'pointer' }}>
                         <ChevronRight size={16} />
                       </div>
                     </div>

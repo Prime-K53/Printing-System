@@ -81,7 +81,7 @@ const CommandPalette: React.FC<CommandPaletteProps> = ({ open, onClose }) => {
   if (!open) return null;
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-start justify-center pt-[15vh]" onClick={onClose}>
+    <div className="fixed inset-0 z-[100] flex items-start justify-center pt-[15vh]" onClick={onClose} style={{ background: 'rgba(15,44,89,0.4)' }}>
       <div className="absolute inset-0 bg-slate-900/40 backdrop-blur-sm" />
       <div
         className="relative w-full max-w-xl mx-4 glass-modal rounded-2xl overflow-hidden shadow-2xl"
@@ -120,7 +120,7 @@ const CommandPalette: React.FC<CommandPaletteProps> = ({ open, onClose }) => {
                       className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-slate-700 hover:bg-slate-100/80 transition-colors text-left"
                     >
                       <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 bg-slate-100 text-slate-600">
-                        <Icon.size size={16} />
+                        <Icon size={16} />
                       </div>
                       <div className="flex-1 min-w-0">
                         <div className="font-medium text-slate-900">{cmd.label}</div>

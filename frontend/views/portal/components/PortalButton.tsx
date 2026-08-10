@@ -50,20 +50,20 @@ const PortalButton: React.FC<Props> = ({
 
   const variantStyles: Record<ButtonVariant, React.CSSProperties> = {
     primary: {
-      background: 'linear-gradient(135deg, #146b60 0%, #0f544c 100%)',
+      background: 'linear-gradient(135deg, #0F2C59 0%, #1E4078 100%)',
       color: '#fff',
       border: '1px solid rgba(255, 255, 255, 0.15)',
       boxShadow: '0 4px 14px -2px rgba(15, 84, 76, 0.4)',
     },
     secondary: {
       background: 'rgba(255, 255, 255, 0.9)',
-      color: '#0b3e39',
+      color: '#0F2C59',
       border: '1px solid rgba(203, 213, 225, 0.8)',
       boxShadow: '0 1px 3px rgba(15, 23, 42, 0.04)',
     },
     ghost: {
       background: 'transparent',
-      color: '#146b60',
+      color: '#0F2C59',
       border: '1px solid transparent',
       boxShadow: 'none',
     },

@@ -61,7 +61,7 @@ const PrimeAssistant: React.FC = () => {
           <div className="flex items-center justify-between px-5 py-4 border-b border-slate-200/60">
             <div className="flex items-center gap-2.5">
               <div className="w-8 h-8 rounded-xl flex items-center justify-center text-white"
-                style={{ background: 'linear-gradient(135deg, #1f8577, #0f544c)', boxShadow: '0 4px 10px -4px rgba(15,84,76,.4)' }}>
+                style={{ background: 'linear-gradient(135deg, #0F2C59, #1E4078)', boxShadow: '0 4px 10px -4px rgba(15,44,89,.25)' }}>
                 <Sparkles size={16} />
               </div>
               <div>
@@ -136,7 +136,7 @@ const PrimeAssistant: React.FC = () => {
         <button
           onClick={() => setOpen(true)}
           className="fixed bottom-20 right-4 md:right-8 z-40 w-14 h-14 rounded-full flex items-center justify-center text-white shadow-lg hover:shadow-xl hover:scale-105 transition-all"
-          style={{ background: 'linear-gradient(135deg, #1f8577, #0f544c)', boxShadow: '0 10px 25px -8px rgba(15,84,76,.5)' }}
+          style={{ background: 'linear-gradient(135deg, #0F2C59, #1E4078)', boxShadow: '0 10px 25px -8px rgba(15,84,76,.5)' }}
           aria-label="Open Prime AI assistant"
         >
           <Sparkles size={22} />

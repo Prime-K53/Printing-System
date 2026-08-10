@@ -159,7 +159,7 @@ const CustomerRequests: React.FC = () => {
       <div style={{ padding: '16px 20px 0' }}>
         {error && (
           <div style={{
-            background: '#FEF2F2', border: '1px solid #FECACA', color: '#B91C1C', borderRadius: 10, padding: '10px 14px', fontSize: 12.5,
+            background: '#FEE2E2', border: '1px solid #FECACA', color: '#B91C1C', borderRadius: 10, padding: '10px 14px', fontSize: 12.5,
             marginBottom: 10, lineHeight: 1.4,
             display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12
           }}>
@@ -186,16 +186,16 @@ const CustomerRequests: React.FC = () => {
           <button
             onClick={() => setShowFilterSheet(true)}
             style={{
-              width: 48, height: 48, borderRadius: 14, border: `1px solid ${activeFilterCount ? '#4ed3c7' : '#E9EDF3'}`,
-              background: activeFilterCount ? '#eef7f6' : '#fff', cursor: 'pointer',
+              width: 48, height: 48, borderRadius: 14, border: `1px solid ${activeFilterCount ? '#059669' : '#E9EDF3'}`,
+              background: activeFilterCount ? '#E2E8F0' : '#fff', cursor: 'pointer',
               display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', flexShrink: 0
             }}
           >
-            <SlidersHorizontal size={18} color={activeFilterCount ? '#146b60' : '#8A94A6'} />
+            <SlidersHorizontal size={18} color={activeFilterCount ? '#0F2C59' : '#8A94A6'} />
             {activeFilterCount > 0 && (
               <span style={{
                 position: 'absolute', top: -4, right: -4, width: 18, height: 18, borderRadius: '50%',
-                background: 'linear-gradient(135deg, #1f8577, #0f544c)', color: '#fff',
+                background: 'linear-gradient(135deg, #0F2C59, #1E4078)', color: '#fff',
                 fontSize: 10, fontWeight: 700, display: 'flex', alignItems: 'center', justifyContent: 'center'
               }}>
                 {activeFilterCount}
@@ -205,7 +205,7 @@ const CustomerRequests: React.FC = () => {
         </div>
 
         {refreshing && (
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, padding: '12px 0', color: '#146b60' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, padding: '12px 0', color: '#0F2C59' }}>
             <RefreshCw size={16} style={{ animation: 'spin 1s linear infinite' }} />
             <span style={{ fontSize: 12, fontWeight: 600 }}>Refreshing...</span>
           </div>
@@ -226,7 +226,7 @@ const CustomerRequests: React.FC = () => {
               <span style={{ fontSize: 12, color: '#8A94A6', fontWeight: 500 }}>
                 {total} request{total !== 1 ? 's' : ''} {statusFilter ? '• filtered' : ''}
               </span>
-              <button onClick={handleRefresh} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#146b60', display: 'flex', alignItems: 'center', gap: 4, fontSize: 12, fontWeight: 600 }}>
+              <button onClick={handleRefresh} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#0F2C59', display: 'flex', alignItems: 'center', gap: 4, fontSize: 12, fontWeight: 600 }}>
                 <RefreshCw size={14} /> Refresh
               </button>
             </div>
@@ -275,22 +275,22 @@ const CustomerRequests: React.FC = () => {
                       <div
                         style={{
                           borderRadius: 14, padding: '14px 16px', background: '#fff',
-                          border: '1px solid rgba(16,24,40,0.06)', borderLeft: '4px solid #d99a3f',
+                          border: '1px solid rgba(16,24,40,0.06)', borderLeft: '4px solid #D97706',
                           display: 'flex', alignItems: 'center', gap: 12, textAlign: 'left', width: '100%',
                           boxShadow: '0 1px 2px rgba(16,24,40,0.04)', transition: 'all .15s ease',
                           cursor: 'pointer'
                         }}
                       >
                         <div style={{ width: 34, height: 34, borderRadius: 10, display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#FEF3C7', flexShrink: 0 }}>
-                          <ClipboardList size={16} color="#b97e2b" />
+                          <ClipboardList size={16} color="#B45309" />
                         </div>
                         <div style={{ flex: 1, minWidth: 0 }}>
-                          <div style={{ fontSize: 13, fontWeight: 600, color: '#0b3e39' }}>{r.request_number}</div>
+                          <div style={{ fontSize: 13, fontWeight: 600, color: '#0F2C59' }}>{r.request_number}</div>
                           <div style={{ fontSize: 10, color: '#8A94A6', marginTop: 1, lineHeight: 1.3 }}>
                             {new Date(r.created_at).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })} • {itemCount} item{itemCount === 1 ? '' : 's'} • K {Number(r.subtotal || 0).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                           </div>
                         </div>
-                        <div style={{ marginLeft: 'auto', padding: '4px 10px', borderRadius: 6, background: '#eef7f6', fontSize: 10, fontWeight: 600, color: '#0f544c', display: 'flex', alignItems: 'center', gap: 3, flexShrink: 0, border: '1px solid #d3ece9' }}>
+                        <div style={{ marginLeft: 'auto', padding: '4px 10px', borderRadius: 6, background: '#E2E8F0', fontSize: 10, fontWeight: 600, color: '#0F2C59', display: 'flex', alignItems: 'center', gap: 3, flexShrink: 0, border: '1px solid #E2E8F0' }}>
                           View
                           <ChevronRight size={10} />
                         </div>
@@ -321,7 +321,7 @@ const CustomerRequests: React.FC = () => {
                       onClick={() => setPage(p)}
                       style={{
                         width: 32, height: 32, borderRadius: 8, border: p === page ? 'none' : '1px solid #E9EDF3',
-                        background: p === page ? '#008A4C' : '#fff',
+                        background: p === page ? '#059669' : '#fff',
                         color: p === page ? '#fff' : '#4A5568', fontSize: 12, fontWeight: 600, cursor: 'pointer',
                         boxShadow: p === page ? '0 4px 10px -3px rgba(0,138,76,.6)' : 'none', transition: 'all .15s ease'
                       }}
@@ -352,7 +352,7 @@ const CustomerRequests: React.FC = () => {
         onClick={() => navigate('/portal/new-request')}
         style={{
           position: 'fixed', bottom: 24, right: 24, width: 56, height: 56, borderRadius: 18, border: 'none', cursor: 'pointer',
-          background: 'linear-gradient(135deg, #008A4C, #006B3A)',
+          background: 'linear-gradient(135deg, #059669, #006B3A)',
           color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center',
           boxShadow: '0 8px 24px -8px rgba(0,138,76,.6)', zIndex: 40, transition: 'transform .15s ease'
         }}
@@ -378,7 +378,7 @@ const CustomerRequests: React.FC = () => {
             <div style={{ width: 40, height: 4, borderRadius: 2, background: '#E9EDF3', margin: '0 auto 16px' }} />
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>
               <h3 style={{ fontSize: 18, fontWeight: 700, color: '#1A202C', margin: 0 }}>Filters</h3>
-              <button onClick={() => { setStatusFilter(''); setSearch(''); }} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#146b60', fontSize: 13, fontWeight: 600 }}>
+              <button onClick={() => { setStatusFilter(''); setSearch(''); }} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#0F2C59', fontSize: 13, fontWeight: 600 }}>
                 Clear all
               </button>
             </div>
@@ -388,8 +388,8 @@ const CustomerRequests: React.FC = () => {
                 <button
                   onClick={() => { setStatusFilter(''); setShowFilterSheet(false); }}
                   style={{
-                    padding: '10px 16px', borderRadius: 12, border: `1px solid ${!statusFilter ? '#4ed3c7' : '#E9EDF3'}`,
-                    background: !statusFilter ? '#eef7f6' : '#fff', color: !statusFilter ? '#0f544c' : '#0b3e39',
+                    padding: '10px 16px', borderRadius: 12, border: `1px solid ${!statusFilter ? '#059669' : '#E9EDF3'}`,
+                    background: !statusFilter ? '#E2E8F0' : '#fff', color: !statusFilter ? '#0F2C59' : '#0F2C59',
                     fontSize: 13, fontWeight: 600, cursor: 'pointer', transition: 'all .15s ease'
                   }}
                 >
@@ -400,8 +400,8 @@ const CustomerRequests: React.FC = () => {
                     key={raw}
                     onClick={() => { setStatusFilter(raw); setShowFilterSheet(false); }}
                     style={{
-                      padding: '10px 16px', borderRadius: 12, border: `1px solid ${statusFilter === raw ? '#4ed3c7' : '#E9EDF3'}`,
-                      background: statusFilter === raw ? '#eef7f6' : '#fff', color: statusFilter === raw ? '#0f544c' : '#0b3e39',
+                      padding: '10px 16px', borderRadius: 12, border: `1px solid ${statusFilter === raw ? '#059669' : '#E9EDF3'}`,
+                      background: statusFilter === raw ? '#E2E8F0' : '#fff', color: statusFilter === raw ? '#0F2C59' : '#0F2C59',
                       fontSize: 13, fontWeight: 600, cursor: 'pointer', transition: 'all .15s ease'
                     }}
                   >
@@ -414,7 +414,7 @@ const CustomerRequests: React.FC = () => {
               onClick={() => setShowFilterSheet(false)}
               style={{
                 width: '100%', padding: '14px 0', borderRadius: 14, border: 'none', cursor: 'pointer',
-                background: 'linear-gradient(135deg, #008A4C, #006B3A)', color: '#fff',
+                background: 'linear-gradient(135deg, #059669, #006B3A)', color: '#fff',
                 fontSize: 15, fontWeight: 700, boxShadow: '0 6px 16px -6px rgba(0,138,76,.5)'
               }}
             >
@@ -443,7 +443,7 @@ const CustomerRequests: React.FC = () => {
             <div style={{ display: 'flex', gap: 10, padding: '0 24px 24px' }}>
               <button onClick={() => setConfirmState({ open: false, id: null })} style={{
                 flex: 1, padding: '14px 0', borderRadius: 14, border: '1px solid #E9EDF3', background: '#fff',
-                color: '#0b3e39', fontSize: 14, fontWeight: 700, cursor: 'pointer', transition: 'all .15s ease'
+                color: '#0F2C59', fontSize: 14, fontWeight: 700, cursor: 'pointer', transition: 'all .15s ease'
               }}>
                 Keep Request
               </button>

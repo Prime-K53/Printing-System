@@ -13,7 +13,7 @@ const EmptyState: React.FC<Props> = ({ icon, title, description, action, seconda
   return (
     <div className="flex flex-col items-center justify-center py-16 px-6 text-center">
       <div className="glass-panel p-5 rounded-2xl mb-5 text-slate-400 inline-flex">
-        {React.isValidElement(icon) ? icon : IconComponent ? <IconComponent.size size={36} /> : null}
+        {React.isValidElement(icon) ? icon : IconComponent ? <IconComponent size={36} /> : null}
       </div>
       <h3 className="text-lg font-semibold text-slate-800 mb-1.5" style={{ fontFamily: "'Inter', sans-serif" }}>{title}</h3>
       {description && (
@@ -25,8 +25,8 @@ const EmptyState: React.FC<Props> = ({ icon, title, description, action, seconda
         {action && (
           <button
             onClick={action.onClick}
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white transition-all hover:shadow-lg hover:shadow-emerald-600/20 hover:-translate-y-0.5"
-            style={{ background: 'linear-gradient(135deg, #1f8577, #0f544c)' }}
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white transition-all hover:shadow-lg hover:shadow-blue-900/20 hover:-translate-y-0.5"
+            style={{ background: 'linear-gradient(135deg, #0F2C59, #1E3A5F)' }}
           >
             {action.label}
           </button>

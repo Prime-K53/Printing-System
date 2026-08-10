@@ -137,8 +137,8 @@ const CustomerShipments: React.FC = () => {
                 return (
                   <PortalCard hoverable key={shipment.id}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-                      <div style={{ width: 34, height: 34, borderRadius: 10, background: '#eef7f6', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                        <Truck size={15} style={{ color: '#146b60' }} />
+                      <div style={{ width: 34, height: 34, borderRadius: 10, background: '#E2E8F0', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                        <Truck size={15} style={{ color: '#0F2C59' }} />
                       </div>
                       <div style={{ flex: 1, minWidth: 0 }}>
                         <div style={{ fontFamily: 'monospace', fontWeight: 700, fontSize: 13, color: '#1A202C' }}>#{orderNumber}</div>

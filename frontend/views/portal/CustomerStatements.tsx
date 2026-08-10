@@ -250,7 +250,7 @@ const CustomerStatements: React.FC = () => {
                   fontSize: 12,
                   fontWeight: 700,
                   color: '#fff',
-                  background: 'linear-gradient(135deg, #146b60 0%, #0f544c 100%)',
+                  background: 'linear-gradient(135deg, #0F2C59 0%, #1E4078 100%)',
                   border: 'none',
                   cursor: 'pointer',
                   boxShadow: '0 4px 6px rgba(15,84,76,.25)',
@@ -352,7 +352,7 @@ const CustomerStatements: React.FC = () => {
                 disabled={downloading}
                 style={{
                   width: '100%', padding: '12px', borderRadius: 10, border: 'none',
-                  background: 'linear-gradient(135deg, #146b60 0%, #0f544c 100%)',
+                  background: 'linear-gradient(135deg, #0F2C59 0%, #1E4078 100%)',
                   color: '#fff', fontSize: 13, fontWeight: 600, cursor: downloading ? 'not-allowed' : 'pointer',
                   opacity: downloading ? 0.6 : 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
                   boxShadow: '0 4px 6px rgba(15,84,76,.25)',

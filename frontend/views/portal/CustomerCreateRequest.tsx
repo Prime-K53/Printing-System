@@ -37,8 +37,8 @@ const fieldBase: React.CSSProperties = {
 };
 
 const focusIn = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-  e.currentTarget.style.borderColor = '#4ed3c7';
-  e.currentTarget.style.boxShadow = '0 0 0 3px #eef7f6';
+  e.currentTarget.style.borderColor = '#059669';
+  e.currentTarget.style.boxShadow = '0 0 0 3px #E2E8F0';
 };
 
 const focusOut = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -219,9 +219,9 @@ const CustomerCreateRequest: React.FC = () => {
         <style>{spinKeyframes}</style>
         <div style={{
           width: 48, height: 48, borderRadius: 16,
-          background: 'linear-gradient(135deg, #1f8577, #0f544c)',
+          background: 'linear-gradient(135deg, #0F2C59, #1E4078)',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
-          boxShadow: '0 4px 14px -4px rgba(15,84,76,.6)', animation: 'pulse 1.5s ease-in-out infinite'
+          boxShadow: '0 4px 14px -4px rgba(15,44,89,.35)', animation: 'pulse 1.5s ease-in-out infinite'
         }}>
           <Loader2 size={24} color="#fff" style={{ animation: 'spin 1s linear infinite' }} />
         </div>
@@ -239,18 +239,18 @@ const CustomerCreateRequest: React.FC = () => {
         }}>
           <div style={{
             position: 'absolute', top: 0, left: 0, right: 0, height: 4,
-            background: 'linear-gradient(90deg, #146b60, #4ed3c7 40%, #d99a3f 100%)', borderRadius: '12px 12px 0 0'
+            background: 'linear-gradient(90deg, #0F2C59, #059669 40%, #D97706 100%)', borderRadius: '12px 12px 0 0'
           }} />
           <div style={{
             width: 72, height: 72, borderRadius: 12,
-            background: 'linear-gradient(135deg, #1f857718, #4ed3c710)',
+            background: 'linear-gradient(135deg, #0F2C5918, #05966910)',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
             margin: '0 auto 16px', animation: 'scaleIn .4s cubic-bezier(.4,0,.2,1) .1s both'
           }}>
-            <CheckCircle2 size={36} color="#146b60" strokeWidth={2.5} />
+            <CheckCircle2 size={36} color="#0F2C59" strokeWidth={2.5} />
           </div>
           <h2 style={{
-            fontFamily: F, fontSize: 22, margin: 0, color: '#0b3e39', letterSpacing: 0.2, lineHeight: 1.35
+            fontFamily: F, fontSize: 22, margin: 0, color: '#0F2C59', letterSpacing: 0.2, lineHeight: 1.35
           }}>
             {type === 'order' ? 'Order Requested' : 'Quotation Requested'}
           </h2>
@@ -263,7 +263,7 @@ const CustomerCreateRequest: React.FC = () => {
                onClick={() => navigate('/portal/orders?tab=requests')}
               style={{
                 width: '100%', padding: '8px 14px', borderRadius: 8, border: 'none', cursor: 'pointer',
-                background: 'linear-gradient(135deg, #1f8577, #0f544c)', color: '#fff',
+                background: 'linear-gradient(135deg, #0F2C59, #1E4078)', color: '#fff',
                 fontSize: 12, fontWeight: 600, lineHeight: 1.4, boxShadow: '0 6px 16px -6px rgba(15,84,76,.5)',
                 transition: 'all .15s ease'
               }}
@@ -299,7 +299,7 @@ const CustomerCreateRequest: React.FC = () => {
             aria-label="Back to requests"
             style={{
               width: 40, height: 40, borderRadius: 10, border: 'none', cursor: 'pointer',
-              background: '#eef7f6', color: '#0f544c', flexShrink: 0,
+              background: '#E2E8F0', color: '#0F2C59', flexShrink: 0,
               display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all .15s ease'
             }}
           >
@@ -321,8 +321,8 @@ const CustomerCreateRequest: React.FC = () => {
           <div style={{
             width: 44, height: 44, borderRadius: 12, flexShrink: 0,
             background: type === 'order'
-              ? 'linear-gradient(135deg, #1f8577, #0f544c)'
-              : 'linear-gradient(135deg, #d99a3f, #b97e2b)',
+              ? 'linear-gradient(135deg, #0F2C59, #1E4078)'
+              : 'linear-gradient(135deg, #D97706, #B45309)',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
             boxShadow: '0 4px 12px -4px rgba(15,84,76,.5)'
           }}>
@@ -345,7 +345,7 @@ const CustomerCreateRequest: React.FC = () => {
               display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
               height: 46, borderRadius: 8, border: 'none', cursor: 'pointer',
               fontFamily: F, fontSize: 12, fontWeight: 600,
-              background: type === 'order' ? 'linear-gradient(135deg, #1f8577, #0f544c)' : 'transparent',
+              background: type === 'order' ? 'linear-gradient(135deg, #0F2C59, #1E4078)' : 'transparent',
               color: type === 'order' ? '#fff' : '#4A5568',
               boxShadow: type === 'order' ? '0 4px 14px -4px rgba(15,84,76,.5)' : 'none',
               transition: 'all .2s cubic-bezier(.4,0,.2,1)', position: 'relative', overflow: 'hidden'
@@ -367,7 +367,7 @@ const CustomerCreateRequest: React.FC = () => {
               display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
               height: 46, borderRadius: 8, border: 'none', cursor: 'pointer',
               fontFamily: F, fontSize: 12, fontWeight: 600,
-              background: type === 'quotation' ? 'linear-gradient(135deg, #1f8577, #0f544c)' : 'transparent',
+              background: type === 'quotation' ? 'linear-gradient(135deg, #0F2C59, #1E4078)' : 'transparent',
               color: type === 'quotation' ? '#fff' : '#4A5568',
               boxShadow: type === 'quotation' ? '0 4px 14px -4px rgba(15,84,76,.5)' : 'none',
               transition: 'all .2s cubic-bezier(.4,0,.2,1)', position: 'relative', overflow: 'hidden'
@@ -401,7 +401,7 @@ const CustomerCreateRequest: React.FC = () => {
                 value={`From ${reorderRef}`}
                 style={{
                   ...fieldBase, fontSize: 13, padding: '8px 12px',
-                  background: '#eef7f6', border: '1px solid #a6d9d3', color: '#0b3e39', fontWeight: 600,
+                  background: '#E2E8F0', border: '1px solid #94A3B8', color: '#0F2C59', fontWeight: 600,
                 }}
                 onFocus={(e) => { e.target.select(); }}
               />
@@ -440,7 +440,7 @@ const CustomerCreateRequest: React.FC = () => {
               }}>
                 {filteredCatalog.length === 0 ? (
                   <div style={{ padding: '20px 14px', textAlign: 'center' }}>
-                    <Package size={28} color="#72c0b7" style={{ margin: '0 auto 8px' }} />
+                    <Package size={28} color="#059669" style={{ margin: '0 auto 8px' }} />
                     <p style={{ margin: 0, fontSize: 13, fontWeight: 500, color: '#4A5568', lineHeight: 1.45 }}>No products match your search</p>
                   </div>
                 ) : (
@@ -453,7 +453,7 @@ const CustomerCreateRequest: React.FC = () => {
                         textAlign: 'left', border: 'none', borderBottom: '1px solid #E9EDF3',
                         background: 'transparent', cursor: 'pointer', fontSize: 13, transition: 'all .15s ease'
                       }}
-                      onMouseEnter={(e) => { e.currentTarget.style.background = '#eef7f6'; }}
+                      onMouseEnter={(e) => { e.currentTarget.style.background = '#E2E8F0'; }}
                       onMouseLeave={(e) => { e.currentTarget.style.background = 'transparent'; }}
                     >
                       <div style={{ minWidth: 0, flex: 1, textAlign: 'left' }}>
@@ -464,9 +464,9 @@ const CustomerCreateRequest: React.FC = () => {
                       </div>
                       <div style={{
                         width: 36, height: 36, borderRadius: 8, flexShrink: 0,
-                        background: 'linear-gradient(135deg, #1f8577, #146b60)', color: '#fff',
+                        background: 'linear-gradient(135deg, #0F2C59, #1E4078)', color: '#fff',
                         display: 'flex', alignItems: 'center', justifyContent: 'center',
-                        boxShadow: '0 2px 6px -2px rgba(15,84,76,.4)'
+                        boxShadow: '0 2px 6px -2px rgba(15,44,89,.25)'
                       }}>
                         <Plus size={18} strokeWidth={3} />
                       </div>
@@ -494,10 +494,10 @@ const CustomerCreateRequest: React.FC = () => {
           {lines.length === 0 ? (
             <div style={{ padding: '36px 14px', textAlign: 'center' }}>
               <div style={{
-                width: 48, height: 48, borderRadius: 12, background: '#ECFDF5',
+                width: 48, height: 48, borderRadius: 12, background: '#D1FAE5',
                 display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 12px'
               }}>
-                <Package size={26} color="#008A4C" />
+                <Package size={26} color="#059669" />
               </div>
               <p style={{ margin: 0, fontSize: 13, fontWeight: 500, color: '#4A5568', lineHeight: 1.5 }}>
                 No items selected yet.<br />Search and add products above.
@@ -526,7 +526,7 @@ const CustomerCreateRequest: React.FC = () => {
                             aria-label="Decrease quantity"
                             style={{
                               width: 32, height: 32, borderRadius: 8, border: '1px solid #E9EDF3',
-                              background: '#fff', color: '#146b60', cursor: 'pointer', fontSize: 14, fontWeight: 600,
+                              background: '#fff', color: '#0F2C59', cursor: 'pointer', fontSize: 14, fontWeight: 600,
                               display: 'inline-flex', alignItems: 'center', justifyContent: 'center', transition: 'all .15s ease'
                             }}
                           >
@@ -543,7 +543,7 @@ const CustomerCreateRequest: React.FC = () => {
                             aria-label="Increase quantity"
                             style={{
                               width: 32, height: 32, borderRadius: 8, border: '1px solid #E9EDF3',
-                              background: '#fff', color: '#146b60', cursor: 'pointer', fontSize: 14, fontWeight: 600,
+                              background: '#fff', color: '#0F2C59', cursor: 'pointer', fontSize: 14, fontWeight: 600,
                               display: 'inline-flex', alignItems: 'center', justifyContent: 'center', transition: 'all .15s ease'
                             }}
                           >
@@ -661,11 +661,11 @@ const CustomerCreateRequest: React.FC = () => {
               flex: 1, height: 46, borderRadius: 8, border: 'none', cursor: saving || lines.length === 0 ? 'not-allowed' : 'pointer',
               background: saving || lines.length === 0
                 ? '#E9EDF3'
-                : 'linear-gradient(135deg, #1f8577, #0f544c)',
+                : 'linear-gradient(135deg, #0F2C59, #1E4078)',
               color: saving || lines.length === 0 ? '#8A94A6' : '#fff', fontSize: 12, fontWeight: 600,
               fontFamily: F, lineHeight: 1.4,
               display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 8,
-              boxShadow: saving || lines.length === 0 ? 'none' : '0 8px 20px -8px rgba(15,84,76,.6)',
+              boxShadow: saving || lines.length === 0 ? 'none' : '0 8px 20px -8px rgba(15,44,89,.35)',
               transition: 'all .2s cubic-bezier(.4,0,.2,1)'
             }}
           >

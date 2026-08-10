@@ -64,10 +64,10 @@ const CustomerSupport: React.FC = () => {
                 }}>
                   <div style={{
                     width: 34, height: 34, borderRadius: 10,
-                    background: '#ECFDF5',
+                    background: '#D1FAE5',
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
                     flexShrink: 0,
-                    color: '#008A4C'
+                    color: '#059669'
                   }}>
                     <item.icon size={16} />
                   </div>
@@ -136,7 +136,7 @@ const CustomerSupport: React.FC = () => {
                   fontFamily: F,
                   fontSize: 13,
                   fontWeight: 600,
-                  color: '#008A4C',
+                  color: '#059669',
                   textDecoration: 'none',
                   lineHeight: 1.45,
                   wordBreak: 'break-all'

@@ -43,8 +43,8 @@ const PortalUserManagement: React.FC = () => {
   const [inviteCode, setInviteCode] = useState<{ userId: string; code: string; customerName: string; customerId: string } | null>(null);
 
   // Styling constants (mirroring Add Customer modal)
-  const teal: Record<string, string> = { 50: '#eef7f6', 100: '#d3ece9', 200: '#a6d9d3', 300: '#72c0b7', 400: '#3fa294', 500: '#1f8577', 600: '#146b60', 700: '#0f544c', 800: '#0b3e39', 900: '#082e2a' };
-  const amber: Record<string, string> = { 100: '#fbead0', 300: '#eec27a', 500: '#d99a3f', 600: '#b97e2b' };
+  const teal: Record<string, string> = { 50: '#E2E8F0', 100: '#E2E8F0', 200: '#94A3B8', 300: '#059669', 400: '#0F2C59', 500: '#0F2C59', 600: '#0F2C59', 700: '#0F2C59', 800: '#0F2C59', 900: '#082040' };
+  const amber: Record<string, string> = { 100: '#FEF3C7', 300: '#D97706', 500: '#D97706', 600: '#B45309' };
   const paper = '#FEFDFB';
   const ink = '#23282A';
   const inkSoft = '#5c6567';
@@ -201,7 +201,7 @@ const PortalUserManagement: React.FC = () => {
                     width: 40, height: 40, borderRadius: 10,
                     background: `linear-gradient(155deg, ${teal[500]}, ${teal[700]})`,
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    boxShadow: `0 4px 10px -3px rgba(15,84,76,.6)`, flexShrink: 0
+                    boxShadow: `0 4px 10px -3px rgba(15,44,89,.35)`, flexShrink: 0
                   }}>
                     <Plus size={16} color="#fff" />
                   </div>
@@ -349,7 +349,7 @@ const PortalUserManagement: React.FC = () => {
                             <button
                               onClick={() => handleInvite(u)}
                               disabled={submitting}
-                              className="p-2 text-[#b97e2b] hover:text-amber-600 bg-amber-50 hover:bg-amber-100 border border-transparent hover:border-amber-200 rounded transition-all"
+                              className="p-2 text-[#B45309] hover:text-amber-600 bg-amber-50 hover:bg-amber-100 border border-transparent hover:border-amber-200 rounded transition-all"
                               title="Get / resend invite code"
                             >
                               {submitting ? <Loader2 size={14} className="animate-spin" /> : <Send size={14} />}
@@ -410,7 +410,7 @@ const PortalUserManagement: React.FC = () => {
           }} onClick={e => e.stopPropagation()}>
             <div style={{ height: 4, background: `linear-gradient(90deg, ${amber[500]}, ${amber[300]})` }} />
             <div style={{ padding: '24px 28px', textAlign: 'center' }}>
-              <div style={{ width: 44, height: 44, margin: '0 auto 12px', borderRadius: 12, background: '#fbead0', display: 'flex', alignItems: 'center', justifyContent: 'center', color: amber[600] }}>
+              <div style={{ width: 44, height: 44, margin: '0 auto 12px', borderRadius: 12, background: '#FEF3C7', display: 'flex', alignItems: 'center', justifyContent: 'center', color: amber[600] }}>
                 <Key size={20} />
               </div>
               <h2 style={{ fontFamily: "'DM Serif Display', 'Georgia', serif", fontWeight: 400, fontSize: 20, margin: '0 0 4px', color: teal[800] }}>
@@ -420,7 +420,7 @@ const PortalUserManagement: React.FC = () => {
                 Share this code with <strong style={{ color: ink }}>{inviteCode.customerName}</strong> (Customer ID: <span style={{ fontFamily: "'JetBrains Mono', monospace" }}>{inviteCode.customerId}</span>). They enter it under <strong style={{ color: ink }}>Activate Account</strong> at the portal sign-in screen to choose their own password. Expires in 30 minutes.
               </p>
               <div style={{
-                padding: '16px', background: '#fbead0', borderRadius: 12, border: `1.5px dashed ${amber[500]}`,
+                padding: '16px', background: '#FEF3C7', borderRadius: 12, border: `1.5px dashed ${amber[500]}`,
                 fontSize: 30, fontWeight: 800, letterSpacing: 8, fontFamily: "'JetBrains Mono', monospace", color: amber[600]
               }}>
                 {inviteCode.code}

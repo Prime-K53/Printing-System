@@ -98,7 +98,7 @@ const ConfirmDialog: React.FC<Props> = ({
               border: '1.4px solid transparent',
               background: variant === 'danger'
                 ? 'linear-gradient(155deg, #dc2626, #b91c1c)'
-                : 'linear-gradient(155deg, #1f8577, #0f544c)',
+                : 'linear-gradient(155deg, #0F2C59, #1E4078)',
               color: '#fff', fontSize: 13, fontWeight: 600,
               fontFamily: "'Inter', sans-serif",
               boxShadow: '0 6px 16px -6px rgba(15,84,76,.55)',

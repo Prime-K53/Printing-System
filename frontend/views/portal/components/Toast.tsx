@@ -51,23 +51,23 @@ export const ToastProvider: React.FC<Props> = ({ children }) => {
 
   const iconMap = {
     success: <CheckCircle2 size={18} color="#059669" />,
-    error: <XCircle size={18} color="#dc2626" />,
-    info: <Info size={18} color="#2563eb" />,
-    warning: <AlertTriangle size={18} color="#d99a3f" />,
+    error: <XCircle size={18} color="#DC2626" />,
+    info: <Info size={18} color="#0F2C59" />,
+    warning: <AlertTriangle size={18} color="#D97706" />,
   };
 
   const bgMap = {
-    success: '#f0fdfa',
-    error: '#fef2f2',
-    info: '#eff6ff',
-    warning: '#fffbeb',
+    success: '#D1FAE5',
+    error: '#FEE2E2',
+    info: '#EFF6FF',
+    warning: '#FEF9C3',
   };
 
   const borderMap = {
-    success: '#bbf7d0',
-    error: '#fecaca',
-    info: '#bfdbfe',
-    warning: '#fde68a',
+    success: '#A7F3D0',
+    error: '#FECACA',
+    info: '#BFDBFE',
+    warning: '#FDE68A',
   };
 
   return (

@@ -175,9 +175,9 @@ const CustomerReferrals: React.FC = () => {
   const funnelStages = useMemo(() => {
     if (!funnel) return [];
     return [
-      { label: 'Invited', value: funnel.total, icon: Users, color: '#0D5047' },
+      { label: 'Invited', value: funnel.total, icon: Users, color: '#0F2C59' },
       { label: 'Qualified', value: funnel.qualified, icon: CheckCircle2, color: '#DD6B20' },
-      { label: 'Paid', value: funnel.paid, icon: Wallet, color: '#0D5047' },
+      { label: 'Paid', value: funnel.paid, icon: Wallet, color: '#0F2C59' },
     ];
   }, [funnel]);
 
@@ -200,16 +200,16 @@ const CustomerReferrals: React.FC = () => {
         <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
           <div style={{
             width: 40, height: 40, borderRadius: 10,
-            background: `linear-gradient(155deg, #0D5047, #0D5047)`,
+            background: `linear-gradient(155deg, #0F2C59, #1E4078)`,
             display: 'flex', alignItems: 'center', justifyContent: 'center',
-            boxShadow: '0 4px 10px -3px rgba(15,84,76,.6)', flexShrink: 0
+            boxShadow: '0 4px 10px -3px rgba(15,44,89,.35)', flexShrink: 0
           }}>
             <Users size={19} color="#fff" />
           </div>
           <div>
             <h1 style={{
               fontFamily: "'DM Serif Display', 'Georgia', serif", fontWeight: 400,
-              fontSize: 22, margin: 0, color: '#0D5047', letterSpacing: 0.2
+              fontSize: 22, margin: 0, color: '#0F2C59', letterSpacing: 0.2
             }}>
               Referrals
             </h1>
@@ -249,7 +249,7 @@ const CustomerReferrals: React.FC = () => {
             <button onClick={() => setShowReferModal(true)} style={{
               fontFamily: "'Inter', sans-serif", fontSize: 13, fontWeight: 600,
               padding: '9px 18px', borderRadius: 9, cursor: 'pointer', border: '1.4px solid transparent',
-              background: `linear-gradient(155deg, #0D5047, #0D5047)`,
+              background: `linear-gradient(155deg, #0F2C59, #1E4078)`,
               color: '#fff', display: 'inline-flex', alignItems: 'center', gap: 7,
               boxShadow: '0 6px 16px -6px rgba(15,84,76,.55)', transition: 'all .15s ease'
             }}>
@@ -261,7 +261,7 @@ const CustomerReferrals: React.FC = () => {
 
       {error && (
         <div style={{ padding: '0 28px', marginTop: 16 }}>
-          <div style={{ background: '#fef2f2', border: '1px solid #fecaca', color: '#b91c1c', borderRadius: 12, padding: '12px 16px', fontSize: 13 }}>
+          <div style={{ background: '#FEE2E2', border: '1px solid #fecaca', color: '#b91c1c', borderRadius: 12, padding: '12px 16px', fontSize: 13 }}>
             {error}
           </div>
         </div>
@@ -271,8 +271,8 @@ const CustomerReferrals: React.FC = () => {
       {funnel && (
         <div style={{ padding: '20px 28px 0' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 12 }}>
-            <TrendingUp size={16} style={{ color: '#0D5047' }} />
-            <span style={{ fontSize: 11, fontWeight: 700, color: '#0D5047', textTransform: 'uppercase', letterSpacing: 0.08 }}>
+            <TrendingUp size={16} style={{ color: '#0F2C59' }} />
+            <span style={{ fontSize: 11, fontWeight: 700, color: '#0F2C59', textTransform: 'uppercase', letterSpacing: 0.08 }}>
               Referral Funnel
             </span>
           </div>
@@ -330,7 +330,7 @@ const CustomerReferrals: React.FC = () => {
               onClick={handleCopyReferralLink}
               style={{
                 padding: '6px 14px', borderRadius: 8, border: '1.4px solid transparent',
-                background: '#0D5047', color: '#fff', fontSize: 12, fontWeight: 600,
+                background: '#0F2C59', color: '#fff', fontSize: 12, fontWeight: 600,
                 cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 5,
                 flexShrink: 0,
               }}
@@ -352,10 +352,10 @@ const CustomerReferrals: React.FC = () => {
             <button key={t.key} onClick={() => setTab(t.key)} style={{
               fontFamily: "'Inter', sans-serif", fontSize: 12, fontWeight: 600,
               padding: '8px 16px', borderRadius: 9, border: isActive ? '1.4px solid transparent' : `1.4px solid #E9EDF3`,
-              background: isActive ? `linear-gradient(155deg, #0D5047, #0D5047)` : '#fff',
+              background: isActive ? `linear-gradient(155deg, #0F2C59, #1E4078)` : '#fff',
               color: isActive ? '#fff' : '#8A94A6', cursor: 'pointer',
               display: 'inline-flex', alignItems: 'center', gap: 7, transition: 'all .15s ease',
-              boxShadow: isActive ? '0 4px 12px -4px rgba(15,84,76,.4)' : 'none',
+              boxShadow: isActive ? '0 4px 12px -4px rgba(15,44,89,.25)' : 'none',
             }}>
               <t.icon size={14} /> {t.label}
             </button>
@@ -427,7 +427,7 @@ const CustomerReferrals: React.FC = () => {
                 border: '1.4px solid #e4ddd1', boxShadow: '0 1px 2px rgba(0,0,0,0.04)',
                 flexWrap: 'wrap', cursor: 'pointer', transition: 'all .15s ease'
               }}
-                onMouseEnter={e => { e.currentTarget.style.borderColor = '#a6d9d3'; e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,.08)'; }}
+                onMouseEnter={e => { e.currentTarget.style.borderColor = '#94A3B8'; e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,.08)'; }}
                 onMouseLeave={e => { e.currentTarget.style.borderColor = '#e4ddd1'; e.currentTarget.style.boxShadow = '0 1px 2px rgba(0,0,0,0.04)'; }}
                 onClick={() => openDetail(r)}
               >
@@ -442,9 +442,9 @@ const CustomerReferrals: React.FC = () => {
                   </span>
                   <span style={{ fontSize: 12, color: '#8A94A6', whiteSpace: 'nowrap' }}>{new Date(r.createdAt).toLocaleDateString()}</span>
                   <button onClick={(e) => { e.stopPropagation(); openDetail(r); }} style={{
-                    fontSize: 11, fontWeight: 700, color: '#0D5047', background: 'none', border: 'none', cursor: 'pointer',
+                    fontSize: 11, fontWeight: 700, color: '#0F2C59', background: 'none', border: 'none', cursor: 'pointer',
                     padding: '4px 8px', borderRadius: 6, transition: 'all .15s'
-                  }} onMouseEnter={e => { e.currentTarget.style.background = '#ECFDF5'; }} onMouseLeave={e => { e.currentTarget.style.background = 'none'; }}>
+                  }} onMouseEnter={e => { e.currentTarget.style.background = '#D1FAE5'; }} onMouseLeave={e => { e.currentTarget.style.background = 'none'; }}>
                     View Timeline
                   </button>
                 </div>
@@ -490,7 +490,7 @@ const CustomerReferrals: React.FC = () => {
                   <span style={{ textAlign: 'right', fontFamily: "'JetBrains Mono', monospace", fontSize: 12, color: '#8A94A6' }}>
                     {r.invoiceAmount.toLocaleString(undefined, { minimumFractionDigits: 2 })}
                   </span>
-                  <span style={{ textAlign: 'right', fontFamily: "'JetBrains Mono', monospace", fontSize: 12, fontWeight: 700, color: '#0D5047' }}>
+                  <span style={{ textAlign: 'right', fontFamily: "'JetBrains Mono', monospace", fontSize: 12, fontWeight: 700, color: '#0F2C59' }}>
                     +{r.amount.toLocaleString(undefined, { minimumFractionDigits: 2 })}
                   </span>
                   <span className={`inline-flex items-center gap-1.5 font-semibold rounded-full whitespace-nowrap text-xs px-2.5 py-1 ${rewardStatusColor[r.status]?.bg || 'bg-slate-100'} ${rewardStatusColor[r.status]?.text || 'text-slate-600'}`}>
@@ -545,16 +545,16 @@ const CustomerReferrals: React.FC = () => {
                     />
                   </div>
                   <button onClick={handleReferSearch} style={{
-                    marginTop: 10, width: '100%', padding: '9px', borderRadius: 9, border: `1.4px solid #0D5047`,
-                    background: '#fff', color: '#0D5047', fontSize: 13, fontWeight: 600, cursor: 'pointer'
+                    marginTop: 10, width: '100%', padding: '9px', borderRadius: 9, border: `1.4px solid #0F2C59`,
+                    background: '#fff', color: '#0F2C59', fontSize: 13, fontWeight: 600, cursor: 'pointer'
                   }}>Search</button>
                   {referResults.length > 0 && (
                     <div style={{ marginTop: 10, border: `1px solid #E9EDF3`, borderRadius: 9, overflow: 'hidden' }}>
                       {referResults.map((c) => (
                         <button key={c.id} onClick={() => setReferSelected(c)} style={{
                           width: '100%', textAlign: 'left', padding: '10px 12px', border: 'none', borderBottom: `1px solid #E9EDF3`, background: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 8, fontSize: 13, color: '#1A202C'
-                        }} onMouseEnter={e => { e.currentTarget.style.background = '#ECFDF5'; }} onMouseLeave={e => { e.currentTarget.style.background = 'none'; }}>
-                          <div style={{ width: 32, height: 32, borderRadius: 8, background: '#ECFDF5', color: '#0D5047', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, fontSize: 12, flexShrink: 0 }}>
+                        }} onMouseEnter={e => { e.currentTarget.style.background = '#D1FAE5'; }} onMouseLeave={e => { e.currentTarget.style.background = 'none'; }}>
+                          <div style={{ width: 32, height: 32, borderRadius: 8, background: '#D1FAE5', color: '#0F2C59', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, fontSize: 12, flexShrink: 0 }}>
                             {c.name.charAt(0).toUpperCase()}
                           </div>
                           <div>
@@ -569,7 +569,7 @@ const CustomerReferrals: React.FC = () => {
               ) : (
                 <>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 14 }}>
-                    <div style={{ width: 40, height: 40, borderRadius: 10, background: '#ECFDF5', color: '#0D5047', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, fontSize: 14, flexShrink: 0 }}>
+                    <div style={{ width: 40, height: 40, borderRadius: 10, background: '#D1FAE5', color: '#0F2C59', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, fontSize: 14, flexShrink: 0 }}>
                       {referSelected.name.charAt(0).toUpperCase()}
                     </div>
                     <div>
@@ -594,7 +594,7 @@ const CustomerReferrals: React.FC = () => {
                     }}>Back</button>
                     <button onClick={handleReferSubmit} disabled={referSubmitting} style={{
                       flex: 1, padding: '9px', borderRadius: 9, border: '1.4px solid transparent',
-                      background: `linear-gradient(155deg, #0D5047, #0D5047)`, color: '#fff',
+                      background: `linear-gradient(155deg, #0F2C59, #1E4078)`, color: '#fff',
                       fontSize: 13, fontWeight: 600, cursor: referSubmitting ? 'not-allowed' : 'pointer', opacity: referSubmitting ? 0.7 : 1
                     }}>
                       {referSubmitting ? 'Saving...' : 'Refer Customer'}
@@ -651,7 +651,7 @@ const CustomerReferrals: React.FC = () => {
                     {timeline.map((entry, idx) => (
                       <div key={entry.id} style={{ display: 'flex', gap: 12, position: 'relative' }}>
                         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                          <div style={{ width: 10, height: 10, borderRadius: '50%', background: '#008A4C', border: `2px solid #fff`, boxShadow: '0 0 0 2px #A7F3D0', flexShrink: 0, marginTop: 4 }} />
+                          <div style={{ width: 10, height: 10, borderRadius: '50%', background: '#059669', border: `2px solid #fff`, boxShadow: '0 0 0 2px #A7F3D0', flexShrink: 0, marginTop: 4 }} />
                           {idx < timeline.length - 1 && <div style={{ width: 2, flex: 1, background: '#E9EDF3', marginTop: 4 }} />}
                         </div>
                         <div style={{ paddingBottom: idx < timeline.length - 1 ? 16 : 0, flex: 1 }}>

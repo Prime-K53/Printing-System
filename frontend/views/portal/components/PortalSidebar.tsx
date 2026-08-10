@@ -135,27 +135,30 @@ const PortalSidebar: React.FC<Props> = ({ isOpen, onClose, collapsed: collapsedE
         onMouseLeave={() => setHoveredItem(null)}
         className={`
           relative w-full flex items-center gap-3 px-3 py-2 rounded-xl transition-all duration-200 text-sm group
-          ${isActive
-            ? 'text-white bg-white/[0.08]'
-            : 'text-white/60 hover:text-white hover:bg-white/[0.05]'
-          }
           ${collapsed ? 'justify-center px-2' : ''}
         `}
-        style={isActive ? { boxShadow: 'inset 0 0 0 1px rgba(217,154,63,0.15)' } : undefined}
+        style={{
+          ...(isActive 
+            ? { background: '#0F2C59', color: '#FFFFFF' } 
+            : { 
+                color: hoveredItem === item.path ? '#0F2C59' : '#94A3B8',
+                background: hoveredItem === item.path ? '#F1F5F9' : 'transparent',
+              }),
+        }}
       >
         {isActive && !collapsed && (
           <span
             className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-5 rounded-r-full"
-            style={{ background: 'linear-gradient(180deg, #d99a3f, #b97e2b)', boxShadow: '0 0 8px rgba(217,154,63,0.4)' }}
+            style={{ background: '#0F2C59' }}
           />
         )}
-        <Icon size={18} className="shrink-0" style={{ color: isActive ? '#d99a3f' : undefined }} />
+        <Icon size={18} className="shrink-0" style={{ color: isActive ? '#FFFFFF' : undefined }} />
         {!collapsed && <span className="font-medium whitespace-nowrap">{item.label}</span>}
         {collapsed && hoveredItem === item.path && (
           <div
             className="absolute left-full ml-2 px-3 py-1.5 rounded-lg text-xs font-medium text-white whitespace-nowrap z-50 pointer-events-none"
             style={{
-              background: 'rgba(15,84,76,0.95)',
+              background: 'rgba(15,44,89,0.95)',
               boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
               backdropFilter: 'blur(8px)',
             }}
@@ -169,30 +172,32 @@ const PortalSidebar: React.FC<Props> = ({ isOpen, onClose, collapsed: collapsedE
 
   const sidebarContent = (
     <div className="flex flex-col h-full">
-      <div className="h-16 flex items-center gap-3 px-5 shrink-0 border-b" style={{ borderColor: 'rgba(255,255,255,0.05)', background: 'linear-gradient(180deg, #0b3e39, #082e2a)' }}>
-        <div className="w-9 h-9 rounded-xl shrink-0 flex items-center justify-center text-white" style={{ background: 'linear-gradient(160deg, #3fa294, #0f544c)' }}>
+      <div className="h-16 flex items-center gap-3 px-5 shrink-0 border-b" style={{ borderColor: '#E2E8F0', background: '#FFFFFF' }}>
+        <div className="w-9 h-9 rounded-xl shrink-0 flex items-center justify-center text-white" style={{ background: '#0F2C59' }}>
           <Globe size={18} />
         </div>
         {!collapsed && (
           <div className="flex flex-col min-w-0">
-            <span className="font-bold text-[16px] tracking-tight text-white truncate">
-              Prime<span style={{ color: '#d99a3f' }}>PORTAL</span>
+            <span className="font-bold text-[16px] tracking-tight truncate" style={{ color: '#0F172A' }}>
+              Prime<span style={{ color: '#0F2C59' }}>PORTAL</span>
             </span>
-            <span className="text-[10px] font-semibold uppercase tracking-wider -mt-0.5 truncate" style={{ color: 'rgba(255,255,255,0.4)' }}>
+            <span className="text-[10px] font-semibold uppercase tracking-wider -mt-0.5 truncate" style={{ color: '#94A3B8' }}>
               Customer Portal
             </span>
           </div>
         )}
         <button
           onClick={() => setCollapsed(!collapsed)}
-          className="hidden md:flex ml-auto w-6 h-6 items-center justify-center rounded-md text-white/30 hover:text-white hover:bg-white/5 transition-all"
+          className="hidden md:flex ml-auto w-6 h-6 items-center justify-center rounded-md transition-all"
+          style={{ color: '#94A3B8' }}
           aria-label={collapsed ? 'Expand sidebar' : 'Collapse sidebar'}
         >
           {collapsed ? <ChevronRight size={14} /> : <ChevronLeft size={14} />}
         </button>
         <button
           onClick={onClose}
-          className="md:hidden ml-auto w-6 h-6 flex items-center justify-center rounded-md text-white/30 hover:text-white hover:bg-white/5 transition-all"
+          className="md:hidden ml-auto w-6 h-6 flex items-center justify-center rounded-md transition-all"
+          style={{ color: '#94A3B8' }}
           aria-label="Close sidebar"
         >
           <X size={14} />
@@ -206,9 +211,9 @@ const PortalSidebar: React.FC<Props> = ({ isOpen, onClose, collapsed: collapsedE
             style={{
               top: indicator.top,
               height: indicator.height,
-              background: 'rgba(217,154,63,0.08)',
-              border: '1px solid rgba(217,154,63,0.15)',
-              boxShadow: '0 0 12px rgba(217,154,63,0.25)',
+              background: 'rgba(15,44,89,0.08)',
+              border: '1px solid rgba(15,44,89,0.15)',
+              boxShadow: '0 0 12px rgba(15,44,89,0.1)',
               transition: 'all var(--motion-normal) ease',
             }}
           />
@@ -216,7 +221,7 @@ const PortalSidebar: React.FC<Props> = ({ isOpen, onClose, collapsed: collapsedE
         {navSections.map((section) => (
           <div key={section.title}>
             {!collapsed && (
-              <p className="px-3 mb-1.5 text-[10px] font-bold uppercase tracking-widest text-white/30">{section.title}</p>
+              <p className="px-3 mb-1.5 text-[10px] font-bold uppercase tracking-widest" style={{ color: '#94A3B8' }}>{section.title}</p>
             )}
             <div className="space-y-0.5">
               {section.items.map((item) => {
@@ -228,24 +233,27 @@ const PortalSidebar: React.FC<Props> = ({ isOpen, onClose, collapsed: collapsedE
         ))}
       </nav>
 
-      <div className="border-t p-4 space-y-3" style={{ borderColor: 'rgba(255,255,255,0.05)', background: 'linear-gradient(180deg, #0b3e39, #082e2a)' }}>
+      <div className="border-t p-4 space-y-3" style={{ borderColor: '#E2E8F0', background: '#FFFFFF' }}>
         <div className={`flex items-center gap-3 px-2 ${collapsed ? 'justify-center' : ''}`}>
-          <div className="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold shrink-0" style={{ background: 'linear-gradient(160deg, #3fa294, #0f544c)' }}>
+          <div className="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold shrink-0" style={{ background: '#0F2C59' }}>
             {(user?.full_name || user?.email || 'C').charAt(0).toUpperCase()}
           </div>
           {!collapsed && (
             <div className="min-w-0 flex-1">
-              <p className="text-sm font-medium text-white truncate">{user?.full_name || 'Customer'}</p>
-              <p className="text-xs truncate" style={{ color: 'rgba(255,255,255,0.4)' }}>{user?.email || ''}</p>
+              <p className="text-sm font-medium truncate" style={{ color: '#0F172A' }}>{user?.full_name || 'Customer'}</p>
+              <p className="text-xs truncate" style={{ color: '#94A3B8' }}>{user?.email || ''}</p>
             </div>
           )}
         </div>
         <button
           onClick={handleLogout}
           className={`
-            w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-white/60 hover:text-rose-300 hover:bg-rose-500/10 transition-all duration-200
+            w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm transition-all duration-200
             ${collapsed ? 'justify-center' : ''}
           `}
+          style={{ color: '#94A3B8' }}
+          onMouseEnter={(e) => { e.currentTarget.style.color = '#DC2626'; e.currentTarget.style.background = 'rgba(220,38,38,0.08)'; }}
+          onMouseLeave={(e) => { e.currentTarget.style.color = '#94A3B8'; e.currentTarget.style.background = 'transparent'; }}
         >
           <LogOut size={18} className="shrink-0" />
           {!collapsed && <span className="font-medium">Sign Out</span>}
@@ -259,12 +267,13 @@ const PortalSidebar: React.FC<Props> = ({ isOpen, onClose, collapsed: collapsedE
       {/* Desktop Sidebar */}
       <aside
         className={`
-          fixed top-0 left-0 z-40 h-full flex flex-col text-white/70 border-r transition-all duration-200 ease-out
+          fixed top-0 left-0 z-40 h-full flex flex-col border-r transition-all duration-200 ease-out
           hidden md:flex
           ${collapsed ? 'w-16' : 'w-[286px]'}
         `}
         style={{
-          background: 'linear-gradient(180deg, #0b3e39, #082e2a)',
+          background: '#FFFFFF',
+          borderColor: '#E2E8F0',
         }}
       >
         {sidebarContent}
@@ -275,9 +284,10 @@ const PortalSidebar: React.FC<Props> = ({ isOpen, onClose, collapsed: collapsedE
         <div className="fixed inset-0 z-50 md:hidden">
           <div className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" onClick={onClose} />
           <aside
-            className="absolute top-0 left-0 h-full w-[286px] flex flex-col text-white/70 border-r transition-all duration-200 ease-out"
+            className="absolute top-0 left-0 h-full w-[286px] flex flex-col border-r transition-all duration-200 ease-out"
             style={{
-              background: 'linear-gradient(180deg, #0b3e39, #082e2a)',
+              background: '#FFFFFF',
+              borderColor: '#E2E8F0',
             }}
           >
             {sidebarContent}

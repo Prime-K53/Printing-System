@@ -15,7 +15,7 @@ interface CustomerHealthScoreProps {
 const CustomerHealthScore: React.FC<CustomerHealthScoreProps> = ({ score, factors }) => {
   const getScoreColor = (s: number) => {
     if (s >= 80) return '#059669';
-    if (s >= 60) return '#d99a3f';
+    if (s >= 60) return '#D97706';
     return '#dc2626';
   };
 

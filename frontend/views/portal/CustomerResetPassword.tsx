@@ -54,7 +54,7 @@ const CustomerResetPassword: React.FC = () => {
 
         <div className="w-full max-w-[440px] relative z-10 bg-white/95 backdrop-blur-2xl border border-white/20 rounded-3xl p-8 md:p-10 shadow-2xl shadow-slate-950/50">
           <div className="flex items-center gap-3.5 mb-8">
-            <div className="w-12 h-12 rounded-2xl flex items-center justify-center text-white shadow-lg shadow-teal-900/30" style={{ background: 'linear-gradient(135deg, #3fa294, #0f544c)' }}>
+            <div className="w-12 h-12 rounded-2xl flex items-center justify-center text-white shadow-lg shadow-slate-900/30" style={{ background: 'linear-gradient(135deg, #0F2C59, #1E4078)' }}>
               <KeyRound size={22} />
             </div>
             <div>
@@ -74,7 +74,7 @@ const CustomerResetPassword: React.FC = () => {
               <p className="text-xs font-medium text-slate-500 leading-relaxed mb-6">
                 Your password has been reset successfully. You can now sign in with your new password.
               </p>
-              <Link to="/portal/login" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold text-white transition-all shadow-md btn-press" style={{ background: 'linear-gradient(135deg, #146b60 0%, #0f544c 100%)' }}>
+              <Link to="/portal/login" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold text-white transition-all shadow-md btn-press" style={{ background: 'linear-gradient(135deg, #0F2C59 0%, #1E4078 100%)' }}>
                 Sign In Now
               </Link>
             </div>
@@ -124,7 +124,7 @@ const CustomerResetPassword: React.FC = () => {
                   type="submit"
                   disabled={submitting || !email.trim() || !code.trim() || !password || !confirmPassword}
                   className="w-full h-11 text-white text-xs font-bold rounded-xl transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed btn-press mt-2"
-                  style={{ background: 'linear-gradient(135deg, #146b60 0%, #0f544c 100%)', boxShadow: '0 6px 20px rgba(15, 84, 76, 0.35)' }}
+                  style={{ background: 'linear-gradient(135deg, #0F2C59 0%, #1E4078 100%)', boxShadow: '0 6px 20px rgba(15, 44, 89, 0.25)' }}
                 >
                   {submitting ? <Loader2 size={16} className="animate-spin" /> : 'Reset My Password'}
                 </button>

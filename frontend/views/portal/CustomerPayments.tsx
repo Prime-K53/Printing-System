@@ -113,7 +113,7 @@ const CustomerPayments: React.FC = () => {
           </div>
           <div style={{ background: '#fff', borderRadius: 12, padding: '12px 14px', border: '1px solid #E9EDF3', boxShadow: '0 1px 3px rgba(0,0,0,.04)' }}>
             <span style={{ fontSize: 10.5, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', color: '#8A94A6', display: 'block', marginBottom: 4 }}>This Month</span>
-            <span style={{ fontSize: 20, fontWeight: 700, color: '#0D5047', fontFamily: F, fontVariantNumeric: 'tabular-nums' }}>{formatK(paidThisMonth)}</span>
+            <span style={{ fontSize: 20, fontWeight: 700, color: '#0F2C59', fontFamily: F, fontVariantNumeric: 'tabular-nums' }}>{formatK(paidThisMonth)}</span>
           </div>
           <div style={{ background: '#fff', borderRadius: 12, padding: '12px 14px', border: '1px solid #E9EDF3', boxShadow: '0 1px 3px rgba(0,0,0,.04)' }}>
             <span style={{ fontSize: 10.5, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', color: '#8A94A6', display: 'block', marginBottom: 4 }}>This Year</span>
@@ -164,7 +164,7 @@ const CustomerPayments: React.FC = () => {
                   style={{ background: '#fff', borderRadius: 12, padding: '12px 14px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16, border: '1px solid #E9EDF3', cursor: 'pointer' }}
                 >
                   <div style={{ display: 'flex', alignItems: 'center', gap: 14, minWidth: 0 }}>
-                    <div style={{ width: 34, height: 34, borderRadius: 10, background: '#ECFDF5', color: '#059669', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, border: '1px solid #D1FAE5', boxShadow: '0 1px 3px rgba(0,0,0,.04)' }}>
+                    <div style={{ width: 34, height: 34, borderRadius: 10, background: '#D1FAE5', color: '#059669', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, border: '1px solid #D1FAE5', boxShadow: '0 1px 3px rgba(0,0,0,.04)' }}>
                       <CreditCard size={18} />
                     </div>
                     <div style={{ minWidth: 0 }}>
@@ -181,7 +181,7 @@ const CustomerPayments: React.FC = () => {
                       </div>
                       <div style={{ fontSize: 10, color: '#8A94A6', textTransform: 'uppercase', fontWeight: 600, letterSpacing: '0.05em' }}>Amount Paid</div>
                     </div>
-                    <div style={{ padding: 6, borderRadius: 8, background: '#ECFDF5', color: '#0D5047' }}>
+                    <div style={{ padding: 6, borderRadius: 8, background: '#D1FAE5', color: '#0F2C59' }}>
                       <ChevronRight size={16} />
                     </div>
                   </div>

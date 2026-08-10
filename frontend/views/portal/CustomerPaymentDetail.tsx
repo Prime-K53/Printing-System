@@ -171,7 +171,7 @@ const CustomerPaymentDetail: React.FC = () => {
                 borderRadius: 8,
                 fontSize: 12, fontWeight: 600,
                 border: 'none', cursor: downloading ? 'not-allowed' : 'pointer',
-                background: '#008A4C', color: '#fff',
+                background: '#059669', color: '#fff',
                 opacity: downloading ? 0.6 : 1,
                 fontFamily: F,
               }}
